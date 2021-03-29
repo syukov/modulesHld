@@ -1,0 +1,123 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:$androidToolsBuildGradleVer"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVer"
+        classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlinVer"
+    }
+}
+
+apply from: "$rootDir\\buildConstants.gradle"
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+subprojects {
+    afterEvaluate { project ->
+
+        // set build properties of each "android.application" or "android.library" module
+        if (project.hasProperty('android')) {
+            android {
+                compileSdkVersion androidProjectProperties.compileSdk
+                buildToolsVersion androidProjectProperties.buildTools
+
+                defaultConfig {
+                    minSdkVersion androidProjectProperties.minSdk
+                    targetSdkVersion androidProjectProperties.targetSdk
+                    versionCode androidProjectProperties.versionCode
+                    versionName androidProjectProperties.versionName
+                    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+                    vectorDrawables.useSupportLibrary = true
+                }
+
+                compileOptions {
+                    // Flag to enable support for the new language APIs
+                    coreLibraryDesugaringEnabled true
+                    // Sets Java compatibility to Java 8
+                    sourceCompatibility JavaVersion.VERSION_1_8
+                    targetCompatibility JavaVersion.VERSION_1_8
+                }
+                kotlinOptions {
+                    jvmTarget = JavaVersion.VERSION_1_8.toString()
+                }
+                buildTypes {
+                    production {
+                        minifyEnabled false
+                    }
+                    release {
+                        minifyEnabled false
+                        proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+                    }
+                }
+                buildFeatures {
+                    viewBinding true
+                }
+//                lintOptions {
+//                    checkAllWarnings true
+//                    warningsAsErrors true
+//                    abortOnError true
+//                }
+
+//                tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+//                    kotlinOptions.allWarningsAsErrors = true
+//                }
+            }
+
+            //set common dependencies
+            dependencies {
+                //desugaring
+                coreLibraryDesugaring deps.android.desugaring
+
+                // kotlin
+                implementation deps.jetbrains.kotlinStdlibJdk7
+                implementation deps.jetbrains.kotlinReflect
+
+                // androidx
+                implementation deps.androidx.legacySupport
+                implementation deps.androidx.appcompat
+                implementation deps.androidx.recyclerview
+                implementation deps.androidx.cardview
+                implementation deps.androidx.constraintlayout
+                implementation deps.androidx.material
+                implementation deps.androidx.viewpager2
+                implementation deps.androidx.coreKtx
+
+                // unit tests
+                testImplementation deps.junit.junit
+                testImplementation deps.mockk.mockk
+
+                // android tests
+                androidTestImplementation deps.junit.junit
+                androidTestImplementation deps.mockk.mockk
+                androidTestImplementation deps.androidx.testRunner
+                androidTestImplementation deps.androidx.testRules
+
+                // dagger
+                compileOnly deps.glassfish.javaxAnnotation
+                kapt deps.dagger.daggerCompiler
+                implementation deps.dagger.dagger
+
+                // cicerone
+                implementation deps.terrakok.cicerone
+            }
+        }
+
+        // set build properties of each "kotlin-android-extensions" module
+        if (project.hasProperty('androidExtensions')) {
+            androidExtensions {
+                experimental = true
+            }
+        }
+    }
+}
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

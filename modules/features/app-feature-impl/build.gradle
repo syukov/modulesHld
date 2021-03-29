@@ -1,0 +1,19 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+}
+apply from: "$rootDir\\buildConstants.gradle"
+
+android {
+    defaultConfig {
+        applicationId "com.example.modularization.appFeatureImpl"
+    }
+}
+
+dependencies {
+    implementation project(':app-feature-api')
+    implementation project(':employeeAuth-feature-api')
+    implementation project(':employeeAuth-feature-impl')
+}

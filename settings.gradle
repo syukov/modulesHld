@@ -1,0 +1,28 @@
+pluginManagement {
+    // see plugins version declaration in gradle.properties
+    plugins {
+        id "com.android.application" version "$androidToolsBuildGradleVer"
+        id "com.android.library" version "$androidToolsBuildGradleVer"
+        id "kotlin-android" version "$kotlinVer"
+        id "kotlin-android-extensions" version "$kotlinVer"
+        id "kotlin-kapt" version "$kotlinVer"
+    }
+}
+
+rootProject.name = "ModularizationHld"
+
+
+
+include ':app-feature-api'
+project(':app-feature-api').projectDir = new File(rootDir, 'modules/features/app-feature-api')
+include ':app-feature-impl'
+project(':app-feature-impl').projectDir = new File(rootDir, 'modules/features/app-feature-impl')
+
+//include ':core-feature-api'
+//project(':core-feature-api').projectDir = new File(rootDir, 'modules/features/.core/core-feature-api')
+
+include ':employeeAuth-feature-api'
+project(':employeeAuth-feature-api').projectDir = new File(rootDir, 'modules/features/employeeAuth-feature-api')
+include ':employeeAuth-feature-impl'
+project(':employeeAuth-feature-impl').projectDir = new File(rootDir, 'modules/features/employeeAuth-feature-impl')
+
