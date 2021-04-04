@@ -12,10 +12,11 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/modules/core/ui-core" />
             <option value="$PROJECT_DIR$/modules/features/app-feature-api" />
             <option value="$PROJECT_DIR$/modules/features/app-feature-impl" />
-            <option value="$PROJECT_DIR$/modules/features/employeeAuth-feature-api" />
-            <option value="$PROJECT_DIR$/modules/features/employeeAuth-feature-impl" />
+            <option value="$PROJECT_DIR$/modules/features/employee-auth-feature-api" />
+            <option value="$PROJECT_DIR$/modules/features/employee-auth-feature-impl" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

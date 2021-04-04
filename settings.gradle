@@ -12,6 +12,8 @@ pluginManagement {
 rootProject.name = "ModularizationHld"
 
 
+include ':ui-core'
+project(':ui-core').projectDir = new File(rootDir, 'modules/core/ui-core')
 
 include ':app-feature-api'
 project(':app-feature-api').projectDir = new File(rootDir, 'modules/features/app-feature-api')
@@ -21,8 +23,8 @@ project(':app-feature-impl').projectDir = new File(rootDir, 'modules/features/ap
 //include ':core-feature-api'
 //project(':core-feature-api').projectDir = new File(rootDir, 'modules/features/.core/core-feature-api')
 
-include ':employeeAuth-feature-api'
-project(':employeeAuth-feature-api').projectDir = new File(rootDir, 'modules/features/employeeAuth-feature-api')
-include ':employeeAuth-feature-impl'
-project(':employeeAuth-feature-impl').projectDir = new File(rootDir, 'modules/features/employeeAuth-feature-impl')
+include ':employee-auth-feature-api'
+project(':employee-auth-feature-api').projectDir = new File(rootDir, 'modules/features/employee-auth-feature-api')
+include ':employee-auth-feature-impl'
+project(':employee-auth-feature-impl').projectDir = new File(rootDir, 'modules/features/employee-auth-feature-impl')
 
