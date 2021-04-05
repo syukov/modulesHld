@@ -4,7 +4,6 @@ import com.example.modularization.app_feature_api.data.AppRouter.*
 import com.example.modularization.ui_core.BaseArgument
 
 typealias CiceroneScreen = com.github.terrakok.cicerone.Screen
-typealias CiceroneCommand = com.github.terrakok.cicerone.Command
 
 /**
  * Отвечает за контейнер расположденный в AppActivity.
@@ -15,17 +14,10 @@ typealias CiceroneCommand = com.github.terrakok.cicerone.Command
  *  4. Добавить обработку [Screen] в фабрику фрагментов в AppActivity
  */
 interface AppRouter {
-    fun navigate(command: Command)
 
-    sealed class Command : CiceroneCommand {
-        object Back : Command()
-        data class BackTo(val screen: Screen?) : Command()
-        data class Forward(val screen: Screen, val clearContainer: Boolean = true) : Command()
-        data class Replace(val screen: Screen) : Command()
-        data class ReplaceRoot(val screen: Screen) : Command() {
-            fun getCommands() = arrayOf(BackTo(null), Replace(screen))
-        }
-    }
+    fun navigateTo(screen: Screen)
+
+    fun newRootScreen(screen: Screen)
 
     /**
      * Этот интерфейс нужен для того что бы не дублировать логику создания фрагментов в фабрике и в роутере.
@@ -55,6 +47,10 @@ interface AppRouter {
         sealed class EmployeeAuthFeature : Screen() {
             object Login : EmployeeAuthFeature()
             object DebugTools : EmployeeAuthFeature()
+        }
+
+        sealed class MainFeature : Screen() {
+            object Main : MainFeature()
         }
     }
 

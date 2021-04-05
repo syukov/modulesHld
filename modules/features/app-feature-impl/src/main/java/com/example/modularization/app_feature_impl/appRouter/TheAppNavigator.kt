@@ -44,7 +44,7 @@ open class TheAppNavigator @Inject constructor(
         copyStackToLocal()
 
         for (command in commands) {
-            if (command is AppRouter.Command) applyCommand(command)
+            if (command is AppRouterCommands) applyCommand(command)
         }
     }
 
@@ -61,22 +61,21 @@ open class TheAppNavigator @Inject constructor(
      *
      * @param command the navigation command to apply
      */
-    protected open fun applyCommand(command: AppRouter.Command) {
+    protected open fun applyCommand(command: AppRouterCommands) {
         return when (command) {
-            is AppRouter.Command.Back -> back()
-            is AppRouter.Command.BackTo -> backTo(command)
-            is AppRouter.Command.Forward -> forward(command)
-            is AppRouter.Command.Replace -> replace(command)
-            is AppRouter.Command.ReplaceRoot -> applyCommands(*command.getCommands())
+            is AppRouterCommands.Back -> back()
+            is AppRouterCommands.BackTo -> backTo(command)
+            is AppRouterCommands.Forward -> forward(command)
+            is AppRouterCommands.Replace -> replace(command)
         }
     }
 
-    protected open fun forward(command: AppRouter.Command.Forward) {
+    protected open fun forward(command: AppRouterCommands.Forward) {
         val type = if (command.clearContainer) TransactionInfo.Type.REPLACE else TransactionInfo.Type.ADD
         commitNewFragmentScreen(command.screen, type, true)
     }
 
-    protected open fun replace(command: AppRouter.Command.Replace) {
+    protected open fun replace(command: AppRouterCommands.Replace) {
         if (localStackCopy.isNotEmpty()) {
             fragmentManager.popBackStack()
             val removed = localStackCopy.removeAt(localStackCopy.lastIndex)
@@ -130,7 +129,7 @@ open class TheAppNavigator @Inject constructor(
     /**
      * Performs [BackTo] command transition
      */
-    protected open fun backTo(command: AppRouter.Command.BackTo) {
+    protected open fun backTo(command: AppRouterCommands.BackTo) {
         val screenKeyClassName = command.screen?.let { it::class.java.name }
         val index = localStackCopy.indexOfFirst { it.screenKey == screenKeyClassName }
         if (index != -1) {

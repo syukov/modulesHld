@@ -4,10 +4,6 @@ import com.example.modularization.app_feature_api.data.AppRouter
 
 interface EmployeeAuthFeatureContract {
 
-    interface Dependencies {
-        fun appRouter(): AppRouter
-    }
-
     interface Component
 
     interface ComponentFactory {
@@ -16,5 +12,9 @@ interface EmployeeAuthFeatureContract {
 
     interface ComponentInjector {
         fun inject(component: Component)
+    }
+
+    interface Dependencies {
+        fun appRouter(): AppRouter
     }
 }

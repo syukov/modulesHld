@@ -17,4 +17,6 @@ dependencies {
     implementation project(':ui-core')
     implementation project(':employee-auth-feature-api')
     implementation project(':employee-auth-feature-impl')
+    implementation project(':main-feature-api')
+    implementation project(':main-feature-impl')
 }

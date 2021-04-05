@@ -29,11 +29,10 @@ class AppActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         TheApp.appComponent.inject(this)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_app)
         supportFragmentManager.fragmentFactory = appContainerFragmentFactory
         navigator.init(this)
-        appRouter.navigate(AppRouter.Command.Replace(AppRouter.Screen.EmployeeAuthFeature.Login))
-
+        appRouter.newRootScreen(AppRouter.Screen.EmployeeAuthFeature.Login)
     }
 
     override fun onResume() {

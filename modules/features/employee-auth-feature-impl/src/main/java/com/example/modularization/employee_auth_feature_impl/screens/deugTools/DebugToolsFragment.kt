@@ -9,7 +9,6 @@ import com.example.modularization.employee_auth_feature_api.fature.EmployeeAuthF
 import com.example.modularization.employee_auth_feature_impl.databinding.FragmentDebugToolsBinding
 import com.example.modularization.employee_auth_feature_impl.di.DaggerEmployeeAuthFeatureComponent
 import com.example.modularization.ui_core.mvp.BaseFragment
-import kotlinx.android.synthetic.main.fragment_debug_tools.view.*
 import javax.inject.Inject
 
 class DebugToolsFragment : BaseFragment(),
@@ -26,10 +25,13 @@ class DebugToolsFragment : BaseFragment(),
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return FragmentDebugToolsBinding.inflate(inflater).root.also {
-            it.loginBtn.setOnClickListener {
-                appRouter.navigate(AppRouter.Command.Replace(AppRouter.Screen.EmployeeAuthFeature.Login))
+        return FragmentDebugToolsBinding.inflate(inflater).apply {
+            loginBtn.setOnClickListener {
+                appRouter.newRootScreen(AppRouter.Screen.EmployeeAuthFeature.Login)
             }
-        }
+            mainBtn.setOnClickListener {
+                appRouter.navigateTo(AppRouter.Screen.MainFeature.Main)
+            }
+        }.root
     }
 }
