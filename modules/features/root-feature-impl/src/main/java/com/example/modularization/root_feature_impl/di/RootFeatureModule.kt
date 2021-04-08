@@ -1,6 +1,6 @@
 package com.example.modularization.root_feature_impl.di
 
-import com.example.modularization.root_feature_impl.di.fragmentProvider.RootFeatureFragmentProvider
+import com.example.modularization.root_feature_impl.RootFeatureFragmentProvider
 import com.example.modularization.root_feature_launcher.RootFeatureLauncher
 import dagger.Binds
 import dagger.Module

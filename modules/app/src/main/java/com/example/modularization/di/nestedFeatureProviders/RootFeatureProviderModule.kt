@@ -1,4 +1,4 @@
-package com.example.modularization.di.childFeatures.rootFeature
+package com.example.modularization.di.nestedFeatureProviders
 
 import android.content.Context
 import com.example.modularization.di.PerApplicationScope
@@ -31,13 +31,13 @@ interface RootFeatureProviderModule {
         @Provides
         fun provideRootComponentDependencies(
             appContext: Context,
-            rootRouterScreenToNameMapper: RootRouter.ScreenToNameMapper,
+            rootRouterScreenResolver: RootRouter.ScreensResolver,
             employeeAuthFeatureContractComponentFactory: EmployeeAuthFeatureLauncher.ComponentFactoryApi,
             mainFeatureContractComponentFactory: MainFeatureLauncher.ComponentFactoryApi,
         ): RootFeatureLauncher.Dependencies {
             return object : RootFeatureLauncher.Dependencies {
-                override fun rootRouterScreenToNameMapper(): RootRouter.ScreenToNameMapper =
-                    rootRouterScreenToNameMapper
+                override fun rootRouterScreenResolver(): RootRouter.ScreensResolver =
+                    rootRouterScreenResolver
 
                 override fun appContext(): Context = appContext
 

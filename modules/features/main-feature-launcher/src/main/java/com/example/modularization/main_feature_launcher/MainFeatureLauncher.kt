@@ -1,21 +1,24 @@
 package com.example.modularization.main_feature_launcher
 
+import androidx.fragment.app.Fragment
 import com.example.modularization.root_feature_data.RootRouter
 
 
 interface MainFeatureLauncher {
 
-    interface ComponentApi
+    interface FragmentProvider {
+        fun getFragment(screen: RootRouter.Screen.MainFeature): Fragment
+    }
+
+    interface ComponentApi {
+        fun getFragmentProvider(): FragmentProvider
+    }
 
     interface ComponentFactoryApi {
         fun create(dependencies: Dependencies): ComponentApi
     }
 
-    interface ComponentInjector {
-        fun inject(component: ComponentApi)
-    }
-
     interface Dependencies {
-        fun appRouter(): RootRouter
+        fun rootRouter(): RootRouter
     }
 }

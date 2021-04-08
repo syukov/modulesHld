@@ -16,19 +16,22 @@ import javax.inject.Inject
 class RootFragment @Inject constructor(
     private var rootRouter: RootRouter,
     private var navigatorHolder: NavigatorHolder,
-    private var navigator: RootRouterNavigator,
+    private var navigatorFactory: RootRouterNavigator.Factory,
     private var fragmentFactory: RootRouterFragmentFactory,
 ) : BaseFragment() {
+
+    private lateinit var navigator: RootRouterNavigator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         childFragmentManager.fragmentFactory = fragmentFactory
-        navigator.init(this, R.id.rootContainer)
         rootRouter.newRootScreen(RootRouter.Screen.EmployeeAuthFeature.DebugTools)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return FragmentRootBinding.inflate(inflater).root
+        return FragmentRootBinding.inflate(inflater).root.also {
+            navigator = navigatorFactory.create(this, R.id.rootContainer)
+        }
     }
 
     override fun onResume() {

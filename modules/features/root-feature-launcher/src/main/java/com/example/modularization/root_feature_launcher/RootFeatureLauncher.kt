@@ -7,24 +7,22 @@ import com.example.modularization.main_feature_launcher.MainFeatureLauncher
 import com.example.modularization.root_feature_data.RootRouter
 
 interface RootFeatureLauncher {
+    interface FragmentProvider {
+        fun getRootFragment(): Fragment
+    }
 
     interface ComponentApi {
         fun getFragmentProvider(): FragmentProvider
     }
-
 
     interface ComponentFactoryApi {
         fun create(dependencies: Dependencies): ComponentApi
     }
 
     interface Dependencies {
-        fun rootRouterScreenToNameMapper(): RootRouter.ScreenToNameMapper
         fun appContext(): Context
+        fun rootRouterScreenResolver(): RootRouter.ScreensResolver
         fun employeeAuthFeatureComponentFactoryApi(): EmployeeAuthFeatureLauncher.ComponentFactoryApi
         fun mainFeatureComponentFactoryApi(): MainFeatureLauncher.ComponentFactoryApi
-    }
-
-    interface FragmentProvider {
-        fun getRootFragment(): Fragment
     }
 }

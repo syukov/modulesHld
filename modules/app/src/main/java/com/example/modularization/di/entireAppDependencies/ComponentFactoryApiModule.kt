@@ -1,4 +1,4 @@
-package com.example.modularization.di
+package com.example.modularization.di.entireAppDependencies
 
 import com.example.modularization.employee_auth_feature_impl.di.DaggerEmployeeAuthFeatureComponent
 import com.example.modularization.employee_auth_feature_launcher.EmployeeAuthFeatureLauncher

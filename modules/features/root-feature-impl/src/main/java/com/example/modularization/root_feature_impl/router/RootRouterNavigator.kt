@@ -1,8 +1,6 @@
 package com.example.modularization.root_feature_impl.router
 
-import android.content.Context
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentFactory
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.example.modularization.root_feature_data.RootRouter
@@ -17,20 +15,23 @@ import javax.inject.Inject
  * Главная причина: необходимость использования [RootRouter.ScreenToNameMapper] для того что бы сосредоточить логику
  * определения компонента фрагмента и его инициации в одном месте (в фабрике).
  */
-open class RootRouterNavigator @Inject constructor(
-    private val screenToNameMapper: RootRouter.ScreenToNameMapper,
-    private val applicationContext: Context
+open class RootRouterNavigator(
+    private val rootRouterFragmentResolver: RootRouterFragmentResolver,
+    private val fragment: Fragment,
+    private val containerId: Int
 ) : Navigator {
-    fun init(fragment: Fragment, containerId: Int) {
-        this.fragment = fragment
-        this.containerId = containerId
+
+    class Factory @Inject constructor(
+        private val rootRouterFragmentResolver: RootRouterFragmentResolver,
+    ) {
+        fun create(fragment: Fragment, containerId: Int) = RootRouterNavigator(
+            rootRouterFragmentResolver = rootRouterFragmentResolver,
+            fragment = fragment,
+            containerId = containerId
+        )
     }
 
-    private lateinit var fragment: Fragment
-    private var containerId: Int = 0
-
-    private val fragmentManager: FragmentManager by lazy { fragment.childFragmentManager }
-    private val fragmentFactory: FragmentFactory by lazy { fragment.childFragmentManager.fragmentFactory }
+    private val fragmentManager: FragmentManager = fragment.childFragmentManager
 
     private val localStackCopy = mutableListOf<TransactionInfo>()
 
@@ -93,10 +94,7 @@ open class RootRouterNavigator @Inject constructor(
         type: TransactionInfo.Type,
         addToBackStack: Boolean
     ) {
-        val childFragmentClassName = screenToNameMapper.getFragmentName(screen)
-
-        val childFragment = fragmentFactory.instantiate(applicationContext.classLoader, childFragmentClassName)
-
+        val childFragment = rootRouterFragmentResolver.getFragmentByScreen(screen)
         val transaction = fragmentManager.beginTransaction()
         transaction.setReorderingAllowed(true)
         setupFragmentTransaction(
