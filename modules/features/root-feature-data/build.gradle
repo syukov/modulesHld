@@ -5,11 +5,7 @@ plugins {
     id 'kotlin-kapt'
 }
 
-android {
-}
-
 dependencies {
+    implementation project(':app-feature-api')
     implementation project(':ui-core')
-    implementation project(':root-feature-data')
-    implementation project(':main-feature-api')
 }

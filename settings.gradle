@@ -20,6 +20,13 @@ project(':app-feature-api').projectDir = new File(rootDir, 'modules/features/app
 include ':app-feature-impl'
 project(':app-feature-impl').projectDir = new File(rootDir, 'modules/features/app-feature-impl')
 
+include ':root-feature-api'
+project(':root-feature-api').projectDir = new File(rootDir, 'modules/features/root-feature-api')
+include ':root-feature-impl'
+project(':root-feature-impl').projectDir = new File(rootDir, 'modules/features/root-feature-impl')
+include ':root-feature-data'
+project(':root-feature-data').projectDir = new File(rootDir, 'modules/features/root-feature-data')
+
 include ':employee-auth-feature-api'
 project(':employee-auth-feature-api').projectDir = new File(rootDir, 'modules/features/employee-auth-feature-api')
 include ':employee-auth-feature-impl'

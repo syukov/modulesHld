@@ -1,6 +1,6 @@
 package com.example.modularization.main_feature_impl.di
 
-import com.example.modularization.main_feature_api.fature.MainFeatureContract
+import com.example.modularization.main_feature_api.MainFeatureContract
 import com.example.modularization.main_feature_impl.screens.main.MainFragment
 import dagger.Component
 
