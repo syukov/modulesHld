@@ -1,18 +1,18 @@
 package com.example.modularization.main_feature_impl.di
 
-import com.example.modularization.main_feature_api.MainFeatureContract
 import com.example.modularization.main_feature_impl.screens.main.MainFragment
+import com.example.modularization.main_feature_launcher.MainFeatureLauncher
 import dagger.Component
 
 @Component(
-    dependencies = [MainFeatureContract.Dependencies::class]
+    dependencies = [MainFeatureLauncher.Dependencies::class]
 )
-interface MainFeatureComponent : MainFeatureContract.Component {
+interface MainFeatureComponent : MainFeatureLauncher.ComponentApi {
 
     fun inject(fragment: MainFragment)
 
     @Component.Factory
-    interface ComponentFactory {
-        fun create(deps: MainFeatureContract.Dependencies): MainFeatureComponent
+    interface ComponentFactory : MainFeatureLauncher.ComponentFactoryApi {
+        override fun create(dependencies: MainFeatureLauncher.Dependencies): MainFeatureComponent
     }
 }

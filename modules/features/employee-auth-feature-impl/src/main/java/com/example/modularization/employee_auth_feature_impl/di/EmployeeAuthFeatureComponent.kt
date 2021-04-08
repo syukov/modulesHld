@@ -1,20 +1,20 @@
 package com.example.modularization.employee_auth_feature_impl.di
 
-import com.example.modularization.employee_auth_feature_api.EmployeeAuthFeatureContract
 import com.example.modularization.employee_auth_feature_impl.screens.deugTools.DebugToolsFragment
 import com.example.modularization.employee_auth_feature_impl.screens.login.LoginFragment
+import com.example.modularization.employee_auth_feature_launcher.EmployeeAuthFeatureLauncher
 import dagger.Component
 
 @Component(
-    dependencies = [EmployeeAuthFeatureContract.Dependencies::class]
+    dependencies = [EmployeeAuthFeatureLauncher.Dependencies::class]
 )
-interface EmployeeAuthFeatureComponent : EmployeeAuthFeatureContract.Component {
+interface EmployeeAuthFeatureComponent : EmployeeAuthFeatureLauncher.ComponentApi {
 
     fun inject(fragment: LoginFragment)
     fun inject(fragment: DebugToolsFragment)
 
     @Component.Factory
-    interface ComponentFactory {
-        fun create(deps: EmployeeAuthFeatureContract.Dependencies): EmployeeAuthFeatureComponent
+    interface ComponentFactory : EmployeeAuthFeatureLauncher.ComponentFactoryApi {
+        override fun create(dependencies: EmployeeAuthFeatureLauncher.Dependencies): EmployeeAuthFeatureComponent
     }
 }

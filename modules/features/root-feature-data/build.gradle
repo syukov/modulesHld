@@ -6,6 +6,5 @@ plugins {
 }
 
 dependencies {
-    implementation project(':app-feature-api')
     implementation project(':ui-core')
 }

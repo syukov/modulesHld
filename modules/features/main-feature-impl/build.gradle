@@ -11,5 +11,5 @@ android {
 dependencies {
     implementation project(':ui-core')
     implementation project(':root-feature-data')
-    implementation project(':main-feature-api')
+    implementation project(':main-feature-launcher')
 }
