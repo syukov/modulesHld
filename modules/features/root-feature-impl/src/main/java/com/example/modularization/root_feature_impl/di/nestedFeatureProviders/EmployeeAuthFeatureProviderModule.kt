@@ -11,7 +11,7 @@ class EmployeeAuthFeatureProviderModule {
     companion object {
         @Provides
         @PerFeatureScope
-        fun provideEmployeeAuthFeatureComponentApi(
+        fun provideFeatureComponentApi(
             factory: EmployeeAuthFeatureLauncher.ComponentFactoryApi,
             dependencies: EmployeeAuthFeatureLauncher.Dependencies
         ): EmployeeAuthFeatureLauncher.ComponentApi {
@@ -19,7 +19,7 @@ class EmployeeAuthFeatureProviderModule {
         }
 
         @Provides
-        fun provideEmployeeAuthFeatureComponentDependencies(
+        fun provideComponentDependencies(
             rootRouter: RootRouter
         ): EmployeeAuthFeatureLauncher.Dependencies {
             return object : EmployeeAuthFeatureLauncher.Dependencies {

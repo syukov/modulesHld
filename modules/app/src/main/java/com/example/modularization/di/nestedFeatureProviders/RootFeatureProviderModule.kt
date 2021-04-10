@@ -1,9 +1,11 @@
 package com.example.modularization.di.nestedFeatureProviders
 
 import android.content.Context
+import com.example.modularization.catalogue_feature_launcher.CatalogueFeatureLauncher
 import com.example.modularization.di.PerApplicationScope
 import com.example.modularization.employee_auth_feature_launcher.EmployeeAuthFeatureLauncher
 import com.example.modularization.main_feature_launcher.MainFeatureLauncher
+import com.example.modularization.root_feature_data.MainRouter
 import com.example.modularization.root_feature_data.RootRouter
 import com.example.modularization.root_feature_launcher.RootFeatureLauncher
 import dagger.Module
@@ -34,6 +36,8 @@ interface RootFeatureProviderModule {
             rootRouterScreenResolver: RootRouter.ScreensResolver,
             employeeAuthFeatureContractComponentFactory: EmployeeAuthFeatureLauncher.ComponentFactoryApi,
             mainFeatureContractComponentFactory: MainFeatureLauncher.ComponentFactoryApi,
+            mainRouterScreensResolver: MainRouter.ScreensResolver,
+            catalogueComponentFactoryApi: CatalogueFeatureLauncher.ComponentFactoryApi,
         ): RootFeatureLauncher.Dependencies {
             return object : RootFeatureLauncher.Dependencies {
                 override fun rootRouterScreenResolver(): RootRouter.ScreensResolver =
@@ -46,6 +50,11 @@ interface RootFeatureProviderModule {
 
                 override fun mainFeatureComponentFactoryApi(): MainFeatureLauncher.ComponentFactoryApi =
                     mainFeatureContractComponentFactory
+
+                override fun mainRouterScreenResolver(): MainRouter.ScreensResolver = mainRouterScreensResolver
+
+                override fun catalogueComponentFactoryApi(): CatalogueFeatureLauncher.ComponentFactoryApi =
+                    catalogueComponentFactoryApi
             }
         }
     }

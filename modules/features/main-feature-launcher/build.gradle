@@ -7,4 +7,7 @@ plugins {
 
 dependencies {
     implementation project(':root-feature-data')
+    implementation project(':main-feature-data')
+    // nested features launchers
+    implementation project(':catalogue-feature-launcher')
 }

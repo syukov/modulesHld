@@ -11,9 +11,8 @@ import javax.inject.Inject
 
 /**
  * Это форк класса AppNavigator из библиотеки Cicerone.
- * Разница в том что он умеет работать с нашими коммандами и ключами экранов.
- * Главная причина: необходимость использования [RootRouter.ScreenToNameMapper] для того что бы сосредоточить логику
- * определения компонента фрагмента и его инициации в одном месте (в фабрике).
+ * Разница в том что он умеет работать с нашими коммандами и ключами экранов, а так же использует для создания
+ * фрагментов не фабрику а RouterFragmentResolver
  */
 open class RootRouterNavigator(
     private val rootRouterFragmentResolver: RootRouterFragmentResolver,

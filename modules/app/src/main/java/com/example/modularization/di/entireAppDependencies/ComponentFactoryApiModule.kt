@@ -1,5 +1,7 @@
 package com.example.modularization.di.entireAppDependencies
 
+import com.example.modularization.catalogue_feature_impl.di.DaggerCatalogueFeatureComponent
+import com.example.modularization.catalogue_feature_launcher.CatalogueFeatureLauncher
 import com.example.modularization.employee_auth_feature_impl.di.DaggerEmployeeAuthFeatureComponent
 import com.example.modularization.employee_auth_feature_launcher.EmployeeAuthFeatureLauncher
 import com.example.modularization.main_feature_impl.di.DaggerMainFeatureComponent
@@ -28,5 +30,9 @@ interface ComponentFactoryApiModule {
         @Provides
         fun provideMainComponentFactoryApi(): MainFeatureLauncher.ComponentFactoryApi =
             DaggerMainFeatureComponent.factory()
+
+        @Provides
+        fun provideCatalogueComponentFactoryApi(): CatalogueFeatureLauncher.ComponentFactoryApi =
+            DaggerCatalogueFeatureComponent.factory()
     }
 }

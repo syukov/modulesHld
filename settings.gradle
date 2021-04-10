@@ -33,4 +33,11 @@ include ':main-feature-launcher'
 project(':main-feature-launcher').projectDir = new File(rootDir, 'modules/features/main-feature-launcher')
 include ':main-feature-impl'
 project(':main-feature-impl').projectDir = new File(rootDir, 'modules/features/main-feature-impl')
+include ':main-feature-data'
+project(':main-feature-data').projectDir = new File(rootDir, 'modules/features/main-feature-data')
+
+include ':catalogue-feature-launcher'
+project(':catalogue-feature-launcher').projectDir = new File(rootDir, 'modules/features/catalogue-feature-launcher')
+include ':catalogue-feature-impl'
+project(':catalogue-feature-impl').projectDir = new File(rootDir, 'modules/features/catalogue-feature-impl')
 
