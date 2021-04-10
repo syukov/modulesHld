@@ -17,19 +17,19 @@ project(':app').projectDir = new File(rootDir, 'modules/app')
 include ':ui-core'
 project(':ui-core').projectDir = new File(rootDir, 'modules/core/ui-core')
 
-include ':root-feature-impl'
-project(':root-feature-impl').projectDir = new File(rootDir, 'modules/features/root-feature-impl')
-include ':root-feature-data'
-project(':root-feature-data').projectDir = new File(rootDir, 'modules/features/root-feature-data')
+include ':root-feature'
+project(':root-feature').projectDir = new File(rootDir, 'modules/features/root-feature')
+include ':root-feature-api'
+project(':root-feature-api').projectDir = new File(rootDir, 'modules/features/root-feature-api')
 
-include ':employee-auth-feature-impl'
-project(':employee-auth-feature-impl').projectDir = new File(rootDir, 'modules/features/employee-auth-feature-impl')
+include ':employee-auth-feature'
+project(':employee-auth-feature').projectDir = new File(rootDir, 'modules/features/employee-auth-feature')
 
-include ':main-feature-impl'
-project(':main-feature-impl').projectDir = new File(rootDir, 'modules/features/main-feature-impl')
-include ':main-feature-data'
-project(':main-feature-data').projectDir = new File(rootDir, 'modules/features/main-feature-data')
+include ':main-feature'
+project(':main-feature').projectDir = new File(rootDir, 'modules/features/main-feature')
+include ':main-feature-api'
+project(':main-feature-api').projectDir = new File(rootDir, 'modules/features/main-feature-api')
 
-include ':catalogue-feature-impl'
-project(':catalogue-feature-impl').projectDir = new File(rootDir, 'modules/features/catalogue-feature-impl')
+include ':catalogue-feature'
+project(':catalogue-feature').projectDir = new File(rootDir, 'modules/features/catalogue-feature')
 

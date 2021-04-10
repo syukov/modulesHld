@@ -1,8 +1,8 @@
 package com.example.modularization.di.nestedFeatureProviders
 
 import com.example.modularization.di.PerApplicationScope
-import com.example.modularization.root_feature_impl.di.DaggerRootFeatureComponent
-import com.example.modularization.root_feature_impl.di.RootFeatureComponent
+import com.example.modularization.root_feature.di.DaggerRootFeatureComponent
+import com.example.modularization.root_feature.di.RootFeatureComponent
 import dagger.Module
 import dagger.Provides
 

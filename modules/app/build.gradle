@@ -14,5 +14,5 @@ android {
 
 dependencies {
     implementation project(':ui-core')
-    implementation project(':root-feature-impl')
+    implementation project(':root-feature')
 }

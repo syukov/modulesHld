@@ -2,7 +2,7 @@ package com.example.modularization.activity
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
-import com.example.modularization.root_feature_impl.di.RootFeatureComponent
+import com.example.modularization.root_feature.di.RootFeatureComponent
 import javax.inject.Inject
 import javax.inject.Provider
 
