@@ -1,14 +1,13 @@
 package com.example.modularization.root_feature_impl.di
 
+import androidx.fragment.app.Fragment
 import com.example.modularization.root_feature_impl.di.nestedFeatureProviders.EmployeeAuthFeatureProviderModule
 import com.example.modularization.root_feature_impl.di.nestedFeatureProviders.MainFeatureProviderModule
-import com.example.modularization.root_feature_impl.screens.RootFragment
-import com.example.modularization.root_feature_launcher.RootFeatureLauncher
 import com.example.modularization.ui_core.di.PerFeatureScope
 import dagger.Component
 
 @Component(
-    dependencies = [RootFeatureLauncher.Dependencies::class],
+    dependencies = [RootFeatureComponent.Dependencies::class],
     modules = [
         RootRouterModule::class,
         RootFeatureModule::class,
@@ -17,12 +16,19 @@ import dagger.Component
     ]
 )
 @PerFeatureScope
-interface RootFeatureComponent : RootFeatureLauncher.ComponentApi {
-
-    fun inject(fragment: RootFragment)
-
+interface RootFeatureComponent {
     @Component.Factory
-    interface ComponentFactory : RootFeatureLauncher.ComponentFactoryApi {
-        override fun create(dependencies: RootFeatureLauncher.Dependencies): RootFeatureComponent
+    interface ComponentFactory {
+        fun create(dependencies: Dependencies): RootFeatureComponent
+    }
+
+    interface FragmentProvider {
+        fun getRootFragment(): Fragment
+    }
+
+    fun getFragmentProvider(): FragmentProvider
+
+    interface Dependencies {
+        /* no-op */
     }
 }

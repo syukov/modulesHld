@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.modularization.main_feature_data.MainRouter
 import com.example.modularization.main_feature_impl.R
 import com.example.modularization.main_feature_impl.databinding.FragmentMainBinding
 import com.example.modularization.main_feature_impl.router.MainRouterFragmentFactory
 import com.example.modularization.main_feature_impl.router.MainRouterNavigator
-import com.example.modularization.root_feature_data.MainRouter
 import com.example.modularization.ui_core.mvp.BaseFragment
 import com.github.terrakok.cicerone.NavigatorHolder
 import javax.inject.Inject

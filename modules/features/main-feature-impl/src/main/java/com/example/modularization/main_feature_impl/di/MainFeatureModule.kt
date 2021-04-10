@@ -1,15 +1,27 @@
 package com.example.modularization.main_feature_impl.di
 
-import com.example.modularization.main_feature_impl.MainFeatureFragmentProvider
-import com.example.modularization.main_feature_launcher.MainFeatureLauncher
+import androidx.fragment.app.Fragment
+import com.example.modularization.main_feature_impl.screens.main.MainFragment
+import com.example.modularization.root_feature_data.RootRouter
 import com.example.modularization.ui_core.di.PerFeatureScope
-import dagger.Binds
 import dagger.Module
+import dagger.Provides
+import javax.inject.Provider
 
 @Module
-interface MainFeatureModule {
+class MainFeatureModule {
 
     @PerFeatureScope
-    @Binds
-    fun bindFragmentProvider(impl: MainFeatureFragmentProvider): MainFeatureLauncher.FragmentProvider
+    @Provides
+    fun provideFragmentProvider(
+        mainFragment: Provider<MainFragment>,
+    ): MainFeatureComponent.FragmentProvider {
+        return object : MainFeatureComponent.FragmentProvider {
+            override fun getFragment(screen: RootRouter.Screen.MainFeature): Fragment {
+                return when (screen) {
+                    RootRouter.Screen.MainFeature.Main -> mainFragment.get()
+                }
+            }
+        }
+    }
 }

@@ -11,5 +11,4 @@ android {
 dependencies {
     implementation project(':ui-core')
     implementation project(':root-feature-data')
-    implementation project(':employee-auth-feature-launcher')
 }

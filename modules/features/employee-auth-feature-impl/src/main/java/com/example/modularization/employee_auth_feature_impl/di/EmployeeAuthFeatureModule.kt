@@ -1,15 +1,31 @@
 package com.example.modularization.employee_auth_feature_impl.di
 
-import com.example.modularization.employee_auth_feature_impl.EmployeeAuthFeatureFragmentProvider
-import com.example.modularization.employee_auth_feature_launcher.EmployeeAuthFeatureLauncher
+import androidx.fragment.app.Fragment
+import com.example.modularization.employee_auth_feature_impl.screens.deugTools.DebugToolsFragment
+import com.example.modularization.employee_auth_feature_impl.screens.login.LoginFragment
+import com.example.modularization.root_feature_data.RootRouter
 import com.example.modularization.ui_core.di.PerFeatureScope
-import dagger.Binds
 import dagger.Module
+import dagger.Provides
+import javax.inject.Provider
 
 @Module
 interface EmployeeAuthFeatureModule {
-
-    @PerFeatureScope
-    @Binds
-    fun bindFragmentProvider(impl: EmployeeAuthFeatureFragmentProvider): EmployeeAuthFeatureLauncher.FragmentProvider
+    companion object {
+        @PerFeatureScope
+        @Provides
+        fun provideFragmentProvider(
+            loginFragment: Provider<LoginFragment>,
+            debugToolsFragment: Provider<DebugToolsFragment>,
+        ): EmployeeAuthFeatureComponent.FragmentProvider {
+            return object : EmployeeAuthFeatureComponent.FragmentProvider {
+                override fun getFragment(screen: RootRouter.Screen.EmployeeAuthFeature): Fragment {
+                    return when (screen) {
+                        RootRouter.Screen.EmployeeAuthFeature.Login -> loginFragment.get()
+                        RootRouter.Screen.EmployeeAuthFeature.DebugTools -> debugToolsFragment.get()
+                    }
+                }
+            }
+        }
+    }
 }

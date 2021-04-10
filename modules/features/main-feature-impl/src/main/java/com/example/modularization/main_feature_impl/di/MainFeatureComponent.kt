@@ -1,12 +1,13 @@
 package com.example.modularization.main_feature_impl.di
 
+import androidx.fragment.app.Fragment
 import com.example.modularization.main_feature_impl.di.nestedFeatureProviders.CatalogueFeatureProviderModule
-import com.example.modularization.main_feature_launcher.MainFeatureLauncher
+import com.example.modularization.root_feature_data.RootRouter
 import com.example.modularization.ui_core.di.PerFeatureScope
 import dagger.Component
 
 @Component(
-    dependencies = [MainFeatureLauncher.Dependencies::class],
+    dependencies = [MainFeatureComponent.Dependencies::class],
     modules = [
         MainFeatureModule::class,
         MainRouterModule::class,
@@ -15,10 +16,20 @@ import dagger.Component
     ]
 )
 @PerFeatureScope
-interface MainFeatureComponent : MainFeatureLauncher.ComponentApi {
+interface MainFeatureComponent {
 
     @Component.Factory
-    interface ComponentFactory : MainFeatureLauncher.ComponentFactoryApi {
-        override fun create(dependencies: MainFeatureLauncher.Dependencies): MainFeatureComponent
+    interface ComponentFactory {
+        fun create(dependencies: Dependencies): MainFeatureComponent
+    }
+
+    interface FragmentProvider {
+        fun getFragment(screen: RootRouter.Screen.MainFeature): Fragment
+    }
+
+    fun getFragmentProvider(): FragmentProvider
+
+    interface Dependencies {
+        fun rootRouter(): RootRouter
     }
 }

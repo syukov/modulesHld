@@ -1,4 +1,4 @@
-package com.example.modularization.root_feature_data
+package com.example.modularization.main_feature_data
 
 import com.example.modularization.ui_core.BaseArgument
 import com.example.modularization.ui_core.CiceroneScreen

@@ -3,7 +3,7 @@ package com.example.modularization.main_feature_impl.router
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-import com.example.modularization.root_feature_data.MainRouter
+import com.example.modularization.main_feature_data.MainRouter
 import com.github.terrakok.cicerone.Command
 import com.github.terrakok.cicerone.Navigator
 import com.github.terrakok.cicerone.androidx.TransactionInfo

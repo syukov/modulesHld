@@ -1,8 +1,8 @@
 package com.example.modularization.main_feature_impl.router
 
 import androidx.fragment.app.Fragment
-import com.example.modularization.catalogue_feature_launcher.CatalogueFeatureLauncher
-import com.example.modularization.root_feature_data.MainRouter
+import com.example.modularization.catalogue_feature_impl.di.CatalogueFeatureComponent
+import com.example.modularization.main_feature_data.MainRouter
 import javax.inject.Inject
 import javax.inject.Provider
 
@@ -13,7 +13,7 @@ import javax.inject.Provider
  *  - фабрикой фрагментов (сначала фабрика по имени класса получает Router.Screen с помощью Router.ScreenResolver)
  */
 class MainRouterFragmentResolver @Inject constructor(
-    private val catalogueFeatureComponentApiProvider: Provider<CatalogueFeatureLauncher.ComponentApi>,
+    private val catalogueFeatureComponentApiProvider: Provider<CatalogueFeatureComponent>,
     // TODO: добавляем сюда провайдеры FeatureLauncher.ComponentApi всех вложенных фич
 ) {
     fun getFragmentByScreen(screen: MainRouter.Screen): Fragment {

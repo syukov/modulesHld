@@ -17,27 +17,19 @@ project(':app').projectDir = new File(rootDir, 'modules/app')
 include ':ui-core'
 project(':ui-core').projectDir = new File(rootDir, 'modules/core/ui-core')
 
-include ':root-feature-launcher'
-project(':root-feature-launcher').projectDir = new File(rootDir, 'modules/features/root-feature-launcher')
 include ':root-feature-impl'
 project(':root-feature-impl').projectDir = new File(rootDir, 'modules/features/root-feature-impl')
 include ':root-feature-data'
 project(':root-feature-data').projectDir = new File(rootDir, 'modules/features/root-feature-data')
 
-include ':employee-auth-feature-launcher'
-project(':employee-auth-feature-launcher').projectDir = new File(rootDir, 'modules/features/employee-auth-feature-launcher')
 include ':employee-auth-feature-impl'
 project(':employee-auth-feature-impl').projectDir = new File(rootDir, 'modules/features/employee-auth-feature-impl')
 
-include ':main-feature-launcher'
-project(':main-feature-launcher').projectDir = new File(rootDir, 'modules/features/main-feature-launcher')
 include ':main-feature-impl'
 project(':main-feature-impl').projectDir = new File(rootDir, 'modules/features/main-feature-impl')
 include ':main-feature-data'
 project(':main-feature-data').projectDir = new File(rootDir, 'modules/features/main-feature-data')
 
-include ':catalogue-feature-launcher'
-project(':catalogue-feature-launcher').projectDir = new File(rootDir, 'modules/features/catalogue-feature-launcher')
 include ':catalogue-feature-impl'
 project(':catalogue-feature-impl').projectDir = new File(rootDir, 'modules/features/catalogue-feature-impl')
 

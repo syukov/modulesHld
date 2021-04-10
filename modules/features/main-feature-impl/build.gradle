@@ -11,9 +11,8 @@ android {
 dependencies {
     implementation project(':ui-core')
     implementation project(':root-feature-data')
-    implementation project(':main-feature-launcher')
     implementation project(':main-feature-data')
 
     // nested features launchers
-    implementation project(':catalogue-feature-launcher')
+    implementation project(':catalogue-feature-impl')
 }
