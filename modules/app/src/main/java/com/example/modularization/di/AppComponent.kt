@@ -2,6 +2,7 @@ package com.example.modularization.di
 
 import android.content.Context
 import com.example.modularization.activity.AppActivity
+import com.example.modularization.app_api.AppComponentApi
 import com.example.modularization.di.nestedFeatureProviders.RootFeatureProviderModule
 import dagger.BindsInstance
 import dagger.Component
@@ -12,7 +13,7 @@ import dagger.Component
     ]
 )
 @PerApplicationScope
-interface AppComponent {
+interface AppComponent : AppComponentApi {
     fun inject(activity: AppActivity)
 
     @Component.Factory
@@ -21,6 +22,9 @@ interface AppComponent {
             @BindsInstance appContext: Context
         ): AppComponent
     }
+
+    // AppComponentApi:
+    override fun appContext(): Context
 }
 
 

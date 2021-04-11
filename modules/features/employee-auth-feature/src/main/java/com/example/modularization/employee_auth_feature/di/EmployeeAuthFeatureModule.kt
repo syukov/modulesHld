@@ -17,8 +17,8 @@ interface EmployeeAuthFeatureModule {
         fun provideFragmentProvider(
             loginFragment: Provider<LoginFragment>,
             debugToolsFragment: Provider<DebugToolsFragment>,
-        ): EmployeeAuthFeatureComponent.FragmentProvider {
-            return object : EmployeeAuthFeatureComponent.FragmentProvider {
+        ): EmployeeAuthFeatureDi.FragmentProvider {
+            return object : EmployeeAuthFeatureDi.FragmentProvider {
                 override fun getFragment(screen: RootRouter.Screen.EmployeeAuthFeature): Fragment {
                     return when (screen) {
                         RootRouter.Screen.EmployeeAuthFeature.Login -> loginFragment.get()

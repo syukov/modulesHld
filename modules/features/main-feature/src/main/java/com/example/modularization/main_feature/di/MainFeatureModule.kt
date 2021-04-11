@@ -9,17 +9,18 @@ import dagger.Provides
 import javax.inject.Provider
 
 @Module
-class MainFeatureModule {
-
-    @PerFeatureScope
-    @Provides
-    fun provideFragmentProvider(
-        mainFragment: Provider<MainFragment>,
-    ): MainFeatureComponent.FragmentProvider {
-        return object : MainFeatureComponent.FragmentProvider {
-            override fun getFragment(screen: RootRouter.Screen.MainFeature): Fragment {
-                return when (screen) {
-                    RootRouter.Screen.MainFeature.Main -> mainFragment.get()
+interface MainFeatureModule {
+    companion object {
+        @PerFeatureScope
+        @Provides
+        fun provideFragmentProvider(
+            mainFragment: Provider<MainFragment>,
+        ): MainFeatureDi.FragmentProvider {
+            return object : MainFeatureDi.FragmentProvider {
+                override fun getFragment(screen: RootRouter.Screen.MainFeature): Fragment {
+                    return when (screen) {
+                        RootRouter.Screen.MainFeature.Main -> mainFragment.get()
+                    }
                 }
             }
         }

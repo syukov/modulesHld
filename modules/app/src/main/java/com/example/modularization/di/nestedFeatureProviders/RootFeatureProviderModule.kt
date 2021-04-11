@@ -1,8 +1,8 @@
 package com.example.modularization.di.nestedFeatureProviders
 
 import com.example.modularization.di.PerApplicationScope
-import com.example.modularization.root_feature.di.DaggerRootFeatureComponent
-import com.example.modularization.root_feature.di.RootFeatureComponent
+import com.example.modularization.root_feature.di.DaggerRootFeatureDi_FeatureComponent
+import com.example.modularization.root_feature.di.RootFeatureDi
 import dagger.Module
 import dagger.Provides
 
@@ -11,9 +11,9 @@ class RootFeatureProviderModule {
     @Provides
     @PerApplicationScope
     fun provideComponent(
-    ): RootFeatureComponent {
-        return DaggerRootFeatureComponent.factory().create(
-            object : RootFeatureComponent.Dependencies {}
+    ): RootFeatureDi.FeatureComponent {
+        return DaggerRootFeatureDi_FeatureComponent.factory().create(
+            object : RootFeatureDi.FactoryDependencies {}
         )
     }
 }

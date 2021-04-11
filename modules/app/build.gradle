@@ -14,5 +14,8 @@ android {
 
 dependencies {
     implementation project(':ui-core')
+    // app scope features:
+    implementation project(':app-api')
+    // nested features:
     implementation project(':root-feature')
 }

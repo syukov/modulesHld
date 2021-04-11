@@ -8,14 +8,16 @@ import dagger.Provides
 import javax.inject.Provider
 
 @Module
-class RootFeatureModule {
-    @Provides
-    @PerFeatureScope
-    fun provideFragmentProvider(
-        rootFragmentProvider: Provider<RootFragment>,
-    ): RootFeatureComponent.FragmentProvider {
-        return object : RootFeatureComponent.FragmentProvider {
-            override fun getRootFragment(): Fragment = rootFragmentProvider.get()
+interface RootFeatureModule {
+    companion object {
+        @Provides
+        @PerFeatureScope
+        fun provideFragmentProvider(
+            rootFragmentProvider: Provider<RootFragment>,
+        ): RootFeatureDi.FragmentProvider {
+            return object : RootFeatureDi.FragmentProvider {
+                override fun getRootFragment(): Fragment = rootFragmentProvider.get()
+            }
         }
     }
 }
