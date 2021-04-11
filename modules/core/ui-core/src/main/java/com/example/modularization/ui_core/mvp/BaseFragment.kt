@@ -3,7 +3,7 @@ package com.example.modularization.ui_core.mvp
 import android.os.Bundle
 import androidx.annotation.CallSuper
 import androidx.fragment.app.Fragment
-import com.example.modularization.ui_core.BaseArgument
+import com.example.modularization.ui_core.navigation.BaseArgument
 import java.lang.ref.WeakReference
 
 abstract class BaseFragment : Fragment(), IBaseView {

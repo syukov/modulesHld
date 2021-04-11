@@ -1,7 +1,7 @@
 package com.example.modularization.root_feature_api
 
-import com.example.modularization.ui_core.BaseArgument
-import com.example.modularization.ui_core.CiceroneScreen
+import com.example.modularization.ui_core.navigation.BaseArgument
+import com.example.modularization.ui_core.navigation.CiceroneScreen
 
 
 /**

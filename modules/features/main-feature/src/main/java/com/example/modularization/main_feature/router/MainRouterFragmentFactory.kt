@@ -13,10 +13,10 @@ import javax.inject.Inject
  */
 class MainRouterFragmentFactory @Inject constructor(
     private val mainRouterScreensResolver: MainRouter.ScreensResolver,
-    private val mainRouterFragmentResolver: MainRouterFragmentResolver
+    private val mainRouterFragmentCreator: MainRouterFragmentCreator
 ) : FragmentFactory() {
     override fun instantiate(classLoader: ClassLoader, className: String): Fragment {
-        return mainRouterFragmentResolver.getFragmentByScreen(
+        return mainRouterFragmentCreator.getFragmentByScreen(
             screen = mainRouterScreensResolver.getScreenByFragmentName(className)
         )
     }

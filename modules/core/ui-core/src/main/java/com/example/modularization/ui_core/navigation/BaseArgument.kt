@@ -1,10 +1,7 @@
-package com.example.modularization.ui_core
+package com.example.modularization.ui_core.navigation
 
 import android.os.Bundle
 import android.os.Parcelable
-
-typealias CiceroneScreen = com.github.terrakok.cicerone.Screen
-typealias CiceroneCommand = com.github.terrakok.cicerone.Command
 
 interface BaseArgument : Parcelable {
     companion object {

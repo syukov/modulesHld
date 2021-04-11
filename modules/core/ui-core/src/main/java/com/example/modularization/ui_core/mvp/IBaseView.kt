@@ -1,10 +1,12 @@
 package com.example.modularization.ui_core.mvp
 
+import android.util.Log
+import androidx.annotation.CallSuper
 import java.lang.ref.WeakReference
 
 interface IBaseView {
     /**
-     * Ссылки на текущие дочерние [IBaseView] в активном состоянии (после хотя бы одного OnResume() и до onLeave())
+     * Ссылки на текущие дочерние [IBaseView] в активном состоянии (после хотя бы одного onResume() и до onLeave())
      */
     val childViews: MutableList<WeakReference<IBaseView>>
 
@@ -17,12 +19,14 @@ interface IBaseView {
 
     /**
      * Вызывается двумя путями:
-     * - роутером контейнера в котором размещена текущая view когда он стартует транзакцию на смену фрагмента
+     * - роутером контейнера в котором размещена текущая view когда он стартует транзакцию на смену фрагмента или производит возврат по бэкстеку.
      * - родительской view когда на ней самой вызван onLeave()
      *
      * В этот момент экран должен гарантированно остановить все свои юзкейсы.
      */
+    @CallSuper
     fun onLeave() {
+        Log.d("qweqwe", "${this::class.java.simpleName} onLeave")
         childViews.forEach { it.get()?.onLeave() }
     }
 

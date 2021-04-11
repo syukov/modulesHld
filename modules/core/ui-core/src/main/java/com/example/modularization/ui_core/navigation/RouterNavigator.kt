@@ -1,47 +1,35 @@
-package com.example.modularization.root_feature.router
+package com.example.modularization.ui_core.navigation
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-import com.example.modularization.root_feature_api.RootRouter
+import com.example.modularization.ui_core.mvp.IBaseView
 import com.github.terrakok.cicerone.Command
 import com.github.terrakok.cicerone.Navigator
 import com.github.terrakok.cicerone.androidx.TransactionInfo
-import javax.inject.Inject
 
 /**
- * Это форк класса AppNavigator из библиотеки Cicerone.
- * Разница в том что он умеет работать с нашими коммандами и ключами экранов, а так же использует для создания
- * фрагментов не фабрику а RouterFragmentResolver
+ * Это форк класса AppNavigator из библиотеки Cicerone:
+ *  - умеет работать с акрументами,
+ *  - использует для создания фрагментов не фабрику а RouterFragmentCreator
+ *  - перед сменой фрагмента вызывает onLeave() на текущем.
  */
-open class RootRouterNavigator(
-    private val rootRouterFragmentResolver: RootRouterFragmentResolver,
-    private val fragment: Fragment,
+open class RouterNavigator(
+    private val routerFragmentCreator: RouterFragmentCreator,
+    private val fragmentManager: FragmentManager,
     private val containerId: Int
 ) : Navigator {
-
-    class Factory @Inject constructor(
-        private val rootRouterFragmentResolver: RootRouterFragmentResolver,
-    ) {
-        fun create(fragment: Fragment, containerId: Int) = RootRouterNavigator(
-            rootRouterFragmentResolver = rootRouterFragmentResolver,
-            fragment = fragment,
-            containerId = containerId
-        )
-    }
-
-    private val fragmentManager: FragmentManager = fragment.childFragmentManager
 
     private val localStackCopy = mutableListOf<TransactionInfo>()
 
     override fun applyCommands(vararg commands: Command) {
-        if (commands.none { it is RootRouterCommand }) return
+        if (commands.none { it is RouterCommand }) return
 
         fragmentManager.executePendingTransactions()
         copyStackToLocal()
 
         for (command in commands) {
-            if (command is RootRouterCommand) applyCommand(command)
+            if (command is RouterCommand) applyCommand(command)
         }
     }
 
@@ -53,67 +41,71 @@ open class RootRouterNavigator(
         }
     }
 
-    protected open fun applyCommand(command: RootRouterCommand) {
+    protected open fun applyCommand(command: RouterCommand) {
         return when (command) {
-            is RootRouterCommand.Back -> back()
-            is RootRouterCommand.BackTo -> backTo(command)
-            is RootRouterCommand.Forward -> forward(command)
-            is RootRouterCommand.Replace -> replace(command)
+            is RouterCommand.Back -> back()
+            is RouterCommand.BackTo -> backTo(command)
+            is RouterCommand.Forward -> forward(command)
+            is RouterCommand.Replace -> replace(command)
         }
     }
 
-    protected open fun forward(command: RootRouterCommand.Forward) {
+    protected open fun forward(command: RouterCommand.Forward) {
         val type = if (command.clearContainer) TransactionInfo.Type.REPLACE else TransactionInfo.Type.ADD
-        commitNewFragmentScreen(command.screen, type, true)
+        commitNewFragmentScreen(command.screen, type, true, command.argument)
     }
 
-    protected open fun replace(command: RootRouterCommand.Replace) {
+    protected open fun replace(command: RouterCommand.Replace) {
         if (localStackCopy.isNotEmpty()) {
             fragmentManager.popBackStack()
             val removed = localStackCopy.removeAt(localStackCopy.lastIndex)
-            commitNewFragmentScreen(command.screen, removed.type, true)
+            commitNewFragmentScreen(command.screen, removed.type, true, command.argument)
         } else {
-            commitNewFragmentScreen(command.screen, TransactionInfo.Type.REPLACE, false)
+            commitNewFragmentScreen(command.screen, TransactionInfo.Type.REPLACE, false, command.argument)
         }
     }
 
     protected open fun back() {
         if (localStackCopy.isNotEmpty()) {
+            currentFragmentOnLeave()
             fragmentManager.popBackStack()
             localStackCopy.removeAt(localStackCopy.lastIndex)
-        } else {
-//            fragment.activity.finish()
-//            TODO()
         }
     }
 
 
     protected open fun commitNewFragmentScreen(
-        screen: RootRouter.Screen,
+        screen: CiceroneScreen,
         type: TransactionInfo.Type,
-        addToBackStack: Boolean
+        addToBackStack: Boolean,
+        argument: BaseArgument?
     ) {
-        val childFragment = rootRouterFragmentResolver.getFragmentByScreen(screen)
+        val nextFragment = routerFragmentCreator.getFragmentByScreen(screen)
+
+        argument?.let { nextFragment.arguments = it.toBundle() }
+
         val transaction = fragmentManager.beginTransaction()
         transaction.setReorderingAllowed(true)
         setupFragmentTransaction(
             transaction,
             fragmentManager.findFragmentById(containerId),
-            childFragment
+            nextFragment
         )
         when (type) {
-            TransactionInfo.Type.ADD -> transaction.add(containerId, childFragment, screen::class.java.name)
-            TransactionInfo.Type.REPLACE -> transaction.replace(containerId, childFragment, screen::class.java.name)
+            TransactionInfo.Type.ADD -> transaction.add(containerId, nextFragment, screen::class.java.name)
+            TransactionInfo.Type.REPLACE -> transaction.replace(containerId, nextFragment, screen::class.java.name)
         }
         if (addToBackStack) {
             val transactionInfo = TransactionInfo(screen::class.java.name, type)
             transaction.addToBackStack(transactionInfo.toString())
             localStackCopy.add(transactionInfo)
         }
+
+        currentFragmentOnLeave()
         transaction.commit()
     }
 
-    protected open fun backTo(command: RootRouterCommand.BackTo) {
+    protected open fun backTo(command: RouterCommand.BackTo) {
         if (command.screen == null) {
             backToRoot()
         } else {
@@ -121,6 +113,7 @@ open class RootRouterNavigator(
             val index = localStackCopy.indexOfFirst { it.screenKey == screenClassName }
             if (index != -1) {
                 val forRemove = localStackCopy.subList(index, localStackCopy.size)
+                currentFragmentOnLeave()
                 fragmentManager.popBackStack(forRemove.first().toString(), 0)
                 forRemove.clear()
             } else {
@@ -131,6 +124,7 @@ open class RootRouterNavigator(
 
     private fun backToRoot() {
         localStackCopy.clear()
+        currentFragmentOnLeave()
         fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
     }
 
@@ -140,5 +134,10 @@ open class RootRouterNavigator(
         nextFragment: Fragment?
     ) {
         // Do nothing by default
+    }
+
+    private fun currentFragmentOnLeave() {
+        val currentFragment = fragmentManager.findFragmentById(containerId)
+        (currentFragment as? IBaseView)?.onLeave()
     }
 }

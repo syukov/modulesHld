@@ -8,21 +8,22 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import com.example.modularization.root_feature.R
 import com.example.modularization.root_feature.databinding.FragmentRootBinding
+import com.example.modularization.root_feature.router.RootRouterFragmentCreator
 import com.example.modularization.root_feature.router.RootRouterFragmentFactory
-import com.example.modularization.root_feature.router.RootRouterNavigator
 import com.example.modularization.root_feature_api.RootRouter
 import com.example.modularization.ui_core.mvp.BaseFragment
+import com.example.modularization.ui_core.navigation.RouterNavigator
 import com.github.terrakok.cicerone.NavigatorHolder
 import javax.inject.Inject
 
 class RootFragment @Inject constructor(
     private var rootRouter: RootRouter,
     private var navigatorHolder: NavigatorHolder,
-    private var navigatorFactory: RootRouterNavigator.Factory,
     private var fragmentFactory: RootRouterFragmentFactory,
+    private var rootRouterFragmentCreator: RootRouterFragmentCreator
 ) : BaseFragment() {
 
-    private lateinit var navigator: RootRouterNavigator
+    private lateinit var navigator: RouterNavigator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +33,7 @@ class RootFragment @Inject constructor(
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return FragmentRootBinding.inflate(inflater).root.also {
-            navigator = navigatorFactory.create(this, R.id.rootContainer)
+            navigator = RouterNavigator(rootRouterFragmentCreator, childFragmentManager, R.id.rootContainer)
         }
     }
 
