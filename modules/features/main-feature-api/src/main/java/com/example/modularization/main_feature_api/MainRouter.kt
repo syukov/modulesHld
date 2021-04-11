@@ -28,9 +28,9 @@ interface MainRouter {
             object SubCatalogue : CatalogueFeature()
         }
 
-//        sealed class PdpFeature : Screen() {
-//            object Pdp : PdpFeature()
-//        }
+        sealed class PdpFeature : Screen() {
+            object Pdp : PdpFeature()
+        }
 //
 //        sealed class CartFeature : Screen() {
 //            object Cart : CartFeature()

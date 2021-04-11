@@ -35,3 +35,6 @@ project(':main-feature-api').projectDir = new File(rootDir, 'modules/features/ma
 include ':catalogue-feature'
 project(':catalogue-feature').projectDir = new File(rootDir, 'modules/features/catalogue-feature')
 
+include ':pdp-feature'
+project(':pdp-feature').projectDir = new File(rootDir, 'modules/features/pdp-feature')
+

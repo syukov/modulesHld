@@ -4,6 +4,7 @@ import com.example.modularization.catalogue_feature.screens.catalogue.CatalogueF
 import com.example.modularization.catalogue_feature.screens.subCatalogue.SubCatalogueFragment
 import com.example.modularization.main_feature.router.MainRouterImpl
 import com.example.modularization.main_feature_api.MainRouter
+import com.example.modularization.pdp_feature.screens.pdp.PdpFragment
 import com.example.modularization.ui_core.di.PerFeatureScope
 import com.example.modularization.ui_core.utils.checkWhenBranches
 import com.github.terrakok.cicerone.Cicerone
@@ -23,6 +24,7 @@ class MainRouterModule {
                 when (it) {
                     MainRouter.Screen.CatalogueFeature.Catalogue -> put(CatalogueFragment::class.java.name, it)
                     MainRouter.Screen.CatalogueFeature.SubCatalogue -> put(SubCatalogueFragment::class.java.name, it)
+                    MainRouter.Screen.PdpFeature.Pdp -> put(PdpFragment::class.java.name, it)
                 }.checkWhenBranches
             }
     }

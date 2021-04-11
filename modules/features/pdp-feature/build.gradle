@@ -10,10 +10,7 @@ android {
 
 dependencies {
     implementation project(':ui-core')
+    implementation project(':app-api')
     implementation project(':root-feature-api')
     implementation project(':main-feature-api')
-
-    // nested features launchers
-    implementation project(':catalogue-feature')
-    implementation project(':pdp-feature')
 }
