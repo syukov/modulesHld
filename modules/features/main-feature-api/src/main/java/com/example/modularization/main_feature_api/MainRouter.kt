@@ -10,6 +10,8 @@ import com.example.modularization.ui_core.CiceroneScreen
  */
 interface MainRouter {
 
+    fun navigateBack()
+
     fun navigateTo(screen: Screen, arg: BaseArgument? = null)
 
     fun newRootScreen(screen: Screen)

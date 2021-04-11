@@ -16,7 +16,7 @@ class DebugToolsFragment @Inject constructor(
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return FragmentDebugToolsBinding.inflate(inflater).apply {
             loginBtn.setOnClickListener {
-                rootRouter.newRootScreen(RootRouter.Screen.EmployeeAuthFeature.Login)
+                rootRouter.navigateBack()
             }
             mainBtn.setOnClickListener {
                 rootRouter.navigateTo(RootRouter.Screen.MainFeature.Main)

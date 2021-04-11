@@ -11,6 +11,10 @@ class MainRouterImpl @Inject constructor() : BaseRouter(), MainRouter {
         executeCommands(MainRouterCommand.Forward(screen))
     }
 
+    override fun navigateBack() {
+        executeCommands(MainRouterCommand.Back)
+    }
+
     override fun newRootScreen(screen: MainRouter.Screen) {
         executeCommands(
             MainRouterCommand.BackTo(null),

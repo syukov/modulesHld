@@ -30,7 +30,7 @@ class MainFragment @Inject constructor(
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return FragmentMainBinding.inflate(inflater).root.also {
             navigator = navigatorFactory.create(this, R.id.mainContainer)
-            mainRouter.navigateTo(MainRouter.Screen.CatalogueFeature.Catalogue)
+            mainRouter.newRootScreen(MainRouter.Screen.CatalogueFeature.Catalogue)
         }
     }
 
@@ -42,5 +42,10 @@ class MainFragment @Inject constructor(
     override fun onPause() {
         super.onPause()
         navigatorHolder.removeNavigator()
+    }
+
+    override fun onBackPressed(): Boolean {
+        mainRouter.navigateBack()
+        return true
     }
 }

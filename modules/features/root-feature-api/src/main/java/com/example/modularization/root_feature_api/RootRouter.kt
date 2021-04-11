@@ -12,6 +12,8 @@ interface RootRouter {
 
     fun navigateTo(screen: Screen, arg: BaseArgument? = null)
 
+    fun navigateBack()
+
     fun newRootScreen(screen: Screen)
 
     interface ScreensResolver {

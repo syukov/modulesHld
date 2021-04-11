@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import com.example.modularization.ui_core.BaseArgument
 import java.lang.ref.WeakReference
 
-open class BaseFragment : Fragment(), IBaseView {
+abstract class BaseFragment : Fragment(), IBaseView {
     override val childViews: MutableList<WeakReference<IBaseView>> = mutableListOf()
 
     @CallSuper

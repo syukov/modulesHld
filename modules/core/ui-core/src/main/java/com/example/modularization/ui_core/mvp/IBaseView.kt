@@ -4,7 +4,7 @@ import java.lang.ref.WeakReference
 
 interface IBaseView {
     /**
-     * Ссылки на текущие дочерние [IBaseView] в активном состоянии
+     * Ссылки на текущие дочерние [IBaseView] в активном состоянии (после хотя бы одного OnResume() и до onLeave())
      */
     val childViews: MutableList<WeakReference<IBaseView>>
 
@@ -26,10 +26,10 @@ interface IBaseView {
         childViews.forEach { it.get()?.onLeave() }
     }
 
-    fun handleBackPressed(): Boolean {
+    fun handleOnBackPressed(): Boolean {
         // сначала попробуем обработать событие дочерними view
         childViews.forEach { childRef ->
-            val isHandled = childRef.get()?.handleBackPressed() ?: false
+            val isHandled = childRef.get()?.handleOnBackPressed() ?: false
             if (isHandled) return true
         }
         // если дочерние view не обработали событие, то вызовем обработчик текущей view
