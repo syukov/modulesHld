@@ -5,6 +5,8 @@ plugins {
     id 'kotlin-kapt'
 }
 
+apply from: "$rootDir\\buildConstants.gradle"
+
 dependencies {
     implementation project(':ui-core')
 }

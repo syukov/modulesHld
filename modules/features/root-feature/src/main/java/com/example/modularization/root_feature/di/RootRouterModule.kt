@@ -7,8 +7,6 @@ import com.example.modularization.root_feature.router.RootRouterImpl
 import com.example.modularization.root_feature_api.RootRouter
 import com.example.modularization.ui_core.di.PerFeatureScope
 import com.example.modularization.ui_core.utils.checkWhenBranches
-import com.github.terrakok.cicerone.Cicerone
-import com.github.terrakok.cicerone.NavigatorHolder
 import dagger.Module
 import dagger.Provides
 
@@ -46,11 +44,5 @@ interface RootRouterModule {
         @PerFeatureScope
         @Provides
         fun provideRootRouter(): RootRouter = rootRouterImpl
-
-        @PerFeatureScope
-        @Provides
-        fun provideRootRouterNavigatorHolder(): NavigatorHolder {
-            return Cicerone.create(rootRouterImpl).getNavigatorHolder()
-        }
     }
 }

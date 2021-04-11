@@ -1,5 +1,6 @@
 package com.example.modularization.pdp_feature.screens.pdp
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +16,12 @@ class PdpFragment @Inject constructor(
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return FragmentPdpBinding.inflate(inflater).apply {
+            toCart.setOnClickListener {
+                activity?.let {
+                    it.finish()
+                    it.startActivity(Intent(it, it::class.java))
+                }
+            }
         }.root
     }
 }

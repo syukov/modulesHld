@@ -3,21 +3,47 @@ package com.example.modularization.main_feature_api
 import com.example.modularization.ui_core.navigation.BaseArgument
 import com.example.modularization.ui_core.navigation.CiceroneScreen
 
-
-/**
- * Отвечает за контейнер расположденный в RootFragment.
- * Для добавления экрана нужно:
- */
 interface MainRouter {
-
+    /**
+     * Перейти назад в рамках текущего таба.
+     */
     fun navigateBack()
 
-    fun navigateTo(screen: Screen, arg: BaseArgument? = null)
+    /**
+     * Перейти на [tab], если не null.
+     * Перейти вперед на [screen]
+     */
+    fun navigateTo(screen: Screen, arg: BaseArgument? = null, tab: Tab? = null)
 
-    fun newRootScreen(screen: Screen)
+    /**
+     * Перейти на [tab], если не null.
+     * Установить новый root [screen]
+     */
+    fun newRootScreen(screen: Screen, tab: Tab? = null)
+
+    /**
+     * Перейти на [tab]
+     */
+    fun changeTab(tab: Tab)
+
+    /**
+     * Установить в [tab] новый root [screen]. Без перехода на этот tab.
+     */
+    fun resetTab(tab: Tab, screen: Screen, arg: BaseArgument? = null)
+
+    /**
+     * Перейти на [selectTab].
+     * Установить в указанных табах новые root
+     */
+    fun resetTabs(selectTab: Tab, vararg tabSettings: Pair<Tab, Screen>)
 
     interface ScreensResolver {
         fun getScreenByFragmentName(fragmentName: String): Screen
+    }
+
+    enum class Tab(val tag: String) {
+        Catalogue(TabNames.CATALOGUE),
+        Cart(TabNames.CART)
     }
 
     sealed class Screen : CiceroneScreen {
@@ -33,10 +59,10 @@ interface MainRouter {
         sealed class PdpFeature : Screen() {
             object Pdp : PdpFeature()
         }
-//
-//        sealed class CartFeature : Screen() {
-//            object Cart : CartFeature()
-//        }
+
+        sealed class CartFeature : Screen() {
+            object Cart : CartFeature()
+        }
     }
 }
 

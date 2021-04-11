@@ -1,6 +1,7 @@
 package com.example.modularization.main_feature.di
 
 import androidx.fragment.app.Fragment
+import com.example.modularization.main_feature.di.nestedFeatureProviders.CartFeatureProviderModule
 import com.example.modularization.main_feature.di.nestedFeatureProviders.CatalogueFeatureProviderModule
 import com.example.modularization.main_feature.di.nestedFeatureProviders.PdpFeatureProviderModule
 import com.example.modularization.root_feature_api.RootRouter
@@ -16,6 +17,7 @@ interface MainFeatureDi {
             // TODO: добавляем сюда модули умеющие создавать компоненты вложенных фич
             CatalogueFeatureProviderModule::class,
             PdpFeatureProviderModule::class,
+            CartFeatureProviderModule::class,
         ]
     )
     @PerFeatureScope

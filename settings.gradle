@@ -38,3 +38,6 @@ project(':catalogue-feature').projectDir = new File(rootDir, 'modules/features/c
 include ':pdp-feature'
 project(':pdp-feature').projectDir = new File(rootDir, 'modules/features/pdp-feature')
 
+include ':cart-feature'
+project(':cart-feature').projectDir = new File(rootDir, 'modules/features/cart-feature')
+

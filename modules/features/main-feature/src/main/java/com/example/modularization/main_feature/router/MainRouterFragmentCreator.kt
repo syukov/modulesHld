@@ -1,6 +1,7 @@
 package com.example.modularization.main_feature.router
 
 import androidx.fragment.app.Fragment
+import com.example.modularization.cart_feature.di.CartFeatureDi
 import com.example.modularization.catalogue_feature.di.CatalogueFeatureDi
 import com.example.modularization.main_feature_api.MainRouter
 import com.example.modularization.pdp_feature.di.PdpFeatureDi
@@ -18,6 +19,7 @@ import javax.inject.Provider
 class MainRouterFragmentCreator @Inject constructor(
     private val catalogueFeatureComponentProvider: Provider<CatalogueFeatureDi.FeatureComponent>,
     private val pdpFeatureComponentProvider: Provider<PdpFeatureDi.FeatureComponent>,
+    private val cartFeatureComponentProvider: Provider<CartFeatureDi.FeatureComponent>,
 ) : RouterFragmentCreator {
     override fun getFragmentByScreen(screen: CiceroneScreen): Fragment {
         if (screen !is MainRouter.Screen) throw UnsupportedOperationException("Root router is able to open only MainRouter.Screen but not ${screen::class.java.name}")
@@ -27,6 +29,9 @@ class MainRouterFragmentCreator @Inject constructor(
             }
             is MainRouter.Screen.PdpFeature -> {
                 pdpFeatureComponentProvider.get().getFragmentProvider().getFragment(screen)
+            }
+            is MainRouter.Screen.CartFeature -> {
+                cartFeatureComponentProvider.get().getFragmentProvider().getFragment(screen)
             }
         }
     }

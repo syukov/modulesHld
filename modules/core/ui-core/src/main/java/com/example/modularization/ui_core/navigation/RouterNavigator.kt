@@ -13,10 +13,14 @@ import com.github.terrakok.cicerone.androidx.TransactionInfo
  *  - умеет работать с акрументами,
  *  - использует для создания фрагментов не фабрику а RouterFragmentCreator
  *  - перед сменой фрагмента вызывает onLeave() на текущем.
+ *
+ *  Важно: при пересоздании вью у фрагмента может быть пересоздан фрагмент менеджер, и у нового по какой то причине может быть
+ *  не mHost=null (хотя FragmentFactory остается от прежнего инстанса нормально),
+ *  то нужно пересоздавать навигатор у роутера в onResume перед тем как сетить его в NavigatorHolder
  */
-open class RouterNavigator(
+class RouterNavigator(
     private val routerFragmentCreator: RouterFragmentCreator,
-    private val fragmentManager: FragmentManager,
+    private var fragmentManager: FragmentManager,
     private val containerId: Int
 ) : Navigator {
 
