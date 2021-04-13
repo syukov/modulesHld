@@ -36,7 +36,7 @@ interface MainFeatureDi {
     }
 
     interface FactoryDependencies {
-        fun rootRouter(): RootRouter
+        val rootRouter: RootRouter
     }
 
     interface GlobalDependencies {

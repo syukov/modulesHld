@@ -14,7 +14,7 @@ class MainFeatureProviderModule {
     ): MainFeatureDi.FeatureComponent {
         return DaggerMainFeatureDi_FeatureComponent.factory().create(
             object : MainFeatureDi.FactoryDependencies {
-                override fun rootRouter(): RootRouter = rootRouter
+                override val rootRouter: RootRouter = rootRouter
             }
         )
     }

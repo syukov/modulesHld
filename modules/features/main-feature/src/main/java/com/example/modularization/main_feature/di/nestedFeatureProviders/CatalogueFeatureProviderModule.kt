@@ -18,8 +18,8 @@ class CatalogueFeatureProviderModule {
     ): CatalogueFeatureDi.FeatureComponent {
         return DaggerCatalogueFeatureDi_FeatureComponent.factory().create(
             object : CatalogueFeatureDi.FactoryDependencies {
-                override fun rootRouter(): RootRouter = rootRouter
-                override fun mainRouter(): MainRouter = mainRouter
+                override val rootRouter: RootRouter = rootRouter
+                override val mainRouter: MainRouter = mainRouter
             }
         )
     }

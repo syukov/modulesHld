@@ -27,11 +27,11 @@ interface PdpFeatureDi {
     }
 
     interface FactoryDependencies {
-        fun rootRouter(): RootRouter
-        fun mainRouter(): MainRouter
+        val rootRouter: RootRouter
+        val mainRouter: MainRouter
     }
 
     interface GlobalDependencies {
-        fun context(): Context
+        val appContext: Context
     }
 }

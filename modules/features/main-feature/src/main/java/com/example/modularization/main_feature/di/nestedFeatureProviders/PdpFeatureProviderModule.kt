@@ -18,8 +18,8 @@ class PdpFeatureProviderModule {
     ): PdpFeatureDi.FeatureComponent {
         return DaggerPdpFeatureDi_FeatureComponent.factory().create(
             object : PdpFeatureDi.FactoryDependencies {
-                override fun rootRouter(): RootRouter = rootRouter
-                override fun mainRouter(): MainRouter = mainRouter
+                override val rootRouter: RootRouter = rootRouter
+                override val mainRouter: MainRouter = mainRouter
             }
         )
     }

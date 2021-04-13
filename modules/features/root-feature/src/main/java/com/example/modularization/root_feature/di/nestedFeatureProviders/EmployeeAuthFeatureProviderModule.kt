@@ -14,7 +14,7 @@ class EmployeeAuthFeatureProviderModule {
     ): EmployeeAuthFeatureDi.FeatureComponent {
         return DaggerEmployeeAuthFeatureDi_FeatureComponent.factory().create(
             object : EmployeeAuthFeatureDi.FactoryDependencies {
-                override fun rootRouter(): RootRouter = rootRouter
+                override val rootRouter: RootRouter = rootRouter
             }
         )
     }
