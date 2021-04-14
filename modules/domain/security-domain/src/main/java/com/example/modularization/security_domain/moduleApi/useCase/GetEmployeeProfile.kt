@@ -1,6 +1,6 @@
 package com.example.modularization.security_domain.moduleApi.useCase
 
-import com.example.modularization.domain_api_core.UseCase
+import com.example.modularization.core_domain_api.UseCase
 import com.example.modularization.security_domain.repository.SecurityMemoryRepository
 import com.example.modularization.security_domain_api.models.EmployeeProfile
 import javax.inject.Inject

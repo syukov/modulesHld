@@ -5,8 +5,8 @@ import android.util.Log
 import android.view.View
 import androidx.annotation.CallSuper
 import androidx.fragment.app.Fragment
+import com.example.modularization.core_domain_api.UseCase
 import com.example.modularization.core_feature_api.navigation.BaseArgument
-import com.example.modularization.domain_api_core.UseCase
 import java.lang.ref.WeakReference
 import java.util.*
 

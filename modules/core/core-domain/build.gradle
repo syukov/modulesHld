@@ -9,5 +9,5 @@ android {
 }
 
 dependencies {
-    api project(':domain-api-core')
+    api project(':core-domain-api')
 }
