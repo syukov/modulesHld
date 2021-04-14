@@ -45,7 +45,7 @@ class RouterNavigator(
         }
     }
 
-    protected open fun applyCommand(command: RouterCommand) {
+    private fun applyCommand(command: RouterCommand) {
         return when (command) {
             is RouterCommand.Back -> back()
             is RouterCommand.BackTo -> backTo(command)
@@ -54,12 +54,12 @@ class RouterNavigator(
         }
     }
 
-    protected open fun forward(command: RouterCommand.Forward) {
+    private fun forward(command: RouterCommand.Forward) {
         val type = if (command.clearContainer) TransactionInfo.Type.REPLACE else TransactionInfo.Type.ADD
         commitNewFragmentScreen(command.screen, type, true, command.argument)
     }
 
-    protected open fun replace(command: RouterCommand.Replace) {
+    private fun replace(command: RouterCommand.Replace) {
         if (localStackCopy.isNotEmpty()) {
             fragmentManager.popBackStack()
             val removed = localStackCopy.removeAt(localStackCopy.lastIndex)
@@ -69,7 +69,7 @@ class RouterNavigator(
         }
     }
 
-    protected open fun back() {
+    private fun back() {
         if (localStackCopy.isNotEmpty()) {
             currentFragmentOnLeave()
             fragmentManager.popBackStack()
@@ -78,7 +78,7 @@ class RouterNavigator(
     }
 
 
-    protected open fun commitNewFragmentScreen(
+    private fun commitNewFragmentScreen(
         screen: CiceroneScreen,
         type: TransactionInfo.Type,
         addToBackStack: Boolean,
@@ -109,7 +109,7 @@ class RouterNavigator(
         transaction.commit()
     }
 
-    protected open fun backTo(command: RouterCommand.BackTo) {
+    private fun backTo(command: RouterCommand.BackTo) {
         if (command.screen == null) {
             backToRoot()
         } else {
@@ -132,10 +132,10 @@ class RouterNavigator(
         fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
     }
 
-    protected open fun setupFragmentTransaction(
+    private fun setupFragmentTransaction(
         fragmentTransaction: FragmentTransaction,
         currentFragment: Fragment?,
-        nextFragment: Fragment?
+        nextFragment: Fragment
     ) {
         // Do nothing by default
     }

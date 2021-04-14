@@ -8,12 +8,13 @@ import com.example.modularization.main_feature.R
 import com.example.modularization.main_feature.databinding.FragmentTabContainerBinding
 import com.example.modularization.main_feature.router.MainRouterFragmentCreator
 import com.example.modularization.main_feature.router.MainRouterFragmentFactory
+import com.example.modularization.main_feature_api.MainRouter
 import com.example.modularization.ui_core.mvp.BaseFragment
 import com.example.modularization.ui_core.navigation.RouterNavigator
 import com.github.terrakok.cicerone.NavigatorHolder
 
 class TabContainerFragment(
-    private val tabName: String,
+    val tab: MainRouter.Tab,
     private val mainRouterFragmentCreator: MainRouterFragmentCreator,
     private val fragmentFactory: MainRouterFragmentFactory,
     private val navigatorHolder: NavigatorHolder

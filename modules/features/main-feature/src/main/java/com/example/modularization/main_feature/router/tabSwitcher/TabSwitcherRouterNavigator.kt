@@ -1,7 +1,6 @@
 package com.example.modularization.main_feature.router.tabSwitcher
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.example.modularization.main_feature.screens.tabs.TabContainerFragment
 import com.example.modularization.main_feature_api.MainRouter
@@ -56,12 +55,18 @@ open class TabSwitcherRouterNavigator(
     }
 
     protected open fun replace(command: TabSwitcherRouterCommand.Replace) {
-        val currentFragment: Fragment? = fragmentManager.fragments.firstOrNull { it.isVisible }
-        var newFragment: Fragment? = fragmentManager.findFragmentByTag(command.tab.tag)
+        val currentFragment: TabContainerFragment? =
+            fragmentManager.fragments.firstOrNull { it.isVisible } as? TabContainerFragment
+
+        var newFragment: TabContainerFragment? =
+            fragmentManager.findFragmentByTag(command.tab.tag) as? TabContainerFragment
+
 
         if (currentFragment != null && newFragment != null && currentFragment == newFragment) return
 
+
         fragmentManager.beginTransaction().apply {
+
             currentFragment?.let { fragment ->
                 hide(fragment)
                 (fragment as? IBaseView)?.apply { onLeave() }

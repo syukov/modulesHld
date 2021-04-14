@@ -29,7 +29,7 @@ class TabContainerRouterDiModule {
         mainRouterFragmentCreator: MainRouterFragmentCreator,
         fragmentFactory: MainRouterFragmentFactory,
     ): TabContainerFragment = TabContainerFragment(
-        tabName = TabNames.CATALOGUE,
+        tab = MainRouter.Tab.Catalogue,
         mainRouterFragmentCreator = mainRouterFragmentCreator,
         fragmentFactory = fragmentFactory,
         navigatorHolder = Cicerone.create(catalogueTabRouter).getNavigatorHolder()
@@ -51,7 +51,7 @@ class TabContainerRouterDiModule {
         mainRouterFragmentCreator: MainRouterFragmentCreator,
         fragmentFactory: MainRouterFragmentFactory,
     ): TabContainerFragment = TabContainerFragment(
-        tabName = TabNames.CART,
+        tab = MainRouter.Tab.Cart,
         mainRouterFragmentCreator = mainRouterFragmentCreator,
         fragmentFactory = fragmentFactory,
         navigatorHolder = Cicerone.create(cartTabRouter).getNavigatorHolder()
