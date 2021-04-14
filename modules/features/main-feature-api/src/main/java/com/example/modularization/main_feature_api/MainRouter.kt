@@ -1,8 +1,11 @@
 package com.example.modularization.main_feature_api
 
+import com.example.modularization.app_api.diDoc.DiDoc
 import com.example.modularization.ui_core.navigation.BaseArgument
 import com.example.modularization.ui_core.navigation.CiceroneScreen
 
+
+@DiDoc.Api
 interface MainRouter {
     /**
      * Перейти назад в рамках текущего таба.

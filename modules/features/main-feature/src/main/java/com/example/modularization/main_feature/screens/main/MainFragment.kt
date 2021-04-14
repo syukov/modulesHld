@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import com.example.modularization.main_feature.R
 import com.example.modularization.main_feature.databinding.FragmentMainBinding
 import com.example.modularization.main_feature.router.MainRouterFragmentFactory
-import com.example.modularization.main_feature.router.TabSwitcherRouter
-import com.example.modularization.main_feature.router.TabSwitcherRouterNavigator
+import com.example.modularization.main_feature.router.tabSwitcher.TabSwitcherRouter
+import com.example.modularization.main_feature.router.tabSwitcher.TabSwitcherRouterNavigator
 import com.example.modularization.main_feature_api.MainRouter
 import com.example.modularization.ui_core.mvp.BaseFragment
 import com.example.modularization.ui_core.navigation.navigatorHolder

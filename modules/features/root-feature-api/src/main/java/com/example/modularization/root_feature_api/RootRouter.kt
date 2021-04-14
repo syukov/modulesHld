@@ -1,5 +1,6 @@
 package com.example.modularization.root_feature_api
 
+import com.example.modularization.app_api.diDoc.DiDoc
 import com.example.modularization.ui_core.navigation.BaseArgument
 import com.example.modularization.ui_core.navigation.CiceroneScreen
 
@@ -8,6 +9,7 @@ import com.example.modularization.ui_core.navigation.CiceroneScreen
  * Отвечает за контейнер расположденный в RootFragment.
  * Для добавления экрана нужно:
  */
+@DiDoc.Api
 interface RootRouter {
 
     fun navigateTo(screen: Screen, arg: BaseArgument? = null)

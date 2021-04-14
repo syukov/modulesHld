@@ -1,18 +1,25 @@
 package com.example.modularization.app
 
 import android.app.Application
-import com.example.modularization.app_api.AppComponentApiHolder
-import com.example.modularization.di.AppComponent
-import com.example.modularization.di.DaggerAppComponent
+import android.content.Context
+import com.example.modularization.app_api.applicationScope.ApplicationScopeApiHolder
+import com.example.modularization.app_api.moduleApi.AppDomainApi
+import com.example.modularization.di.AppDi
+import com.example.modularization.di.DaggerAppDi_DiComponent
 
 class TheApp : Application() {
     companion object {
-        lateinit var appComponent: AppComponent
+        lateinit var appComponent: AppDi.DiComponent
     }
 
     override fun onCreate() {
         super.onCreate()
-        appComponent = DaggerAppComponent.factory().create(appContext = this)
-        AppComponentApiHolder.componentApi = appComponent
+        appComponent = DaggerAppDi_DiComponent.factory().create(
+            object : AppDi.FactoryDependencies {
+                override val appContext: Context = this@TheApp
+            }
+        )
+
+        ApplicationScopeApiHolder.put(appComponent.domainApi, AppDomainApi::class.java)
     }
 }

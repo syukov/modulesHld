@@ -1,46 +1,47 @@
 package com.example.modularization.main_feature.di
 
-import androidx.fragment.app.Fragment
-import com.example.modularization.main_feature.di.nestedFeatureProviders.CartFeatureProviderModule
-import com.example.modularization.main_feature.di.nestedFeatureProviders.CatalogueFeatureProviderModule
-import com.example.modularization.main_feature.di.nestedFeatureProviders.PdpFeatureProviderModule
+import com.example.modularization.app_api.diDoc.DiDoc
+import com.example.modularization.main_feature.fragmentProvider.MainFeatureFragmentProvider
+import com.example.modularization.main_feature.fragmentProvider.MainFeatureFragmentProviderDiModule
+import com.example.modularization.main_feature.router.MainRouterDiModule
 import com.example.modularization.root_feature_api.RootRouter
 import com.example.modularization.ui_core.di.PerFeatureScope
 import dagger.Component
 
+@DiDoc.Structure
 interface MainFeatureDi {
     @Component(
         dependencies = [FactoryDependencies::class],
         modules = [
-            MainFeatureModule::class,
-            MainRouterModule::class,
-            // TODO: добавляем сюда модули умеющие создавать компоненты вложенных фич
-            CatalogueFeatureProviderModule::class,
-            PdpFeatureProviderModule::class,
-            CartFeatureProviderModule::class,
+            MainFeatureFragmentProviderDiModule::class,
+            MainRouterDiModule::class,
+            NestedScopeComponentsDiModule::class,
         ]
     )
     @PerFeatureScope
-    interface FeatureComponent : GlobalDependencies {
+    @DiDoc.Structure.DiComponent
+    interface DiComponent : ApplicationScopeDependencies, DiComponentInterface {
 
         @Component.Factory
         interface ComponentFactory {
-            fun create(dependencies: FactoryDependencies): FeatureComponent
+            fun create(dependencies: FactoryDependencies): DiComponent
         }
 
-        fun getFragmentProvider(): FragmentProvider
     }
 
-    interface FragmentProvider {
-        fun getFragment(screen: RootRouter.Screen.MainFeature): Fragment
-    }
-
+    @DiDoc.Structure.FactoryDependencies
     interface FactoryDependencies {
         val rootRouter: RootRouter
     }
 
-    interface GlobalDependencies {
+    @DiDoc.Structure.ApplicationScopeDependencies
+    interface ApplicationScopeDependencies {
         /* no-op */
+    }
+
+    @DiDoc.Structure.DiComponentInterface
+    interface DiComponentInterface {
+        val fragmentProvider: MainFeatureFragmentProvider
     }
 }
 

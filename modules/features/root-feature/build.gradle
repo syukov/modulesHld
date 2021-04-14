@@ -9,6 +9,7 @@ android {
 }
 
 dependencies {
+    implementation project(':app-api')
     implementation project(':ui-core')
     implementation project(':root-feature-api')
 

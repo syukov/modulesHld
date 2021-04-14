@@ -2,6 +2,7 @@ package com.example.modularization.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.modularization.app.ApplicationScopeApiInitializer
 import com.example.modularization.app.R
 import com.example.modularization.app.TheApp
 import javax.inject.Inject
@@ -10,6 +11,9 @@ class AppActivity : AppCompatActivity() {
 
     @Inject
     lateinit var fragmentFactory: AppActivityFragmentFactory
+
+    @Inject
+    lateinit var applicationScopeApiInitializer: ApplicationScopeApiInitializer
 
     companion object {
         private const val ROOT_FRAGMENT_TAG = "ROOT"
@@ -20,6 +24,8 @@ class AppActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         supportFragmentManager.fragmentFactory = fragmentFactory
         setContentView(R.layout.activity_app)
+
+        applicationScopeApiInitializer.init() // инициализируем весь domain только после того как показали какой то ui
 
         if (supportFragmentManager.findFragmentByTag(ROOT_FRAGMENT_TAG) == null) {
             val rootFragment = fragmentFactory.instantiate(this.classLoader, "")

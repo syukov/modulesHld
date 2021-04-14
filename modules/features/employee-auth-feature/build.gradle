@@ -10,5 +10,8 @@ android {
 
 dependencies {
     implementation project(':ui-core')
+    implementation project(':domain-api-core')
+    implementation project(':app-api')
     implementation project(':root-feature-api')
+    implementation project(':security-domain-api')
 }

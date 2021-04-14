@@ -7,9 +7,9 @@ import javax.inject.Inject
 import javax.inject.Provider
 
 class AppActivityFragmentFactory @Inject constructor(
-    private val rootFeatureComponentProvider: Provider<RootFeatureDi.FeatureComponent>
+    private val rootFeatureComponentProvider: Provider<RootFeatureDi.DiComponent>
 ) : FragmentFactory() {
     override fun instantiate(classLoader: ClassLoader, className: String): Fragment {
-        return rootFeatureComponentProvider.get().getFragmentProvider().getRootFragment()
+        return rootFeatureComponentProvider.get().fragmentProvider.getRootFragment()
     }
 }

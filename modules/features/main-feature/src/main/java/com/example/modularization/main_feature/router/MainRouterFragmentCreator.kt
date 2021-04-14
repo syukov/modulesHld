@@ -17,21 +17,21 @@ import javax.inject.Provider
  *  - фабрикой фрагментов (сначала фабрика по имени класса получает Router.Screen с помощью Router.ScreenResolver)
  */
 class MainRouterFragmentCreator @Inject constructor(
-    private val catalogueFeatureComponentProvider: Provider<CatalogueFeatureDi.FeatureComponent>,
-    private val pdpFeatureComponentProvider: Provider<PdpFeatureDi.FeatureComponent>,
-    private val cartFeatureComponentProvider: Provider<CartFeatureDi.FeatureComponent>,
+    private val catalogueFeatureComponentProvider: Provider<CatalogueFeatureDi.DiComponent>,
+    private val pdpFeatureComponentProvider: Provider<PdpFeatureDi.DiComponent>,
+    private val cartFeatureComponentProvider: Provider<CartFeatureDi.DiComponent>,
 ) : RouterFragmentCreator {
     override fun getFragmentByScreen(screen: CiceroneScreen): Fragment {
         if (screen !is MainRouter.Screen) throw UnsupportedOperationException("Root router is able to open only MainRouter.Screen but not ${screen::class.java.name}")
         return when (screen) {
             is MainRouter.Screen.CatalogueFeature -> {
-                catalogueFeatureComponentProvider.get().getFragmentProvider().getFragment(screen)
+                catalogueFeatureComponentProvider.get().fragmentProvider.getFragment(screen)
             }
             is MainRouter.Screen.PdpFeature -> {
                 pdpFeatureComponentProvider.get().getFragmentProvider().getFragment(screen)
             }
             is MainRouter.Screen.CartFeature -> {
-                cartFeatureComponentProvider.get().getFragmentProvider().getFragment(screen)
+                cartFeatureComponentProvider.get().fragmentProvider.getFragment(screen)
             }
         }
     }

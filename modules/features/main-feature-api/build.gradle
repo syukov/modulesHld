@@ -8,5 +8,6 @@ plugins {
 apply from: "$rootDir\\buildConstants.gradle"
 
 dependencies {
+    implementation project(':app-api')
     implementation project(':ui-core')
 }
