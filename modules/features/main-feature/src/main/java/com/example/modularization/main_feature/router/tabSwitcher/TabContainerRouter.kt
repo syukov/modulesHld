@@ -1,8 +1,7 @@
 package com.example.modularization.main_feature.router.tabSwitcher
 
+import com.example.modularization.core_feature.navigation.RouterCommand
 import com.example.modularization.main_feature_api.MainRouter
-import com.example.modularization.ui_core.navigation.BaseArgument
-import com.example.modularization.ui_core.navigation.RouterCommand
 import com.github.terrakok.cicerone.BaseRouter
 import javax.inject.Inject
 
@@ -14,7 +13,10 @@ class TabContainerRouter @Inject constructor(
     private val tab: MainRouter.Tab
 ) : BaseRouter() {
 
-    fun navigateTo(screen: MainRouter.Screen, arg: BaseArgument?) {
+    fun navigateTo(
+        screen: MainRouter.Screen,
+        arg: com.example.modularization.core_feature_api.navigation.BaseArgument?
+    ) {
         executeCommands(RouterCommand.Forward(screen, arg))
     }
 

@@ -1,9 +1,10 @@
-package com.example.modularization.ui_core.navigation
+package com.example.modularization.core_feature.navigation
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-import com.example.modularization.ui_core.mvp.IBaseView
+import com.example.modularization.core_feature.mvp.IBaseView
+import com.example.modularization.core_feature_api.navigation.CiceroneScreen
 import com.github.terrakok.cicerone.Command
 import com.github.terrakok.cicerone.Navigator
 import com.github.terrakok.cicerone.androidx.TransactionInfo
@@ -82,7 +83,7 @@ class RouterNavigator(
         screen: CiceroneScreen,
         type: TransactionInfo.Type,
         addToBackStack: Boolean,
-        argument: BaseArgument?
+        argument: com.example.modularization.core_feature_api.navigation.BaseArgument?
     ) {
         val nextFragment = routerFragmentCreator.getFragmentByScreen(screen)
 

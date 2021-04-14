@@ -1,4 +1,4 @@
-package com.example.modularization.ui_core.navigation
+package com.example.modularization.core_feature_api.navigation
 
 import android.os.Bundle
 import android.os.Parcelable

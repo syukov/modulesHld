@@ -1,4 +1,4 @@
-package com.example.modularization.ui_core.di
+package com.example.modularization.core_feature.di
 
 import javax.inject.Scope
 

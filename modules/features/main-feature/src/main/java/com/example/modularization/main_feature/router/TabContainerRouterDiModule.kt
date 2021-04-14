@@ -1,10 +1,10 @@
 package com.example.modularization.main_feature.router
 
+import com.example.modularization.core_feature.di.PerFeatureScope
 import com.example.modularization.main_feature.router.tabSwitcher.TabContainerRouter
 import com.example.modularization.main_feature.screens.tabs.TabContainerFragment
 import com.example.modularization.main_feature_api.MainRouter
 import com.example.modularization.main_feature_api.TabNames
-import com.example.modularization.ui_core.di.PerFeatureScope
 import com.github.terrakok.cicerone.Cicerone
 import dagger.Module
 import dagger.Provides

@@ -4,14 +4,14 @@ import com.example.modularization.app_api.diDoc.DiDoc
 import com.example.modularization.cart_feature.screens.cart.CartFragment
 import com.example.modularization.catalogue_feature.screens.catalogue.CatalogueFragment
 import com.example.modularization.catalogue_feature.screens.subCatalogue.SubCatalogueFragment
+import com.example.modularization.core_feature.di.PerFeatureScope
+import com.example.modularization.core_feature.utils.checkWhenBranches
 import com.example.modularization.main_feature.router.tabSwitcher.TabContainerRouter
 import com.example.modularization.main_feature.router.tabSwitcher.TabSwitcherRouter
 import com.example.modularization.main_feature.router.tabSwitcher.TabSwitcherRouterDiModule
 import com.example.modularization.main_feature_api.MainRouter
 import com.example.modularization.main_feature_api.TabNames
 import com.example.modularization.pdp_feature.screens.pdp.PdpFragment
-import com.example.modularization.ui_core.di.PerFeatureScope
-import com.example.modularization.ui_core.utils.checkWhenBranches
 import dagger.Module
 import dagger.Provides
 import javax.inject.Named

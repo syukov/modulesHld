@@ -1,12 +1,12 @@
-package com.example.modularization.ui_core.mvp
+package com.example.modularization.core_feature.mvp
 
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.annotation.CallSuper
 import androidx.fragment.app.Fragment
+import com.example.modularization.core_feature_api.navigation.BaseArgument
 import com.example.modularization.domain_api_core.UseCase
-import com.example.modularization.ui_core.navigation.BaseArgument
 import java.lang.ref.WeakReference
 import java.util.*
 

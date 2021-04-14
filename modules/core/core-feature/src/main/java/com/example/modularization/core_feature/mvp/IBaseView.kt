@@ -1,4 +1,4 @@
-package com.example.modularization.ui_core.mvp
+package com.example.modularization.core_feature.mvp
 
 import android.util.Log
 import androidx.annotation.CallSuper

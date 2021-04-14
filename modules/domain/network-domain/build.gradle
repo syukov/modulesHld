@@ -9,9 +9,13 @@ android {
 }
 
 dependencies {
-    implementation project(':app-api')
-    implementation project(':domain-api-core')
+    // api of this module
+    api project(':network-domain-api')
+
+    // core module
     implementation project(':domain-impl-core')
-    implementation project(':network-domain-api')
+
+    // other modules api:
+    implementation project(':app-api')
 }
 

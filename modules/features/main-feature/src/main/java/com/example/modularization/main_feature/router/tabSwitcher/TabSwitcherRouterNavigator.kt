@@ -2,10 +2,10 @@ package com.example.modularization.main_feature.router.tabSwitcher
 
 import android.os.Bundle
 import androidx.fragment.app.FragmentManager
+import com.example.modularization.core_feature.mvp.IBaseView
 import com.example.modularization.main_feature.screens.tabs.TabContainerFragment
 import com.example.modularization.main_feature_api.MainRouter
 import com.example.modularization.main_feature_api.TabNames
-import com.example.modularization.ui_core.mvp.IBaseView
 import com.github.terrakok.cicerone.Command
 import com.github.terrakok.cicerone.Navigator
 import javax.inject.Inject

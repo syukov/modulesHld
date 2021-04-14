@@ -4,14 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.modularization.core_feature.mvp.BaseFragment
+import com.example.modularization.core_feature.navigation.navigatorHolder
 import com.example.modularization.main_feature.R
 import com.example.modularization.main_feature.databinding.FragmentMainBinding
 import com.example.modularization.main_feature.router.MainRouterFragmentFactory
 import com.example.modularization.main_feature.router.tabSwitcher.TabSwitcherRouter
 import com.example.modularization.main_feature.router.tabSwitcher.TabSwitcherRouterNavigator
 import com.example.modularization.main_feature_api.MainRouter
-import com.example.modularization.ui_core.mvp.BaseFragment
-import com.example.modularization.ui_core.navigation.navigatorHolder
 import javax.inject.Inject
 
 class MainFragment @Inject constructor(

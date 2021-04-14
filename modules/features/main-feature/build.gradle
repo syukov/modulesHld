@@ -9,12 +9,15 @@ android {
 }
 
 dependencies {
-    implementation project(':app-api')
-    implementation project(':ui-core')
-    implementation project(':root-feature-api')
-    implementation project(':main-feature-api')
+    // api of this module:
+    api project(':main-feature-api')
 
-    // nested features launchers
+    // other modules api:
+    implementation project(':app-api')
+    implementation project(':core-feature')
+    implementation project(':root-feature-api')
+
+    // nested features:
     implementation project(':catalogue-feature')
     implementation project(':pdp-feature')
     implementation project(':cart-feature')

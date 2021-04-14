@@ -6,15 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import com.example.modularization.core_feature.mvp.BaseFragment
+import com.example.modularization.core_feature.navigation.RouterNavigator
+import com.example.modularization.core_feature.navigation.navigatorHolder
 import com.example.modularization.root_feature.R
 import com.example.modularization.root_feature.databinding.FragmentRootBinding
 import com.example.modularization.root_feature.router.RootRouterFragmentCreator
 import com.example.modularization.root_feature.router.RootRouterFragmentFactory
 import com.example.modularization.root_feature.router.RootRouterImpl
 import com.example.modularization.root_feature_api.RootRouter
-import com.example.modularization.ui_core.mvp.BaseFragment
-import com.example.modularization.ui_core.navigation.RouterNavigator
-import com.example.modularization.ui_core.navigation.navigatorHolder
 import javax.inject.Inject
 
 class RootFragment @Inject constructor(

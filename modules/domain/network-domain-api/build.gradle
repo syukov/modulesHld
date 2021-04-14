@@ -9,6 +9,9 @@ android {
 }
 
 dependencies {
-    implementation project(':app-api')
+    // core module:
     implementation project(':domain-api-core')
+
+    // other modules api:
+    implementation project(':app-api')
 }

@@ -3,10 +3,10 @@ package com.example.modularization.main_feature.router
 import androidx.fragment.app.Fragment
 import com.example.modularization.cart_feature.di.CartFeatureDi
 import com.example.modularization.catalogue_feature.di.CatalogueFeatureDi
+import com.example.modularization.core_feature.navigation.RouterFragmentCreator
+import com.example.modularization.core_feature_api.navigation.CiceroneScreen
 import com.example.modularization.main_feature_api.MainRouter
 import com.example.modularization.pdp_feature.di.PdpFeatureDi
-import com.example.modularization.ui_core.navigation.CiceroneScreen
-import com.example.modularization.ui_core.navigation.RouterFragmentCreator
 import javax.inject.Inject
 import javax.inject.Provider
 

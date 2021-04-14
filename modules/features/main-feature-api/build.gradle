@@ -8,6 +8,9 @@ plugins {
 apply from: "$rootDir\\buildConstants.gradle"
 
 dependencies {
+    // core module:
+    implementation project(':core-feature-api')
+
+    // other modules api:
     implementation project(':app-api')
-    implementation project(':ui-core')
 }

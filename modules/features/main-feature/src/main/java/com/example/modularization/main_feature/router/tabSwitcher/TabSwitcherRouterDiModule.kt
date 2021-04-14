@@ -1,6 +1,6 @@
 package com.example.modularization.main_feature.router.tabSwitcher
 
-import com.example.modularization.ui_core.di.PerFeatureScope
+import com.example.modularization.core_feature.di.PerFeatureScope
 import dagger.Module
 import dagger.Provides
 

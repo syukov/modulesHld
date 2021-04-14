@@ -18,8 +18,11 @@ project(':app-api').projectDir = new File(rootDir, 'modules/app-api')
 
 // core:
 
-include ':ui-core'
-project(':ui-core').projectDir = new File(rootDir, 'modules/core/ui-core')
+include ':core-feature'
+project(':core-feature').projectDir = new File(rootDir, 'modules/core/core-feature')
+
+include ':core-feature-api'
+project(':core-feature-api').projectDir = new File(rootDir, 'modules/core/core-feature-api')
 
 include ':domain-api-core'
 project(':domain-api-core').projectDir = new File(rootDir, 'modules/core/domain-api-core')

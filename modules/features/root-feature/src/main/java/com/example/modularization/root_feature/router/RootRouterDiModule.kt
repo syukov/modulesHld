@@ -1,12 +1,12 @@
 package com.example.modularization.root_feature.router
 
 import com.example.modularization.app_api.diDoc.DiDoc
+import com.example.modularization.core_feature.di.PerFeatureScope
+import com.example.modularization.core_feature.utils.checkWhenBranches
 import com.example.modularization.employee_auth_feature.screens.deugTools.DebugToolsFragment
 import com.example.modularization.employee_auth_feature.screens.login.LoginFragment
 import com.example.modularization.main_feature.screens.main.MainFragment
 import com.example.modularization.root_feature_api.RootRouter
-import com.example.modularization.ui_core.di.PerFeatureScope
-import com.example.modularization.ui_core.utils.checkWhenBranches
 import dagger.Module
 import dagger.Provides
 

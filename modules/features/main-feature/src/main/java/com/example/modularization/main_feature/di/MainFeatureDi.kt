@@ -1,11 +1,11 @@
 package com.example.modularization.main_feature.di
 
 import com.example.modularization.app_api.diDoc.DiDoc
+import com.example.modularization.core_feature.di.PerFeatureScope
 import com.example.modularization.main_feature.fragmentProvider.MainFeatureFragmentProvider
 import com.example.modularization.main_feature.fragmentProvider.MainFeatureFragmentProviderDiModule
 import com.example.modularization.main_feature.router.MainRouterDiModule
 import com.example.modularization.root_feature_api.RootRouter
-import com.example.modularization.ui_core.di.PerFeatureScope
 import dagger.Component
 
 @DiDoc.Structure

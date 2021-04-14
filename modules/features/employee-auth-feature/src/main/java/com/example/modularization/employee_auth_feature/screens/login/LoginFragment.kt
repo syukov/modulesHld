@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.modularization.core_feature.mvp.BaseFragment
 import com.example.modularization.employee_auth_feature.databinding.FragmentLoginBinding
 import com.example.modularization.root_feature_api.RootRouter
 import com.example.modularization.security_domain_api.moduleApi.SecurityDomainApi
-import com.example.modularization.ui_core.mvp.BaseFragment
 import javax.inject.Inject
 
 class LoginFragment @Inject constructor(

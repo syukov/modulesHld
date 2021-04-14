@@ -13,14 +13,15 @@ android {
 }
 
 dependencies {
-    implementation project(':ui-core')
-    // app scope features:
-    implementation project(':app-api')
-    implementation project(':network-domain-api')
-    implementation project(':network-domain')
-    implementation project(':security-domain-api')
-    implementation project(':security-domain')
+    // api of this module:
+    api project(':app-api')
 
+    // core module:
+    implementation project(':core-feature')
+
+    // app scope features:
+    implementation project(':network-domain')
+    implementation project(':security-domain')
 
     // nested features:
     implementation project(':root-feature')

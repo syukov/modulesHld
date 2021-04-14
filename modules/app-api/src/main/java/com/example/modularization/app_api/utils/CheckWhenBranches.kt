@@ -1,4 +1,4 @@
-package com.example.modularization.ui_core.utils
+package com.example.modularization.core_feature.utils
 
 /**
  * This extension is used to be sure that all branches of "when" block are handled.

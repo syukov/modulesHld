@@ -4,9 +4,9 @@ import com.example.modularization.app_api.diDoc.DiDoc
 import com.example.modularization.app_api.moduleApi.AppDomainApi
 import com.example.modularization.cart_feature.fragmentProvider.CartFeatureFragmentProvider
 import com.example.modularization.cart_feature.fragmentProvider.CartFeatureFragmentProviderDiModule
+import com.example.modularization.core_feature.di.PerFeatureScope
 import com.example.modularization.main_feature_api.MainRouter
 import com.example.modularization.root_feature_api.RootRouter
-import com.example.modularization.ui_core.di.PerFeatureScope
 import dagger.Component
 
 @DiDoc.Structure

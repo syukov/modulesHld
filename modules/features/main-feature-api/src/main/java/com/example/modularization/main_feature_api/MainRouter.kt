@@ -1,8 +1,8 @@
 package com.example.modularization.main_feature_api
 
 import com.example.modularization.app_api.diDoc.DiDoc
-import com.example.modularization.ui_core.navigation.BaseArgument
-import com.example.modularization.ui_core.navigation.CiceroneScreen
+import com.example.modularization.core_feature_api.navigation.BaseArgument
+import com.example.modularization.core_feature_api.navigation.CiceroneScreen
 
 
 @DiDoc.Api
