@@ -18,4 +18,5 @@ dependencies {
     // other modules api:
     implementation project(':app-api')
     implementation project(':network-domain-api')
+    implementation project(':cart-domain-api')
 }

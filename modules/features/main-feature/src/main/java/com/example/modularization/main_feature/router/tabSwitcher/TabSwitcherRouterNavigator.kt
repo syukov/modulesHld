@@ -68,7 +68,7 @@ open class TabSwitcherRouterNavigator(
         fragmentManager.beginTransaction().apply {
 
             currentFragment?.let { fragment ->
-                hide(fragment)
+                detach(fragment)
                 (fragment as? IBaseView)?.apply { onLeave() }
             }
 
@@ -82,7 +82,7 @@ open class TabSwitcherRouterNavigator(
                 }
             }
 
-            newFragment?.let { show(it) }
+            newFragment?.let { attach(it) }
         }.commit()
     }
 }

@@ -2,6 +2,7 @@ package com.example.modularization.cart_feature.di
 
 import com.example.modularization.app_api.diDoc.DiDoc
 import com.example.modularization.app_api.moduleApi.AppDomainApi
+import com.example.modularization.cart_domain_api.moduleApi.CartDomainApi
 import com.example.modularization.cart_feature.fragmentProvider.CartFeatureFragmentProvider
 import com.example.modularization.cart_feature.fragmentProvider.CartFeatureFragmentProviderDiModule
 import com.example.modularization.core_feature.di.PerFeatureScope
@@ -37,6 +38,7 @@ interface CartFeatureDi {
     @DiDoc.Structure.ApplicationScopeDependencies
     interface ApplicationScopeDependencies {
         val appDomainApi: AppDomainApi
+        val cartDomainApi: CartDomainApi
     }
 
     @DiDoc.Structure.DiComponentInterface

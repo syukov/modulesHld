@@ -14,4 +14,8 @@ class SecurityRemoteRepository @Inject constructor(
     fun loginEmployee(login: String): EmployeeProfile {
         return networkDomainApi.retrofit.create { EmployeeProfile("id", "name", "shop") }
     }
+
+    fun logout() {
+        networkDomainApi.retrofit.create { }
+    }
 }

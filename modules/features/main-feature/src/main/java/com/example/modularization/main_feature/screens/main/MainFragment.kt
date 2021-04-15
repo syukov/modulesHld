@@ -9,6 +9,7 @@ import com.example.modularization.core_feature.navigation.navigatorHolder
 import com.example.modularization.main_feature.R
 import com.example.modularization.main_feature.databinding.FragmentMainBinding
 import com.example.modularization.main_feature.router.MainRouterFragmentFactory
+import com.example.modularization.main_feature.router.MainRouterImpl
 import com.example.modularization.main_feature.router.tabSwitcher.TabSwitcherRouter
 import com.example.modularization.main_feature.router.tabSwitcher.TabSwitcherRouterNavigator
 import com.example.modularization.main_feature_api.MainRouter
@@ -59,6 +60,14 @@ class MainFragment @Inject constructor(
         tabSwitcherRouter.navigatorHolder.setNavigator(
             tabSwitcherRouterNavigatorFactory.create(childFragmentManager, R.id.mainContainer)
         )
+        val tabChangeListener: (MainRouter.Tab) -> Unit = { tab ->
+            binding.bottomNavigationView.selectedItemId = when (tab) {
+                MainRouter.Tab.Catalogue -> R.id.catalogueTabMenu
+                MainRouter.Tab.Cart -> R.id.cartTabMenu
+            }
+        }
+        (mainRouter as MainRouterImpl).tabChangeListener = tabChangeListener
+        tabChangeListener(mainRouter.activeTab)
     }
 
     override fun onPause() {

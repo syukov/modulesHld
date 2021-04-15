@@ -22,6 +22,7 @@ dependencies {
     // app scope features:
     implementation project(':network-domain')
     implementation project(':security-domain')
+    implementation project(':cart-domain')
 
     // nested features:
     implementation project(':root-feature')

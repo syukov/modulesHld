@@ -1,8 +1,10 @@
 package com.example.modularization.main_feature_api
 
+import com.example.modularization.app_api.aliases.Sku
 import com.example.modularization.app_api.diDoc.DiDoc
 import com.example.modularization.core_feature_api.navigation.BaseArgument
 import com.example.modularization.core_feature_api.navigation.CiceroneScreen
+import kotlinx.android.parcel.Parcelize
 
 
 @DiDoc.Api
@@ -23,6 +25,12 @@ interface MainRouter {
      * Установить новый root [screen]
      */
     fun newRootScreen(screen: Screen, tab: Tab? = null)
+
+    /**
+     * Перейти на [tab], если не null.
+     * Установить новую цепочку экранов [screens]
+     */
+    fun newRootScreenChain(screens: List<Pair<Screen, BaseArgument?>>, tab: Tab? = null)
 
     /**
      * Перейти на [tab]
@@ -50,17 +58,16 @@ interface MainRouter {
     }
 
     sealed class Screen : CiceroneScreen {
-//        sealed class EmployeeProfileFeature : Screen() {
-//            object EmployeeProfile : EmployeeProfileFeature()
-//        }
-
         sealed class CatalogueFeature : Screen() {
             object Catalogue : CatalogueFeature()
             object SubCatalogue : CatalogueFeature()
         }
 
         sealed class PdpFeature : Screen() {
-            object Pdp : PdpFeature()
+            object Pdp : PdpFeature() {
+                @Parcelize
+                data class Argument(val sku: Sku) : BaseArgument
+            }
         }
 
         sealed class CartFeature : Screen() {

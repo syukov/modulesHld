@@ -2,6 +2,7 @@ package com.example.modularization.security_domain.di
 
 import com.example.modularization.app_api.applicationScope.ApplicationScope
 import com.example.modularization.app_api.diDoc.DiDoc
+import com.example.modularization.cart_domain_api.moduleApi.CartDomainApi
 import com.example.modularization.network_domain_api.moduleApi.NetworkDomainApi
 import com.example.modularization.security_domain.moduleApi.SecurityDomainApiDiModule
 import com.example.modularization.security_domain_api.moduleApi.SecurityDomainApi
@@ -32,7 +33,8 @@ interface SecurityDomainDi {
 
     @DiDoc.Structure.ApplicationScopeDependencies
     interface ApplicationScopeDependencies {
-        fun networkDomainApi(): NetworkDomainApi
+        val networkDomainApi: NetworkDomainApi
+        val cartDomainApi: CartDomainApi
     }
 
     @DiDoc.Structure.DiComponentInterface

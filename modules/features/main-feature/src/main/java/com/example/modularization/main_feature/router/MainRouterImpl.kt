@@ -37,9 +37,16 @@ class MainRouterImpl(
         activeTabContainerRouter.newRootScreen(screen)
     }
 
+    override fun newRootScreenChain(screens: List<Pair<MainRouter.Screen, BaseArgument?>>, tab: MainRouter.Tab?) {
+        tab?.let { changeTab(it) }
+        activeTabContainerRouter.newRootScreenChain(screens)
+    }
+
     override fun changeTab(tab: MainRouter.Tab) {
+        if (this::activeTabContainerRouter.isInitialized && activeTabContainerRouter.tab == tab) return
         activeTabContainerRouter = getTabContainerRouter(tab)
         tabSwitcherRouter.changeTab(tab)
+        tabChangeListener?.invoke(tab)
     }
 
     override fun resetTab(tab: MainRouter.Tab, screen: MainRouter.Screen, arg: BaseArgument?) {
@@ -62,4 +69,11 @@ class MainRouterImpl(
             MainRouter.Tab.Cart -> cartTabContainerRouter
         }
     }
+
+    var tabChangeListener: ((MainRouter.Tab) -> Unit)? = null
+
+    val activeTab: MainRouter.Tab
+        get() = activeTabContainerRouter.tab
 }
+
+

@@ -47,6 +47,7 @@ subprojects {
                 }
                 kotlinOptions {
                     jvmTarget = JavaVersion.VERSION_1_8.toString()
+                    freeCompilerArgs = ["-Xinline-classes"]
                 }
                 buildTypes {
                     production {
