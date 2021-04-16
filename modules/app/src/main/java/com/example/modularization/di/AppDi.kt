@@ -3,13 +3,13 @@ package com.example.modularization.di
 import android.content.Context
 import com.example.modularization.activity.AppActivity
 import com.example.modularization.app_api.applicationScope.ApplicationScope
-import com.example.modularization.app_api.diDoc.DiDoc
+import com.example.modularization.app_api.diDoc.Doc
 import com.example.modularization.app_api.moduleApi.AppDomainApi
 import com.example.modularization.moduleApi.AppDomainApiDiModule
 import dagger.Component
 
 
-@DiDoc.Structure
+@Doc.Structure
 interface AppDi {
     @Component(
         dependencies = [FactoryDependencies::class],
@@ -19,7 +19,7 @@ interface AppDi {
         ]
     )
     @ApplicationScope
-    @DiDoc.Structure.DiComponent
+    @Doc.Structure.DiComponent
     interface DiComponent : ApplicationScopeDependencies, DiComponentInterface {
         fun inject(activity: AppActivity)
 
@@ -31,19 +31,19 @@ interface AppDi {
         }
     }
 
-    @DiDoc.Structure.FactoryDependencies
+    @Doc.Structure.FactoryDependencies
     interface FactoryDependencies {
         val appContext: Context
     }
 
-    @DiDoc.Structure.ApplicationScopeDependencies
+    @Doc.Structure.ApplicationScopeDependencies
     interface ApplicationScopeDependencies {
         /* no-op */
     }
 
-    @DiDoc.Structure.DiComponentInterface
+    @Doc.Structure.DiComponentInterface
     interface DiComponentInterface {
-        val domainApi: AppDomainApi
+        val appDomainApi: AppDomainApi
     }
 }
 

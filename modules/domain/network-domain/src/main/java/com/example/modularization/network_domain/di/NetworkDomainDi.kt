@@ -1,13 +1,13 @@
 package com.example.modularization.network_domain.di
 
 import com.example.modularization.app_api.applicationScope.ApplicationScope
-import com.example.modularization.app_api.diDoc.DiDoc
+import com.example.modularization.app_api.diDoc.Doc
 import com.example.modularization.app_api.moduleApi.AppDomainApi
 import com.example.modularization.network_domain.moduleApi.NetworkDomainApiDiModule
 import com.example.modularization.network_domain_api.moduleApi.NetworkDomainApi
 import dagger.Component
 
-@DiDoc.Structure
+@Doc.Structure
 interface NetworkDomainDi {
     @Component(
         dependencies = [FactoryDependencies::class],
@@ -18,7 +18,7 @@ interface NetworkDomainDi {
         ]
     )
     @ApplicationScope
-    @DiDoc.Structure.DiComponent
+    @Doc.Structure.DiComponent
     interface DiComponent : ApplicationScopeDependencies, DiComponentInterface {
         @Component.Factory
         interface ComponentFactory {
@@ -26,17 +26,17 @@ interface NetworkDomainDi {
         }
     }
 
-    @DiDoc.Structure.FactoryDependencies
+    @Doc.Structure.FactoryDependencies
     interface FactoryDependencies {
         /* no-op */
     }
 
-    @DiDoc.Structure.ApplicationScopeDependencies
+    @Doc.Structure.ApplicationScopeDependencies
     interface ApplicationScopeDependencies {
         val appDomainApi: AppDomainApi
     }
 
-    @DiDoc.Structure.DiComponentInterface
+    @Doc.Structure.DiComponentInterface
     interface DiComponentInterface {
         val networkDomainApi: NetworkDomainApi
     }

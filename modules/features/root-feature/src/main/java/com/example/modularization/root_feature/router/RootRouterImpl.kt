@@ -1,13 +1,13 @@
 package com.example.modularization.root_feature.router
 
-import com.example.modularization.app_api.diDoc.DiDoc
+import com.example.modularization.app_api.diDoc.Doc
 import com.example.modularization.core_feature.navigation.RouterCommand
 import com.example.modularization.core_feature_api.navigation.BaseArgument
 import com.example.modularization.root_feature_api.RootRouter
 import com.github.terrakok.cicerone.BaseRouter
 import javax.inject.Inject
 
-@DiDoc.Api.Implementation
+@Doc.Api.Implementation
 class RootRouterImpl @Inject constructor() : BaseRouter(), RootRouter {
 
     override fun navigateTo(screen: RootRouter.Screen, arg: BaseArgument?) {

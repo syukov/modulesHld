@@ -1,6 +1,6 @@
 package com.example.modularization.root_feature.router
 
-import com.example.modularization.app_api.diDoc.DiDoc
+import com.example.modularization.app_api.diDoc.Doc
 import com.example.modularization.core_feature.di.PerFeatureScope
 import com.example.modularization.core_feature.utils.checkWhenBranches
 import com.example.modularization.employee_auth_feature.screens.deugTools.DebugToolsFragment
@@ -11,7 +11,7 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-@DiDoc.Api.DiModule
+@Doc.Api.DiModule
 interface RootRouterDiModule {
 
     companion object {

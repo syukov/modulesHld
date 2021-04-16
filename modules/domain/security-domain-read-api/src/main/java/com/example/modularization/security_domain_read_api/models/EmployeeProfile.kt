@@ -1,4 +1,4 @@
-package com.example.modularization.security_domain_api.models
+package com.example.modularization.security_domain_read_api.models
 
 data class EmployeeProfile(
     val id: String,

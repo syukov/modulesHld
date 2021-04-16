@@ -12,6 +12,9 @@ dependencies {
     // core module:
     implementation project(':core-domain-api')
 
+    // this domain-read-api
+    api project(':cart-domain-read-api')
+
     // other modules api:
     implementation project(':app-api')
 }

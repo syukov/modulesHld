@@ -1,4 +1,4 @@
-package com.example.modularization.cart_domain_api.models
+package com.example.modularization.cart_domain_read_api.models
 
 import com.example.modularization.app_api.aliases.Sku
 

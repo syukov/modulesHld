@@ -1,17 +1,24 @@
 package com.example.modularization.cart_domain.moduleApi
 
 import com.example.modularization.app_api.applicationScope.ApplicationScope
-import com.example.modularization.app_api.diDoc.DiDoc
-import com.example.modularization.cart_domain.moduleApi.useCase.AddProduct
-import com.example.modularization.cart_domain.moduleApi.useCase.ClearCart
-import com.example.modularization.cart_domain.moduleApi.useCase.GetCart
+import com.example.modularization.app_api.diDoc.Doc
+import com.example.modularization.cart_domain.useCase.AddProduct
+import com.example.modularization.cart_domain.useCase.ClearCart
 import com.example.modularization.cart_domain_api.moduleApi.CartDomainApi
+import com.example.modularization.cart_domain_read_api.moduleApi.CartDomainReadApi
 import javax.inject.Inject
+import javax.inject.Provider
 
 @ApplicationScope
-@DiDoc.Api.Implementation
+@Doc.Api.Implementation
 class CartDomainApiImpl @Inject constructor(
-    override val addProduct: AddProduct,
-    override val getCart: GetCart,
-    override val clearCart: ClearCart,
-) : CartDomainApi
+    private val readApi: CartDomainReadApi,
+
+    private val addProductProvider: Provider<AddProduct>,
+    private val clearCartProvider: Provider<ClearCart>,
+) : CartDomainApi {
+    override val getCart get() = readApi.getCart
+
+    override val addProduct: AddProduct get() = addProductProvider.get()
+    override val clearCart: ClearCart get() = clearCartProvider.get()
+}

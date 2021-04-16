@@ -6,5 +6,5 @@ import android.content.Context
 abstract class Retrofit(
     val context: Context
 ) {
-    abstract fun <T> create(stub: () -> T): T
+    abstract fun <T> stub(stub: () -> T): T
 }

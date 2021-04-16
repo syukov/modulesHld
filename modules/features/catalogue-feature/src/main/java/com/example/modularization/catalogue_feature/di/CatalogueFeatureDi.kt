@@ -1,6 +1,6 @@
 package com.example.modularization.catalogue_feature.di
 
-import com.example.modularization.app_api.diDoc.DiDoc
+import com.example.modularization.app_api.diDoc.Doc
 import com.example.modularization.app_api.moduleApi.AppDomainApi
 import com.example.modularization.catalogue_feature.fragmentProvider.CatalogueFeatureFragmentProvider
 import com.example.modularization.catalogue_feature.fragmentProvider.CatalogueFeatureFragmentProviderDiModule
@@ -9,7 +9,7 @@ import com.example.modularization.main_feature_api.MainRouter
 import com.example.modularization.root_feature_api.RootRouter
 import dagger.Component
 
-@DiDoc.Structure
+@Doc.Structure
 interface CatalogueFeatureDi {
     @Component(
         dependencies = [FactoryDependencies::class],
@@ -19,7 +19,7 @@ interface CatalogueFeatureDi {
         ]
     )
     @PerFeatureScope
-    @DiDoc.Structure.DiComponent
+    @Doc.Structure.DiComponent
     interface DiComponent : ApplicationScopeDependencies, DiComponentInterface {
 
         @Component.Factory
@@ -28,18 +28,18 @@ interface CatalogueFeatureDi {
         }
     }
 
-    @DiDoc.Structure.FactoryDependencies
+    @Doc.Structure.FactoryDependencies
     interface FactoryDependencies {
         val rootRouter: RootRouter
         val mainRouter: MainRouter
     }
 
-    @DiDoc.Structure.ApplicationScopeDependencies
+    @Doc.Structure.ApplicationScopeDependencies
     interface ApplicationScopeDependencies {
         val appDomainApi: AppDomainApi
     }
 
-    @DiDoc.Structure.DiComponentInterface
+    @Doc.Structure.DiComponentInterface
     interface DiComponentInterface {
         val fragmentProvider: CatalogueFeatureFragmentProvider
     }

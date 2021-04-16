@@ -1,6 +1,6 @@
 package com.example.modularization.employee_auth_feature.di
 
-import com.example.modularization.app_api.diDoc.DiDoc
+import com.example.modularization.app_api.diDoc.Doc
 import com.example.modularization.core_feature.di.PerFeatureScope
 import com.example.modularization.employee_auth_feature.fragmentProvider.EmployeeAuthFeatureFragmentProvider
 import com.example.modularization.employee_auth_feature.fragmentProvider.EmployeeAuthFeatureFragmentProviderDiModule
@@ -9,7 +9,7 @@ import com.example.modularization.security_domain_api.moduleApi.SecurityDomainAp
 import dagger.Component
 
 
-@DiDoc.Structure
+@Doc.Structure
 interface EmployeeAuthFeatureDi {
     @Component(
         dependencies = [FactoryDependencies::class],
@@ -19,7 +19,7 @@ interface EmployeeAuthFeatureDi {
         ]
     )
     @PerFeatureScope
-    @DiDoc.Structure.DiComponent
+    @Doc.Structure.DiComponent
     interface DiComponent : ApplicationScopeDependencies, DiComponentInterface {
         @Component.Factory
         interface ComponentFactory {
@@ -27,17 +27,17 @@ interface EmployeeAuthFeatureDi {
         }
     }
 
-    @DiDoc.Structure.FactoryDependencies
+    @Doc.Structure.FactoryDependencies
     interface FactoryDependencies {
         val rootRouter: RootRouter
     }
 
-    @DiDoc.Structure.ApplicationScopeDependencies
+    @Doc.Structure.ApplicationScopeDependencies
     interface ApplicationScopeDependencies {
         val securityDomainApi: SecurityDomainApi
     }
 
-    @DiDoc.Structure.DiComponentInterface
+    @Doc.Structure.DiComponentInterface
     interface DiComponentInterface {
         val fragmentProvider: EmployeeAuthFeatureFragmentProvider
     }

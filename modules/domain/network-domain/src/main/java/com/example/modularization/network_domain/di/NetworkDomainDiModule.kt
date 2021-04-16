@@ -16,7 +16,7 @@ class NetworkDomainDiModule {
     @Provides
     fun provideRetrofit(appDomainApi: AppDomainApi): Retrofit {
         return object : Retrofit(appDomainApi.appContext) {
-            override fun <T> create(stub: () -> T): T {
+            override fun <T> stub(stub: () -> T): T {
                 return stub()
             }
         }

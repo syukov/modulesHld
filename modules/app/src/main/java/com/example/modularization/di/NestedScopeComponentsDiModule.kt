@@ -1,9 +1,11 @@
 package com.example.modularization.di
 
 import com.example.modularization.app_api.applicationScope.ApplicationScope
-import com.example.modularization.app_api.diDoc.DiDoc
+import com.example.modularization.app_api.diDoc.Doc
 import com.example.modularization.cart_domain.di.CartDomainDi
 import com.example.modularization.cart_domain.di.DaggerCartDomainDi_DiComponent
+import com.example.modularization.core_domain.di.CoreDomainDi
+import com.example.modularization.core_domain.di.DaggerCoreDomainDi_DiComponent
 import com.example.modularization.network_domain.di.DaggerNetworkDomainDi_DiComponent
 import com.example.modularization.network_domain.di.NetworkDomainDi
 import com.example.modularization.root_feature.di.DaggerRootFeatureDi_DiComponent
@@ -15,7 +17,7 @@ import dagger.Provides
 
 
 @Module
-@DiDoc.NestedScopeComponentsDiModule
+@Doc.NestedScopeComponentsDiModule
 class NestedScopeComponentsDiModule {
     // Root Feature Module ---------------------------------------------------------------------------------------------
     @Provides
@@ -28,6 +30,16 @@ class NestedScopeComponentsDiModule {
     }
 
     // All Domain Modules ----------------------------------------------------------------------------------------------
+
+    @Provides
+    @ApplicationScope
+    fun coreDomainComponent(
+    ): CoreDomainDi.DiComponent {
+        return DaggerCoreDomainDi_DiComponent.factory().create(
+            object : CoreDomainDi.FactoryDependencies {
+            }
+        )
+    }
 
     @Provides
     @ApplicationScope

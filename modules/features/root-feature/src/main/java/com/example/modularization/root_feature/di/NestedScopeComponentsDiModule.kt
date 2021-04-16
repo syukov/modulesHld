@@ -1,6 +1,6 @@
 package com.example.modularization.root_feature.di
 
-import com.example.modularization.app_api.diDoc.DiDoc
+import com.example.modularization.app_api.diDoc.Doc
 import com.example.modularization.employee_auth_feature.di.DaggerEmployeeAuthFeatureDi_DiComponent
 import com.example.modularization.employee_auth_feature.di.EmployeeAuthFeatureDi
 import com.example.modularization.main_feature.di.DaggerMainFeatureDi_DiComponent
@@ -10,7 +10,7 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-@DiDoc.NestedScopeComponentsDiModule
+@Doc.NestedScopeComponentsDiModule
 class NestedScopeComponentsDiModule {
     @Provides
     fun provideMainFeatureDiComponent(

@@ -1,14 +1,14 @@
 package com.example.modularization.catalogue_feature.di
 
 import com.example.modularization.app_api.applicationScope.ApplicationScopeApiHolder
-import com.example.modularization.app_api.diDoc.DiDoc
+import com.example.modularization.app_api.diDoc.Doc
 import com.example.modularization.app_api.moduleApi.AppDomainApi
 import com.example.modularization.security_domain_api.moduleApi.SecurityDomainApi
 import dagger.Module
 import dagger.Provides
 
 @Module
-@DiDoc.ApplicationScopeDependenciesDiModule
+@Doc.ApplicationScopeDependenciesDiModule
 class ApplicationScopeDependenciesDiModule {
 
     @Provides

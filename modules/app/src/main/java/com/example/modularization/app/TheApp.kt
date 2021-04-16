@@ -20,6 +20,6 @@ class TheApp : Application() {
             }
         )
 
-        ApplicationScopeApiHolder.put(appComponent.domainApi, AppDomainApi::class.java)
+        ApplicationScopeApiHolder.put(appComponent.appDomainApi, AppDomainApi::class.java)
     }
 }

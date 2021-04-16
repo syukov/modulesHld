@@ -6,7 +6,7 @@ package com.example.modularization.app_api.diDoc
  *
  * В дальнейшем на основе этих аннотаций можно будет написать правило дял detekt.
  */
-annotation class DiDoc {
+annotation class Doc {
 
     /**
      * Интерфейс в котором во вложенных интерфейсах описывается структура компонента текущего градл-модуля и его зависимости.
@@ -16,9 +16,10 @@ annotation class DiDoc {
         /**
          * Интерфейс даггер компонента текущего градл-модуля.
          *
-         * Должен наследовать ApplicationScopeDependencies.
+         * Должен наследовать [Structure.ApplicationScopeDependencies] (для того что бы автоматом проверялось что этот компонент может предоставить реализации указанных зависимостей).
+         * Должен наследовать [Structure.DiComponentInterface] (для того что бы родительская фича могда достать то что ей нужно из компонента).
          *
-         * Должен включать в аннотации @Component dependencies = [FactoryDependencies::class].
+         * Должен включать в аннотации @Component dependencies = [[Structure.FactoryDependencies]::class].
          */
         @Retention(AnnotationRetention.SOURCE)
         annotation class DiComponent
@@ -26,7 +27,7 @@ annotation class DiDoc {
         /**
          * Зависимости реализации которых предоставляются текущему даггер-компоненту через аргумент фабрики при его создании.
          *
-         * Компонент должен включать в аннотации @Component (dependencies = [FactoryDependencies::class])
+         * Компонент должен включать в аннотации @Component (dependencies = [[Structure.FactoryDependencies]::class])
          */
         @Retention(AnnotationRetention.SOURCE)
         annotation class FactoryDependencies
@@ -34,13 +35,16 @@ annotation class DiDoc {
         /**
          * Зависимости реализации которых текущий даггер-компонент может достать из ApplicationScopeApiHolder.
          *
-         * Компонент должен наследовать ApplicationScopeDependencies, для того что бы уметь его предостаавлять классам текущего модуля.
+         * Компонент должен наследовать [Structure.ApplicationScopeDependencies], для того что бы уметь предостаавлять
+         * эти зависимости классам текущего модуля.
+         *
+         * То как текущий компонент получает реализации этих зависимостей описано в даггер-модуле, помеченном анатацией [ApplicationScopeDependenciesDiModule].
          */
         @Retention(AnnotationRetention.SOURCE)
         annotation class ApplicationScopeDependencies
 
         /**
-         * Сущности реализации которых родительская фича может достать из текущего даггер-компонента.
+         * Сущности создающиеся внутри компонента и реализации которых родительская фича может достать из текущего даггер-компонента.
          *
          * Компонент должен наследовать DiComponentInterface, что бы через его методы снаружи можно было вынуть нужные реализации.
          */
@@ -50,19 +54,19 @@ annotation class DiDoc {
 
     /**
      * Интерфейс описывающий какую то сущность которую даггер-компонент умеет отдавать наружу,
-     * т.е. то что описано в [DiDoc.Structure.DiComponentInterface].
+     * т.е. то что описано в [Doc.Structure.DiComponentInterface].
      *
      * Чаще всего этот интерфейс лежит в отдельном апи-градл-модуле (например SecurityDomainApi, MainRouter, ...).
      *
      * Но это не обязательно, в случае если родительская фича хочет достать что то из компонента (например FragmentProvider)
      * и кроме родительской фичи этим никто не будет пользоваться, то не обязательно выносить Api в отдельный интерфейс.
      *
-     * - Когда api создается при старте приложения и имеет ApplicationScope (например все DomainApi),
-     * то его реализация доступна через ApplicationScopeApiHolder.
-     * - Когда api создается в модуле и используется только им самим или его дочерними модулями (например роутеры),
-     * то реализация передается в компоненты дочерних модулей через их FactoryDependencies.
-     * - Когда api создается в модуле и используется только его родительским модулем (например FragmentProvider),
-     * то родительский модуль может получить реализацию из самого компонента этого модуля.
+     * - Когда реализация api создается при старте приложения и имеет ApplicationScope (например все DomainApi),
+     * то она доступна через ApplicationScopeApiHolder.
+     * - Когда реализация api создается в градл-модуле и используется только им самим или его дочерними градл-модулями (например роутеры),
+     * то она передается в компоненты дочерних модулей через их [Structure.FactoryDependencies].
+     * - Когда реализация api создается в градл-модуле и используется только его родительским градл-модулем (например FragmentProvider),
+     * то родительский модуль может получить реализацию из самого компонента этого модуля через [Structure.DiComponentInterface].
      */
     @Retention(AnnotationRetention.SOURCE)
     annotation class Api {
@@ -73,7 +77,7 @@ annotation class DiDoc {
         annotation class Implementation
 
         /**
-         * В этом даггер-модуле описываем как DiComponent будет создавать ApiImpl - реализацию Api.
+         * В этом даггер-модуле описываем как DiComponent будет создавать ApiImpl
          */
         @Retention(AnnotationRetention.SOURCE)
         annotation class DiModule
@@ -82,7 +86,7 @@ annotation class DiDoc {
     /**
      * В этом даггер-модуле описываем как текущий даггер-компонент будет получать различные domainApi используемые в этом градл-модуле.
      *
-     * Эти domainApi должны быть указаны в XxxDi.ApplicationScopeDependencies.
+     * Эти domainApi должны быть указаны в [Structure.ApplicationScopeDependencies]
      */
     @Retention(AnnotationRetention.SOURCE)
     annotation class ApplicationScopeDependenciesDiModule
@@ -90,7 +94,7 @@ annotation class DiDoc {
     /**
      * Актуально для фиче-модулей.
      *
-     * В текущем градл-модуле есть фрагмент с контейнером внетри которого можно запускать фрагменты других градл-модулей.
+     * В текущем градл-модуле есть фрагмент с контейнером внутри которого можно запускать фрагменты других градл-модулей.
      * Значит, текущий даггер-компонент должен уметь создавать соответствующие даггер-компоненты.
      *
      * В этом даггер-модуле описываем создание этих даггер-компонентов.

@@ -1,6 +1,6 @@
 package com.example.modularization.cart_feature.di
 
-import com.example.modularization.app_api.diDoc.DiDoc
+import com.example.modularization.app_api.diDoc.Doc
 import com.example.modularization.app_api.moduleApi.AppDomainApi
 import com.example.modularization.cart_domain_api.moduleApi.CartDomainApi
 import com.example.modularization.cart_feature.fragmentProvider.CartFeatureFragmentProvider
@@ -10,7 +10,7 @@ import com.example.modularization.main_feature_api.MainRouter
 import com.example.modularization.root_feature_api.RootRouter
 import dagger.Component
 
-@DiDoc.Structure
+@Doc.Structure
 interface CartFeatureDi {
     @Component(
         dependencies = [FactoryDependencies::class],
@@ -20,7 +20,7 @@ interface CartFeatureDi {
         ]
     )
     @PerFeatureScope
-    @DiDoc.Structure.DiComponent
+    @Doc.Structure.DiComponent
     interface DiComponent : ApplicationScopeDependencies, DiComponentInterface {
 
         @Component.Factory
@@ -29,19 +29,19 @@ interface CartFeatureDi {
         }
     }
 
-    @DiDoc.Structure.FactoryDependencies
+    @Doc.Structure.FactoryDependencies
     interface FactoryDependencies {
         val rootRouter: RootRouter
         val mainRouter: MainRouter
     }
 
-    @DiDoc.Structure.ApplicationScopeDependencies
+    @Doc.Structure.ApplicationScopeDependencies
     interface ApplicationScopeDependencies {
         val appDomainApi: AppDomainApi
         val cartDomainApi: CartDomainApi
     }
 
-    @DiDoc.Structure.DiComponentInterface
+    @Doc.Structure.DiComponentInterface
     interface DiComponentInterface {
         val fragmentProvider: CartFeatureFragmentProvider
     }

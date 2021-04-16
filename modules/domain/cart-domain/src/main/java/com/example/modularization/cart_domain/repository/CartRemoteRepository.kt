@@ -12,6 +12,6 @@ class CartRemoteRepository @Inject constructor(
     private val networkDomainApi: NetworkDomainApi
 ) : BaseRemoteRepository() {
     fun addProduct(sku: Sku) {
-        return networkDomainApi.retrofit.create { }
+        return networkDomainApi.retrofit.stub { }
     }
 }

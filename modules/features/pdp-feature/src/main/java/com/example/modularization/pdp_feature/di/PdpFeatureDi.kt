@@ -1,6 +1,6 @@
 package com.example.modularization.pdp_feature.di
 
-import com.example.modularization.app_api.diDoc.DiDoc
+import com.example.modularization.app_api.diDoc.Doc
 import com.example.modularization.app_api.moduleApi.AppDomainApi
 import com.example.modularization.core_feature.di.PerFeatureScope
 import com.example.modularization.main_feature_api.MainRouter
@@ -9,7 +9,7 @@ import com.example.modularization.pdp_feature.fragmentProvider.PdpFeatureFragmen
 import com.example.modularization.root_feature_api.RootRouter
 import dagger.Component
 
-@DiDoc.Structure
+@Doc.Structure
 interface PdpFeatureDi {
     @Component(
         dependencies = [FactoryDependencies::class],
@@ -19,7 +19,7 @@ interface PdpFeatureDi {
         ]
     )
     @PerFeatureScope
-    @DiDoc.Structure.DiComponent
+    @Doc.Structure.DiComponent
     interface DiComponent : ApplicationScopeDependencies, DiComponentInterface {
         fun getFragmentProvider(): PdpFeatureFragmentProvider
 
@@ -29,18 +29,18 @@ interface PdpFeatureDi {
         }
     }
 
-    @DiDoc.Structure.FactoryDependencies
+    @Doc.Structure.FactoryDependencies
     interface FactoryDependencies {
         val rootRouter: RootRouter
         val mainRouter: MainRouter
     }
 
-    @DiDoc.Structure.ApplicationScopeDependencies
+    @Doc.Structure.ApplicationScopeDependencies
     interface ApplicationScopeDependencies {
         val appDomainApi: AppDomainApi
     }
 
-    @DiDoc.Structure.DiComponentInterface
+    @Doc.Structure.DiComponentInterface
     interface DiComponentInterface {
         /* no-op */
     }
