@@ -80,7 +80,7 @@ deps.rx = [
 ]
 
 deps.terrakok = [
-        cicerone: "com.github.terrakok:cicerone:6.6"
+        cicerone: "com.github.terrakok:cicerone:7.0"
 ]
 
 deps.glide = [

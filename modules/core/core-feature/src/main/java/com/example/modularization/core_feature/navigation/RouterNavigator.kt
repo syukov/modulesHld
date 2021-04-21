@@ -1,13 +1,15 @@
 package com.example.modularization.core_feature.navigation
 
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.example.modularization.core_feature.mvp.IBaseView
+import com.example.modularization.core_feature_api.navigation.BaseArgument
 import com.example.modularization.core_feature_api.navigation.CiceroneScreen
 import com.github.terrakok.cicerone.Command
 import com.github.terrakok.cicerone.Navigator
-import com.github.terrakok.cicerone.androidx.TransactionInfo
 
 /**
  * Это форк класса AppNavigator из библиотеки Cicerone:
@@ -25,9 +27,14 @@ class RouterNavigator(
     private val containerId: Int
 ) : Navigator {
 
-    private val localStackCopy = mutableListOf<TransactionInfo>()
+    private val localStackCopy = mutableListOf<String>()
+    private val mainHandler = Handler(Looper.getMainLooper())
 
     override fun applyCommands(vararg commands: Command) {
+        mainHandler.post { applyCommandsSync(*commands) }
+    }
+
+    private fun applyCommandsSync(vararg commands: Command) {
         if (commands.none { it is RouterCommand }) return
 
         fragmentManager.executePendingTransactions()
@@ -41,8 +48,7 @@ class RouterNavigator(
     private fun copyStackToLocal() {
         localStackCopy.clear()
         for (i in 0 until fragmentManager.backStackEntryCount) {
-            val str = fragmentManager.getBackStackEntryAt(i).name!!
-            localStackCopy.add(TransactionInfo.fromString(str))
+            localStackCopy.add(fragmentManager.getBackStackEntryAt(i).name.orEmpty())
         }
     }
 
@@ -56,17 +62,16 @@ class RouterNavigator(
     }
 
     private fun forward(command: RouterCommand.Forward) {
-        val type = if (command.clearContainer) TransactionInfo.Type.REPLACE else TransactionInfo.Type.ADD
-        commitNewFragmentScreen(command.screen, type, true, command.argument)
+        commitNewFragmentScreen(command.screen, true, command.argument)
     }
 
     private fun replace(command: RouterCommand.Replace) {
         if (localStackCopy.isNotEmpty()) {
             fragmentManager.popBackStack()
-            val removed = localStackCopy.removeAt(localStackCopy.lastIndex)
-            commitNewFragmentScreen(command.screen, removed.type, true, command.argument)
+            localStackCopy.removeAt(localStackCopy.lastIndex)
+            commitNewFragmentScreen(command.screen, true, command.argument)
         } else {
-            commitNewFragmentScreen(command.screen, TransactionInfo.Type.REPLACE, false, command.argument)
+            commitNewFragmentScreen(command.screen, false, command.argument)
         }
     }
 
@@ -81,9 +86,8 @@ class RouterNavigator(
 
     private fun commitNewFragmentScreen(
         screen: CiceroneScreen,
-        type: TransactionInfo.Type,
         addToBackStack: Boolean,
-        argument: com.example.modularization.core_feature_api.navigation.BaseArgument?
+        argument: BaseArgument?
     ) {
         val nextFragment = routerFragmentCreator.getFragmentByScreen(screen)
 
@@ -96,14 +100,10 @@ class RouterNavigator(
             fragmentManager.findFragmentById(containerId),
             nextFragment
         )
-        when (type) {
-            TransactionInfo.Type.ADD -> transaction.add(containerId, nextFragment, screen::class.java.name)
-            TransactionInfo.Type.REPLACE -> transaction.replace(containerId, nextFragment, screen::class.java.name)
-        }
+        transaction.replace(containerId, nextFragment, screen::class.java.name)
         if (addToBackStack) {
-            val transactionInfo = TransactionInfo(screen::class.java.name, type)
-            transaction.addToBackStack(transactionInfo.toString())
-            localStackCopy.add(transactionInfo)
+            transaction.addToBackStack(screen.screenKey)
+            localStackCopy.add(screen.screenKey)
         }
 
         currentFragmentOnLeave()
@@ -115,7 +115,7 @@ class RouterNavigator(
             backToRoot()
         } else {
             val screenClassName = command.screen::class.java.name
-            val index = localStackCopy.indexOfFirst { it.screenKey == screenClassName }
+            val index = localStackCopy.indexOfFirst { it == screenClassName }
             if (index != -1) {
                 val forRemove = localStackCopy.subList(index, localStackCopy.size)
                 currentFragmentOnLeave()

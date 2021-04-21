@@ -6,8 +6,7 @@ import com.example.modularization.core_feature_api.navigation.CiceroneScreen
 sealed class RouterCommand : CiceroneCommand {
     data class Forward(
         val screen: CiceroneScreen,
-        val argument: BaseArgument? = null,
-        val clearContainer: Boolean = true
+        val argument: BaseArgument? = null
     ) : RouterCommand()
 
     object Back : RouterCommand()
