@@ -5,9 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
-import com.example.modularization.cart_domain_api.moduleApi.CartDomainApi
 import com.example.modularization.cart_feature.databinding.FragmentCartBinding
 import com.example.modularization.core_feature.mvp.BaseFragment
+import com.example.modularization.domain.cart.api.moduleApi.CartDomainApi
 import com.example.modularization.main_feature_api.MainRouter
 import javax.inject.Inject
 

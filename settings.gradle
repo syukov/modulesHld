@@ -9,8 +9,6 @@ pluginManagement {
     }
 }
 
-rootProject.name = "modules"
-
 include ':modules'
 
 include ':modules:app'
@@ -69,10 +67,7 @@ project(':security-domain-api').projectDir = new File(rootDir, 'modules/domain/s
 include ':security-domain-read-api'
 project(':security-domain-read-api').projectDir = new File(rootDir, 'modules/domain/security-domain-read-api')
 
-include ':cart-domain'
-project(':cart-domain').projectDir = new File(rootDir, 'modules/domain/cart-domain')
-include ':cart-domain-api'
-project(':cart-domain-api').projectDir = new File(rootDir, 'modules/domain/cart-domain-api')
-include ':cart-domain-read-api'
-project(':cart-domain-read-api').projectDir = new File(rootDir, 'modules/domain/cart-domain-read-api')
 
+include ':modules:domain:cart'
+include ':modules:domain:cart:api'
+include ':modules:domain:cart:impl'

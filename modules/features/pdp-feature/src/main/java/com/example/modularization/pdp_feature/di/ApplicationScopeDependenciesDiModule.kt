@@ -3,7 +3,7 @@ package com.example.modularization.pdp_feature.di
 import com.example.modularization.app.api.applicationScope.ApplicationScopeApiHolder
 import com.example.modularization.app.api.diDoc.Doc
 import com.example.modularization.app.api.moduleApi.AppDomainApi
-import com.example.modularization.cart_domain_api.moduleApi.CartDomainApi
+import com.example.modularization.domain.cart.api.moduleApi.CartDomainApi
 import dagger.Module
 import dagger.Provides
 

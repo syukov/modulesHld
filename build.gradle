@@ -11,16 +11,19 @@ buildscript {
     }
 }
 
+project.setGroup("noGroup")
+
 apply from: "$rootDir\\buildConstants.gradle"
 
-allprojects {
+
+allprojects { project ->
     repositories {
         google()
         jcenter()
     }
 }
 
-subprojects {
+subprojects { pr ->
     afterEvaluate { project ->
 
         // set build properties of each "android.application" or "android.library" module
@@ -44,10 +47,14 @@ subprojects {
                     // Sets Java compatibility to Java 8
                     sourceCompatibility JavaVersion.VERSION_1_8
                     targetCompatibility JavaVersion.VERSION_1_8
+
                 }
                 kotlinOptions {
                     jvmTarget = JavaVersion.VERSION_1_8.toString()
-                    freeCompilerArgs = ["-Xinline-classes"]
+                    // т.к. модули имеют одинаковые названия "api" и "impl", то говорим компилятору генерировать для
+                    // каждого модуля META-INF на основе группы+названия проекта, т.е. вместо "impl.kotlin_module" будет "modules.app.impl.kotlin_module"
+                    freeCompilerArgs += ['-module-name', "$project.group.$project.name"]
+                    freeCompilerArgs += ["-Xinline-classes"]
                 }
                 buildTypes {
                     production {

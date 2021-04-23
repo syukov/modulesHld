@@ -3,9 +3,8 @@ package com.example.modularization.app.impl.app
 import com.example.modularization.app.api.applicationScope.ApplicationScopeApiHolder
 import com.example.modularization.app.api.moduleApi.AppDomainApi
 import com.example.modularization.app.impl.di.AppDi
-import com.example.modularization.cart_domain.di.CartDomainDi
-import com.example.modularization.cart_domain_api.moduleApi.CartDomainApi
-import com.example.modularization.cart_domain_read_api.moduleApi.CartDomainReadApi
+import com.example.modularization.domain.cart.api.moduleApi.CartDomainApi
+import com.example.modularization.domain.cart.impl.di.CartDomainDi
 import com.example.modularization.domain.core.api.moduleApi.CoreDomainApi
 import com.example.modularization.domain.core.impl.di.CoreDomainDi
 import com.example.modularization.network_domain.di.NetworkDomainDi
@@ -47,7 +46,6 @@ class ApplicationScopeApiInitializer @Inject constructor(
             put(coreDomainComponent.coreDomainApi, CoreDomainApi::class.java)
             put(securityDomainComponent.securityDomainApi, SecurityDomainApi::class.java)
             put(cartDomainComponent.cartDomainApi, CartDomainApi::class.java)
-            put(cartDomainComponent.cartDomainReadApi, CartDomainReadApi::class.java)
             put(networkDomainComponent.networkDomainApi, NetworkDomainApi::class.java)
         }
 

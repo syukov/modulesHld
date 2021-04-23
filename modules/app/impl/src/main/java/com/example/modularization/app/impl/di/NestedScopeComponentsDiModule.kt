@@ -2,8 +2,8 @@ package com.example.modularization.app.impl.di
 
 import com.example.modularization.app.api.applicationScope.ApplicationScope
 import com.example.modularization.app.api.diDoc.Doc
-import com.example.modularization.cart_domain.di.CartDomainDi
-import com.example.modularization.cart_domain.di.DaggerCartDomainDi_DiComponent
+import com.example.modularization.domain.cart.impl.di.CartDomainDi
+import com.example.modularization.domain.cart.impl.di.DaggerCartDomainDi_DiComponent
 import com.example.modularization.domain.core.impl.di.CoreDomainDi
 import com.example.modularization.domain.core.impl.di.DaggerCoreDomainDi_DiComponent
 import com.example.modularization.network_domain.di.DaggerNetworkDomainDi_DiComponent

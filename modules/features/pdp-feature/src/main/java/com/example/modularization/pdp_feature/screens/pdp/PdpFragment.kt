@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.example.modularization.app.api.aliases.Sku
 import com.example.modularization.app.api.moduleApi.AppDomainApi
-import com.example.modularization.cart_domain_api.moduleApi.CartDomainApi
 import com.example.modularization.core_feature.mvp.BaseFragment
 import com.example.modularization.core_feature_api.navigation.BaseArgument
+import com.example.modularization.domain.cart.api.moduleApi.CartDomainApi
 import com.example.modularization.main_feature_api.MainRouter
 import com.example.modularization.pdp_feature.databinding.FragmentPdpBinding
 import java.util.*

@@ -1,0 +1,21 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+}
+
+android {
+}
+
+dependencies {
+    // api of this module:
+    api project(':modules:domain:cart:api')
+
+    // core module:
+    implementation project(':modules:domain:core:impl')
+
+    // other modules api:
+    implementation project(':modules:app:api')
+    implementation project(':network-domain-api')
+}
