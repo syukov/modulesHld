@@ -9,13 +9,13 @@ android {
 }
 
 dependencies {
-    // api of this module:
-    api project(':security-domain-api')
+    // api of this module
+    api project(':modules:domain:network:api')
 
-    // core module:
+    // core module
     implementation project(':modules:domain:core:impl')
 
     // other modules api:
     implementation project(':modules:app:api')
-    implementation project(':modules:domain:network:api')
 }
+

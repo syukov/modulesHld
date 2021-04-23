@@ -6,8 +6,8 @@ import com.example.modularization.domain.cart.impl.di.CartDomainDi
 import com.example.modularization.domain.cart.impl.di.DaggerCartDomainDi_DiComponent
 import com.example.modularization.domain.core.impl.di.CoreDomainDi
 import com.example.modularization.domain.core.impl.di.DaggerCoreDomainDi_DiComponent
-import com.example.modularization.network_domain.di.DaggerNetworkDomainDi_DiComponent
-import com.example.modularization.network_domain.di.NetworkDomainDi
+import com.example.modularization.domain.network.impl.di.DaggerNetworkDomainDi_DiComponent
+import com.example.modularization.domain.network.impl.di.NetworkDomainDi
 import com.example.modularization.root_feature.di.DaggerRootFeatureDi_DiComponent
 import com.example.modularization.root_feature.di.RootFeatureDi
 import com.example.modularization.security_domain.di.DaggerSecurityDomainDi_DiComponent

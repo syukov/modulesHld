@@ -1,26 +1,22 @@
-package com.example.modularization.domain.cart.impl.di
+package com.example.modularization.domain.network.impl.di
 
 import com.example.modularization.app.api.applicationScope.ApplicationScope
 import com.example.modularization.app.api.diDoc.Doc
-import com.example.modularization.domain.cart.api.moduleApi.CartDomainApi
-import com.example.modularization.domain.cart.impl.moduleApi.CartDomainApiDiModule
-import com.example.modularization.domain.cart.impl.moduleApi.CartOnDomainEventDiModule
-import com.example.modularization.domain.core.api.models.domainEvents.OnDomainEventListener
-import com.example.modularization.domain.core.api.moduleApi.CoreDomainApi
+import com.example.modularization.app.api.moduleApi.AppDomainApi
 import com.example.modularization.domain.network.api.moduleApi.NetworkDomainApi
+import com.example.modularization.domain.network.impl.moduleApi.NetworkDomainApiDiModule
 import dagger.Component
 
 @Doc.Structure
-interface CartDomainDi {
+interface NetworkDomainDi {
     @Component(
         dependencies = [FactoryDependencies::class],
         modules = [
             ApplicationScopeDependenciesDiModule::class,
-            CartDomainApiDiModule::class,
-            CartOnDomainEventDiModule::class,
+            NetworkDomainApiDiModule::class,
+            NetworkDomainDiModule::class,
         ]
     )
-
     @ApplicationScope
     @Doc.Structure.DiComponent
     interface DiComponent : ApplicationScopeDependencies, DiComponentInterface {
@@ -37,13 +33,11 @@ interface CartDomainDi {
 
     @Doc.Structure.ApplicationScopeDependencies
     interface ApplicationScopeDependencies {
-        val networkDomainApi: NetworkDomainApi
-        val coreDomainApi: CoreDomainApi
+        val appDomainApi: AppDomainApi
     }
 
     @Doc.Structure.DiComponentInterface
     interface DiComponentInterface {
-        val cartDomainApi: CartDomainApi
-        val onDomainEventListener: OnDomainEventListener
+        val networkDomainApi: NetworkDomainApi
     }
 }

@@ -21,7 +21,7 @@ dependencies {
     implementation project(':modules:domain:core:impl')
 
     // app scope features:
-    implementation project(':network-domain')
+    implementation project(':modules:domain:network:impl')
     implementation project(':security-domain')
     implementation project(':modules:domain:cart:impl')
 

@@ -3,7 +3,7 @@ package com.example.modularization.domain.cart.impl.repository
 import com.example.modularization.app.api.aliases.Sku
 import com.example.modularization.app.api.applicationScope.ApplicationScope
 import com.example.modularization.domain.core.impl.repository.BaseRemoteRepository
-import com.example.modularization.network_domain_api.moduleApi.NetworkDomainApi
+import com.example.modularization.domain.network.api.moduleApi.NetworkDomainApi
 import javax.inject.Inject
 
 

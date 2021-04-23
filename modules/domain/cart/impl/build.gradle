@@ -17,5 +17,5 @@ dependencies {
 
     // other modules api:
     implementation project(':modules:app:api')
-    implementation project(':network-domain-api')
+    implementation project(':modules:domain:network:api')
 }

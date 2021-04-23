@@ -55,10 +55,9 @@ project(':cart-feature').projectDir = new File(rootDir, 'modules/features/cart-f
 
 // domain:
 
-include ':network-domain'
-project(':network-domain').projectDir = new File(rootDir, 'modules/domain/network-domain')
-include ':network-domain-api'
-project(':network-domain-api').projectDir = new File(rootDir, 'modules/domain/network-domain-api')
+include ':modules:domain:network'
+include ':modules:domain:network:api'
+include ':modules:domain:network:impl'
 
 include ':security-domain'
 project(':security-domain').projectDir = new File(rootDir, 'modules/domain/security-domain')
