@@ -5,7 +5,7 @@ import com.example.modularization.cart_domain.repository.CartMemoryRepository
 import com.example.modularization.cart_domain.repository.CartRemoteRepository
 import com.example.modularization.cart_domain_read_api.models.Cart
 import com.example.modularization.cart_domain_read_api.models.CartProduct
-import com.example.modularization.core_domain_api.UseCase
+import com.example.modularization.domain.core.api.UseCase
 import javax.inject.Inject
 import kotlin.random.Random
 

@@ -1,8 +1,8 @@
 package com.example.modularization.security_domain.useCase
 
-import com.example.modularization.core_domain_api.UseCase
-import com.example.modularization.core_domain_api.models.domainEvents.DomainEvent
-import com.example.modularization.core_domain_api.moduleApi.CoreDomainApi
+import com.example.modularization.domain.core.api.UseCase
+import com.example.modularization.domain.core.api.models.domainEvents.DomainEvent
+import com.example.modularization.domain.core.api.moduleApi.CoreDomainApi
 import com.example.modularization.security_domain.repository.SecurityMemoryRepository
 import com.example.modularization.security_domain.repository.SecurityRemoteRepository
 import javax.inject.Inject

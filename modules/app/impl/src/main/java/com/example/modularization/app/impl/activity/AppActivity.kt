@@ -2,7 +2,7 @@ package com.example.modularization.app.impl.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.modularization.app.R
+import com.example.modularization.app.impl.R
 import com.example.modularization.app.impl.app.ApplicationScopeApiInitializer
 import com.example.modularization.app.impl.app.TheApp
 import javax.inject.Inject

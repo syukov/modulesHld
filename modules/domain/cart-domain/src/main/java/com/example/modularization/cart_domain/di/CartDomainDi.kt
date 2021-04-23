@@ -7,8 +7,8 @@ import com.example.modularization.cart_domain.moduleApi.CartDomainReadApiDiModul
 import com.example.modularization.cart_domain.moduleApi.CartOnDomainEventDiModule
 import com.example.modularization.cart_domain_api.moduleApi.CartDomainApi
 import com.example.modularization.cart_domain_read_api.moduleApi.CartDomainReadApi
-import com.example.modularization.core_domain_api.models.domainEvents.OnDomainEventListener
-import com.example.modularization.core_domain_api.moduleApi.CoreDomainApi
+import com.example.modularization.domain.core.api.models.domainEvents.OnDomainEventListener
+import com.example.modularization.domain.core.api.moduleApi.CoreDomainApi
 import com.example.modularization.network_domain_api.moduleApi.NetworkDomainApi
 import dagger.Component
 

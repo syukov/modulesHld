@@ -10,7 +10,7 @@ android {
 
 dependencies {
     // core module:
-    implementation project(':core-domain-api')
+    implementation project(':modules:domain:core:api')
 
     // this domain-read-api
     api project(':cart-domain-read-api')

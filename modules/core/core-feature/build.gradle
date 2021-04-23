@@ -10,5 +10,5 @@ android {
 
 dependencies {
     api project(':core-feature-api')
-    implementation project(':core-domain-api')
+    implementation project(':modules:domain:core:api')
 }

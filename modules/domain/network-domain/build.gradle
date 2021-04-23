@@ -13,7 +13,7 @@ dependencies {
     api project(':network-domain-api')
 
     // core module
-    implementation project(':core-domain')
+    implementation project(':modules:domain:core:impl')
 
     // other modules api:
     implementation project(':modules:app:api')

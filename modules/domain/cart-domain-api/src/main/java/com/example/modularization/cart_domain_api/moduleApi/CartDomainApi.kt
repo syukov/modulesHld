@@ -4,7 +4,7 @@ import com.example.modularization.app.api.aliases.Sku
 import com.example.modularization.app.api.diDoc.Doc
 import com.example.modularization.cart_domain_read_api.models.Cart
 import com.example.modularization.cart_domain_read_api.moduleApi.CartDomainReadApi
-import com.example.modularization.core_domain_api.UseCase
+import com.example.modularization.domain.core.api.UseCase
 
 @Doc.Api
 interface CartDomainApi : CartDomainReadApi {

@@ -1,6 +1,6 @@
 package com.example.modularization.security_domain.useCase
 
-import com.example.modularization.core_domain_api.UseCase
+import com.example.modularization.domain.core.api.UseCase
 import com.example.modularization.security_domain.repository.SecurityMemoryRepository
 import com.example.modularization.security_domain.repository.SecurityRemoteRepository
 import com.example.modularization.security_domain_read_api.models.EmployeeProfile

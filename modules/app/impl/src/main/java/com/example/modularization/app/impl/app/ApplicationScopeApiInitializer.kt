@@ -6,8 +6,8 @@ import com.example.modularization.app.impl.di.AppDi
 import com.example.modularization.cart_domain.di.CartDomainDi
 import com.example.modularization.cart_domain_api.moduleApi.CartDomainApi
 import com.example.modularization.cart_domain_read_api.moduleApi.CartDomainReadApi
-import com.example.modularization.core_domain.di.CoreDomainDi
-import com.example.modularization.core_domain_api.moduleApi.CoreDomainApi
+import com.example.modularization.domain.core.api.moduleApi.CoreDomainApi
+import com.example.modularization.domain.core.impl.di.CoreDomainDi
 import com.example.modularization.network_domain.di.NetworkDomainDi
 import com.example.modularization.network_domain_api.moduleApi.NetworkDomainApi
 import com.example.modularization.security_domain.di.SecurityDomainDi

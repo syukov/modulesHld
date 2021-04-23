@@ -14,7 +14,7 @@ dependencies {
 
     // other modules api:
     implementation project(':modules:app:api')
-    implementation project(':core-domain-api')
+    implementation project(':modules:domain:core:api')
     implementation project(':security-domain-api')
     implementation project(':root-feature-api')
     implementation project(':main-feature-api')

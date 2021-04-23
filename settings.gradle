@@ -12,21 +12,22 @@ pluginManagement {
 rootProject.name = "modules"
 
 include ':modules'
+
 include ':modules:app'
 include ':modules:app:impl'
 include ':modules:app:api'
 
 // core:
+include ':modules:domain'
+include ':modules:domain:core'
+include ':modules:domain:core:impl'
+include ':modules:domain:core:api'
 
 include ':core-feature'
 project(':core-feature').projectDir = new File(rootDir, 'modules/core/core-feature')
 include ':core-feature-api'
 project(':core-feature-api').projectDir = new File(rootDir, 'modules/core/core-feature-api')
 
-include ':core-domain'
-project(':core-domain').projectDir = new File(rootDir, 'modules/core/core-domain')
-include ':core-domain-api'
-project(':core-domain-api').projectDir = new File(rootDir, 'modules/core/core-domain-api')
 
 
 // features:

@@ -3,7 +3,7 @@ package com.example.modularization.cart_domain.di
 import com.example.modularization.app.api.applicationScope.ApplicationScope
 import com.example.modularization.app.api.applicationScope.ApplicationScopeApiHolder
 import com.example.modularization.app.api.diDoc.Doc
-import com.example.modularization.core_domain_api.moduleApi.CoreDomainApi
+import com.example.modularization.domain.core.api.moduleApi.CoreDomainApi
 import com.example.modularization.network_domain_api.moduleApi.NetworkDomainApi
 import dagger.Module
 import dagger.Provides
