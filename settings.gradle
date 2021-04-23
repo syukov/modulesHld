@@ -11,10 +11,10 @@ pluginManagement {
 
 rootProject.name = "modules"
 
-include ':app'
-project(':app').projectDir = new File(rootDir, 'modules/app')
-include ':app-api'
-project(':app-api').projectDir = new File(rootDir, 'modules/app-api')
+include ':modules'
+include ':modules:app'
+include ':modules:app:impl'
+include ':modules:app:api'
 
 // core:
 

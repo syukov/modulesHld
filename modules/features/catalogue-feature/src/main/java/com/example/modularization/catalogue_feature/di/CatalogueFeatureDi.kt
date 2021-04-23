@@ -1,7 +1,7 @@
 package com.example.modularization.catalogue_feature.di
 
-import com.example.modularization.app_api.diDoc.Doc
-import com.example.modularization.app_api.moduleApi.AppDomainApi
+import com.example.modularization.app.api.diDoc.Doc
+import com.example.modularization.app.api.moduleApi.AppDomainApi
 import com.example.modularization.catalogue_feature.fragmentProvider.CatalogueFeatureFragmentProvider
 import com.example.modularization.catalogue_feature.fragmentProvider.CatalogueFeatureFragmentProviderDiModule
 import com.example.modularization.core_feature.di.PerFeatureScope

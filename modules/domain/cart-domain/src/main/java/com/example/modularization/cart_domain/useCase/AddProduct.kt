@@ -1,6 +1,6 @@
 package com.example.modularization.cart_domain.useCase
 
-import com.example.modularization.app_api.aliases.Sku
+import com.example.modularization.app.api.aliases.Sku
 import com.example.modularization.cart_domain.repository.CartMemoryRepository
 import com.example.modularization.cart_domain.repository.CartRemoteRepository
 import com.example.modularization.cart_domain_read_api.models.Cart

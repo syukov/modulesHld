@@ -1,6 +1,6 @@
 package com.example.modularization.root_feature.di
 
-import com.example.modularization.app_api.diDoc.Doc
+import com.example.modularization.app.api.diDoc.Doc
 import com.example.modularization.core_feature.di.PerFeatureScope
 import com.example.modularization.root_feature.fragmentProvider.RootFeatureFragmentProvider
 import com.example.modularization.root_feature.fragmentProvider.RootFeatureFragmentProviderDiModule

@@ -1,6 +1,6 @@
 package com.example.modularization.cart_domain_read_api.models
 
-import com.example.modularization.app_api.aliases.Sku
+import com.example.modularization.app.api.aliases.Sku
 
 data class Cart(
     val products: List<CartProduct>

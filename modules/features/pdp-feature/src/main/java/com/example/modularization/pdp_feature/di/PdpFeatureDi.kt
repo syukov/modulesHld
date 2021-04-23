@@ -1,7 +1,7 @@
 package com.example.modularization.pdp_feature.di
 
-import com.example.modularization.app_api.diDoc.Doc
-import com.example.modularization.app_api.moduleApi.AppDomainApi
+import com.example.modularization.app.api.diDoc.Doc
+import com.example.modularization.app.api.moduleApi.AppDomainApi
 import com.example.modularization.core_feature.di.PerFeatureScope
 import com.example.modularization.main_feature_api.MainRouter
 import com.example.modularization.pdp_feature.fragmentProvider.PdpFeatureFragmentProvider

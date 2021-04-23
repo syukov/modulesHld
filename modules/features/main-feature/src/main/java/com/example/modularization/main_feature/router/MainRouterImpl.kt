@@ -1,6 +1,6 @@
 package com.example.modularization.main_feature.router
 
-import com.example.modularization.app_api.diDoc.Doc
+import com.example.modularization.app.api.diDoc.Doc
 import com.example.modularization.core_feature_api.navigation.BaseArgument
 import com.example.modularization.main_feature.router.tabSwitcher.TabContainerRouter
 import com.example.modularization.main_feature.router.tabSwitcher.TabSwitcherRouter

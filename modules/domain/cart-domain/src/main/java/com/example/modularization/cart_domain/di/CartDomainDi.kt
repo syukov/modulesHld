@@ -1,7 +1,7 @@
 package com.example.modularization.cart_domain.di
 
-import com.example.modularization.app_api.applicationScope.ApplicationScope
-import com.example.modularization.app_api.diDoc.Doc
+import com.example.modularization.app.api.applicationScope.ApplicationScope
+import com.example.modularization.app.api.diDoc.Doc
 import com.example.modularization.cart_domain.moduleApi.CartDomainApiDiModule
 import com.example.modularization.cart_domain.moduleApi.CartDomainReadApiDiModule
 import com.example.modularization.cart_domain.moduleApi.CartOnDomainEventDiModule

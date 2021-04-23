@@ -1,6 +1,6 @@
 package com.example.modularization.main_feature.di
 
-import com.example.modularization.app_api.diDoc.Doc
+import com.example.modularization.app.api.diDoc.Doc
 import com.example.modularization.cart_feature.di.CartFeatureDi
 import com.example.modularization.cart_feature.di.DaggerCartFeatureDi_DiComponent
 import com.example.modularization.catalogue_feature.di.CatalogueFeatureDi

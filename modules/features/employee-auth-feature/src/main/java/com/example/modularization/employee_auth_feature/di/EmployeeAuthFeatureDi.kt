@@ -1,6 +1,6 @@
 package com.example.modularization.employee_auth_feature.di
 
-import com.example.modularization.app_api.diDoc.Doc
+import com.example.modularization.app.api.diDoc.Doc
 import com.example.modularization.core_feature.di.PerFeatureScope
 import com.example.modularization.employee_auth_feature.fragmentProvider.EmployeeAuthFeatureFragmentProvider
 import com.example.modularization.employee_auth_feature.fragmentProvider.EmployeeAuthFeatureFragmentProviderDiModule

@@ -1,6 +1,6 @@
 package com.example.modularization.main_feature.di
 
-import com.example.modularization.app_api.diDoc.Doc
+import com.example.modularization.app.api.diDoc.Doc
 import com.example.modularization.core_feature.di.PerFeatureScope
 import com.example.modularization.main_feature.fragmentProvider.MainFeatureFragmentProvider
 import com.example.modularization.main_feature.fragmentProvider.MainFeatureFragmentProviderDiModule

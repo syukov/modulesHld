@@ -13,7 +13,7 @@ dependencies {
     implementation project(':core-feature')
 
     // other modules api:
-    implementation project(':app-api')
+    implementation project(':modules:app:api')
     implementation project(':core-domain-api')
     implementation project(':cart-domain-api')
     implementation project(':root-feature-api')

@@ -1,7 +1,7 @@
 package com.example.modularization.security_domain.moduleApi
 
-import com.example.modularization.app_api.applicationScope.ApplicationScope
-import com.example.modularization.app_api.diDoc.Doc
+import com.example.modularization.app.api.applicationScope.ApplicationScope
+import com.example.modularization.app.api.diDoc.Doc
 import com.example.modularization.core_domain_api.UseCase
 import com.example.modularization.security_domain.useCase.GetEmployeeProfile
 import com.example.modularization.security_domain.useCase.LoginEmployee

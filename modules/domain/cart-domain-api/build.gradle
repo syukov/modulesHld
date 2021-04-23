@@ -16,5 +16,5 @@ dependencies {
     api project(':cart-domain-read-api')
 
     // other modules api:
-    implementation project(':app-api')
+    implementation project(':modules:app:api')
 }

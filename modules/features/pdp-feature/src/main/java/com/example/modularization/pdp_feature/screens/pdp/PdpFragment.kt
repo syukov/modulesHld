@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.example.modularization.app_api.aliases.Sku
-import com.example.modularization.app_api.moduleApi.AppDomainApi
+import com.example.modularization.app.api.aliases.Sku
+import com.example.modularization.app.api.moduleApi.AppDomainApi
 import com.example.modularization.cart_domain_api.moduleApi.CartDomainApi
 import com.example.modularization.core_feature.mvp.BaseFragment
 import com.example.modularization.core_feature_api.navigation.BaseArgument

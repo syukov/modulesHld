@@ -1,7 +1,7 @@
 package com.example.modularization.main_feature_api
 
-import com.example.modularization.app_api.aliases.Sku
-import com.example.modularization.app_api.diDoc.Doc
+import com.example.modularization.app.api.aliases.Sku
+import com.example.modularization.app.api.diDoc.Doc
 import com.example.modularization.core_feature_api.navigation.BaseArgument
 import com.example.modularization.core_feature_api.navigation.CiceroneScreen
 import kotlinx.android.parcel.Parcelize

@@ -1,6 +1,6 @@
 package com.example.modularization.main_feature.router
 
-import com.example.modularization.app_api.diDoc.Doc
+import com.example.modularization.app.api.diDoc.Doc
 import com.example.modularization.cart_feature.screens.cart.CartFragment
 import com.example.modularization.catalogue_feature.screens.catalogue.CatalogueFragment
 import com.example.modularization.catalogue_feature.screens.subCatalogue.SubCatalogueFragment
