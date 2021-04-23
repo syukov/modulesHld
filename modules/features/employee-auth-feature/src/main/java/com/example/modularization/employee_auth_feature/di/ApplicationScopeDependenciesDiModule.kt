@@ -3,7 +3,7 @@ package com.example.modularization.employee_auth_feature.di
 import com.example.modularization.app.api.applicationScope.ApplicationScopeApiHolder
 import com.example.modularization.app.api.diDoc.Doc
 import com.example.modularization.core_feature.di.PerFeatureScope
-import com.example.modularization.security_domain_api.moduleApi.SecurityDomainApi
+import com.example.modularization.domain.security.api.moduleApi.SecurityDomainApi
 import dagger.Module
 import dagger.Provides
 

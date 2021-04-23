@@ -9,8 +9,8 @@ import com.example.modularization.domain.core.api.moduleApi.CoreDomainApi
 import com.example.modularization.domain.core.impl.di.CoreDomainDi
 import com.example.modularization.domain.network.api.moduleApi.NetworkDomainApi
 import com.example.modularization.domain.network.impl.di.NetworkDomainDi
-import com.example.modularization.security_domain.di.SecurityDomainDi
-import com.example.modularization.security_domain_api.moduleApi.SecurityDomainApi
+import com.example.modularization.domain.security.api.moduleApi.SecurityDomainApi
+import com.example.modularization.domain.security.impl.di.SecurityDomainDi
 import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject
 

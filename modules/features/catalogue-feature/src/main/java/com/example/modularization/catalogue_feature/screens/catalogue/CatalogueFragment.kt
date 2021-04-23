@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.modularization.catalogue_feature.databinding.FragmentCatalogueBinding
 import com.example.modularization.core_feature.mvp.BaseFragment
+import com.example.modularization.domain.security.api.moduleApi.SecurityDomainApi
 import com.example.modularization.main_feature_api.MainRouter
 import com.example.modularization.root_feature_api.RootRouter
-import com.example.modularization.security_domain_api.moduleApi.SecurityDomainApi
 import javax.inject.Inject
 
 class CatalogueFragment @Inject constructor(

@@ -16,16 +16,10 @@ include ':modules:app:impl'
 include ':modules:app:api'
 
 // core:
-include ':modules:domain'
-include ':modules:domain:core'
-include ':modules:domain:core:impl'
-include ':modules:domain:core:api'
-
 include ':core-feature'
 project(':core-feature').projectDir = new File(rootDir, 'modules/core/core-feature')
 include ':core-feature-api'
 project(':core-feature-api').projectDir = new File(rootDir, 'modules/core/core-feature-api')
-
 
 
 // features:
@@ -55,17 +49,19 @@ project(':cart-feature').projectDir = new File(rootDir, 'modules/features/cart-f
 
 // domain:
 
+include ':modules:domain'
+
+include ':modules:domain:core'
+include ':modules:domain:core:impl'
+include ':modules:domain:core:api'
+
 include ':modules:domain:network'
 include ':modules:domain:network:api'
 include ':modules:domain:network:impl'
 
-include ':security-domain'
-project(':security-domain').projectDir = new File(rootDir, 'modules/domain/security-domain')
-include ':security-domain-api'
-project(':security-domain-api').projectDir = new File(rootDir, 'modules/domain/security-domain-api')
-include ':security-domain-read-api'
-project(':security-domain-read-api').projectDir = new File(rootDir, 'modules/domain/security-domain-read-api')
-
+include ':modules:domain:security'
+include ':modules:domain:security:api'
+include ':modules:domain:security:impl'
 
 include ':modules:domain:cart'
 include ':modules:domain:cart:api'
