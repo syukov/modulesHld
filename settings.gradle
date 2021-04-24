@@ -4,65 +4,61 @@ pluginManagement {
         id "com.android.application" version "$androidToolsBuildGradleVer"
         id "com.android.library" version "$androidToolsBuildGradleVer"
         id "kotlin-android" version "$kotlinVer"
-        id "kotlin-android-extensions" version "$kotlinVer"
+        id 'kotlin-parcelize' version "$kotlinVer" apply(false)
         id "kotlin-kapt" version "$kotlinVer"
     }
 }
 
+/**
+ * Добавляет в проект модуль лежащий по указанному пути + модули из всех поддиректорий первого уровня указанного пути.
+ * Используется для добавления api и impl моделей одной строкой.
+ */
+def includeModules(String dir) {
+    def dirFile = file(dir)
+    if (!dirFile.exists()) return
+    def modulePath = ":" + dir.replaceAll("/", ":")
+    include(modulePath)
+    dirFile.eachDir { subDir ->
+        include(modulePath + ":" + subDir.name)
+    }
+}
+
 include ':modules'
+includeModules("modules/app")
 
-include ':modules:app'
-include ':modules:app:impl'
-include ':modules:app:api'
+include ':modules:domain'
+includeModules("modules/domain/core")
+includeModules("modules/domain/network")
+includeModules("modules/domain/security")
+includeModules("modules/domain/cart")
 
-// core:
-include ':core-feature'
-project(':core-feature').projectDir = new File(rootDir, 'modules/core/core-feature')
-include ':core-feature-api'
-project(':core-feature-api').projectDir = new File(rootDir, 'modules/core/core-feature-api')
+// feature:
 
-
-// features:
+include ':modules:feature'
+includeModules("modules/feature/core")
 
 include ':root-feature'
-project(':root-feature').projectDir = new File(rootDir, 'modules/features/root-feature')
+project(':root-feature').projectDir = new File(rootDir, 'modules/feature/root-feature')
 include ':root-feature-api'
-project(':root-feature-api').projectDir = new File(rootDir, 'modules/features/root-feature-api')
+project(':root-feature-api').projectDir = new File(rootDir, 'modules/feature/root-feature-api')
 
 include ':employee-auth-feature'
-project(':employee-auth-feature').projectDir = new File(rootDir, 'modules/features/employee-auth-feature')
+project(':employee-auth-feature').projectDir = new File(rootDir, 'modules/feature/employee-auth-feature')
 
 include ':main-feature'
-project(':main-feature').projectDir = new File(rootDir, 'modules/features/main-feature')
+project(':main-feature').projectDir = new File(rootDir, 'modules/feature/main-feature')
 include ':main-feature-api'
-project(':main-feature-api').projectDir = new File(rootDir, 'modules/features/main-feature-api')
+project(':main-feature-api').projectDir = new File(rootDir, 'modules/feature/main-feature-api')
 
 include ':catalogue-feature'
-project(':catalogue-feature').projectDir = new File(rootDir, 'modules/features/catalogue-feature')
+project(':catalogue-feature').projectDir = new File(rootDir, 'modules/feature/catalogue-feature')
 
 include ':pdp-feature'
-project(':pdp-feature').projectDir = new File(rootDir, 'modules/features/pdp-feature')
+project(':pdp-feature').projectDir = new File(rootDir, 'modules/feature/pdp-feature')
 
 include ':cart-feature'
-project(':cart-feature').projectDir = new File(rootDir, 'modules/features/cart-feature')
+project(':cart-feature').projectDir = new File(rootDir, 'modules/feature/cart-feature')
 
 
 // domain:
 
-include ':modules:domain'
-
-include ':modules:domain:core'
-include ':modules:domain:core:impl'
-include ':modules:domain:core:api'
-
-include ':modules:domain:network'
-include ':modules:domain:network:api'
-include ':modules:domain:network:impl'
-
-include ':modules:domain:security'
-include ':modules:domain:security:api'
-include ':modules:domain:security:impl'
-
-include ':modules:domain:cart'
-include ':modules:domain:cart:api'
-include ':modules:domain:cart:impl'

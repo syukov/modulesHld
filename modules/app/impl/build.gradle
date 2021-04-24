@@ -1,7 +1,6 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'kotlin-android-extensions'
     id 'kotlin-kapt'
 }
 apply from: "$rootDir\\buildConstants.gradle"
@@ -17,7 +16,7 @@ dependencies {
     api project(':modules:app:api')
 
     // core module:
-    implementation project(':core-feature')
+    implementation project(':modules:feature:core:impl')
     implementation project(':modules:domain:core:impl')
 
     // app scope features:

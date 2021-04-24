@@ -7,7 +7,6 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:$androidToolsBuildGradleVer"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVer"
-        classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlinVer"
     }
 }
 
@@ -25,6 +24,8 @@ allprojects { project ->
 
 subprojects { pr ->
     afterEvaluate { project ->
+
+        project.apply plugin: 'kotlin-parcelize'
 
         // set build properties of each "android.application" or "android.library" module
         if (project.hasProperty('android')) {
@@ -115,13 +116,6 @@ subprojects { pr ->
 
                 // cicerone
                 implementation deps.terrakok.cicerone
-            }
-        }
-
-        // set build properties of each "kotlin-android-extensions" module
-        if (project.hasProperty('androidExtensions')) {
-            androidExtensions {
-                experimental = true
             }
         }
     }

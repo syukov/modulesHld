@@ -1,0 +1,14 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+
+    id 'kotlin-kapt'
+}
+
+android {
+}
+
+dependencies {
+    api project(':modules:feature:core:api')
+    implementation project(':modules:domain:core:api')
+}
