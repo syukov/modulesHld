@@ -16,6 +16,6 @@ dependencies {
     implementation project(':modules:app:api')
     implementation project(':modules:domain:core:api')
     implementation project(':modules:domain:cart:api')
-    implementation project(':root-feature-api')
+    implementation project(':modules:feature:root:api')
     implementation project(':modules:feature:main:api')
 }

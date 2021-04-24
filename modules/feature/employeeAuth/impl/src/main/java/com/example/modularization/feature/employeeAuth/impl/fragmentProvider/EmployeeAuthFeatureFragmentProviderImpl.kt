@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import com.example.modularization.app.api.diDoc.Doc
 import com.example.modularization.feature.employeeAuth.impl.screens.deugTools.DebugToolsFragment
 import com.example.modularization.feature.employeeAuth.impl.screens.login.LoginFragment
-import com.example.modularization.root_feature_api.RootRouter
+import com.example.modularization.feature.root.api.RootRouter
 import javax.inject.Inject
 import javax.inject.Provider
 

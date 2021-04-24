@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import com.example.modularization.domain.security.api.moduleApi.SecurityDomainApi
 import com.example.modularization.feature.core.impl.mvp.BaseFragment
 import com.example.modularization.feature.employeeAuth.impl.databinding.FragmentLoginBinding
-import com.example.modularization.root_feature_api.RootRouter
+import com.example.modularization.feature.root.api.RootRouter
 import javax.inject.Inject
 
 class LoginFragment @Inject constructor(

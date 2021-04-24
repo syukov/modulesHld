@@ -25,5 +25,5 @@ dependencies {
     implementation project(':modules:domain:cart:impl')
 
     // nested features:
-    implementation project(':root-feature')
+    implementation project(':modules:feature:root:impl')
 }

@@ -10,8 +10,8 @@ import com.example.modularization.domain.network.impl.di.DaggerNetworkDomainDi_D
 import com.example.modularization.domain.network.impl.di.NetworkDomainDi
 import com.example.modularization.domain.security.impl.di.DaggerSecurityDomainDi_DiComponent
 import com.example.modularization.domain.security.impl.di.SecurityDomainDi
-import com.example.modularization.root_feature.di.DaggerRootFeatureDi_DiComponent
-import com.example.modularization.root_feature.di.RootFeatureDi
+import com.example.modularization.feature.root.impl.di.DaggerRootFeatureDi_DiComponent
+import com.example.modularization.feature.root.impl.di.RootFeatureDi
 import dagger.Module
 import dagger.Provides
 

@@ -36,13 +36,9 @@ includeModules("modules/domain/cart")
 
 include ':modules:feature'
 includeModules("modules/feature/core")
+includeModules("modules/feature/root")
+includeModules("modules/feature/employeeAuth")
+includeModules("modules/feature/main")
 includeModules("modules/feature/cart")
 includeModules("modules/feature/catalogue")
-includeModules("modules/feature/employeeAuth")
 includeModules("modules/feature/pdp")
-includeModules("modules/feature/main")
-
-include ':root-feature'
-project(':root-feature').projectDir = new File(rootDir, 'modules/feature/root-feature')
-include ':root-feature-api'
-project(':root-feature-api').projectDir = new File(rootDir, 'modules/feature/root-feature-api')

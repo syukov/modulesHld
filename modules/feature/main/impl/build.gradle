@@ -15,7 +15,7 @@ dependencies {
     // other modules api:
     implementation project(':modules:app:api')
     implementation project(':modules:feature:core:impl')
-    implementation project(':root-feature-api')
+    implementation project(':modules:feature:root:api')
 
     // nested features:
     implementation project(':modules:feature:catalogue:impl')

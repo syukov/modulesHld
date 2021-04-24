@@ -9,7 +9,7 @@ import com.example.modularization.feature.core.impl.di.PerFeatureScope
 import com.example.modularization.feature.main.api.MainRouter
 import com.example.modularization.feature.pdp.impl.di.DaggerPdpFeatureDi_DiComponent
 import com.example.modularization.feature.pdp.impl.di.PdpFeatureDi
-import com.example.modularization.root_feature_api.RootRouter
+import com.example.modularization.feature.root.api.RootRouter
 import dagger.Module
 import dagger.Provides
 

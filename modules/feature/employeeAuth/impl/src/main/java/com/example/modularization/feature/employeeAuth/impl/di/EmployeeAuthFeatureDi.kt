@@ -5,7 +5,7 @@ import com.example.modularization.domain.security.api.moduleApi.SecurityDomainAp
 import com.example.modularization.feature.core.impl.di.PerFeatureScope
 import com.example.modularization.feature.employeeAuth.impl.fragmentProvider.EmployeeAuthFeatureFragmentProvider
 import com.example.modularization.feature.employeeAuth.impl.fragmentProvider.EmployeeAuthFeatureFragmentProviderDiModule
-import com.example.modularization.root_feature_api.RootRouter
+import com.example.modularization.feature.root.api.RootRouter
 import dagger.Component
 
 

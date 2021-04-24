@@ -3,7 +3,7 @@ package com.example.modularization.feature.main.impl.fragmentProvider
 import androidx.fragment.app.Fragment
 import com.example.modularization.app.api.diDoc.Doc
 import com.example.modularization.feature.main.impl.screens.main.MainFragment
-import com.example.modularization.root_feature_api.RootRouter
+import com.example.modularization.feature.root.api.RootRouter
 import javax.inject.Inject
 import javax.inject.Provider
 

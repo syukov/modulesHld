@@ -8,7 +8,7 @@ import com.example.modularization.domain.security.api.moduleApi.SecurityDomainAp
 import com.example.modularization.feature.catalogue.impl.databinding.FragmentCatalogueBinding
 import com.example.modularization.feature.core.impl.mvp.BaseFragment
 import com.example.modularization.feature.main.api.MainRouter
-import com.example.modularization.root_feature_api.RootRouter
+import com.example.modularization.feature.root.api.RootRouter
 import javax.inject.Inject
 
 class CatalogueFragment @Inject constructor(
