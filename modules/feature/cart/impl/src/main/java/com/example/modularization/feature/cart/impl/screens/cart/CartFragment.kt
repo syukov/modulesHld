@@ -8,7 +8,7 @@ import androidx.core.view.isVisible
 import com.example.modularization.domain.cart.api.moduleApi.CartDomainApi
 import com.example.modularization.feature.cart.impl.databinding.FragmentCartBinding
 import com.example.modularization.feature.core.impl.mvp.BaseFragment
-import com.example.modularization.main_feature_api.MainRouter
+import com.example.modularization.feature.main.api.MainRouter
 import javax.inject.Inject
 
 class CartFragment @Inject constructor(

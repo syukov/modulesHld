@@ -2,8 +2,8 @@ package com.example.modularization.feature.pdp.impl.fragmentProvider
 
 import androidx.fragment.app.Fragment
 import com.example.modularization.app.api.diDoc.Doc
+import com.example.modularization.feature.main.api.MainRouter
 import com.example.modularization.feature.pdp.impl.screens.pdp.PdpFragment
-import com.example.modularization.main_feature_api.MainRouter
 import javax.inject.Inject
 import javax.inject.Provider
 

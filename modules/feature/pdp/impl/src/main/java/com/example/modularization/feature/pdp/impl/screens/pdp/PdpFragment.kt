@@ -10,8 +10,8 @@ import com.example.modularization.app.api.moduleApi.AppDomainApi
 import com.example.modularization.domain.cart.api.moduleApi.CartDomainApi
 import com.example.modularization.feature.core.api.navigation.BaseArgument
 import com.example.modularization.feature.core.impl.mvp.BaseFragment
+import com.example.modularization.feature.main.api.MainRouter
 import com.example.modularization.feature.pdp.impl.databinding.FragmentPdpBinding
-import com.example.modularization.main_feature_api.MainRouter
 import java.util.*
 import javax.inject.Inject
 

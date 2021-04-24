@@ -3,8 +3,8 @@ package com.example.modularization.root_feature.di
 import com.example.modularization.app.api.diDoc.Doc
 import com.example.modularization.feature.employeeAuth.impl.di.DaggerEmployeeAuthFeatureDi_DiComponent
 import com.example.modularization.feature.employeeAuth.impl.di.EmployeeAuthFeatureDi
-import com.example.modularization.main_feature.di.DaggerMainFeatureDi_DiComponent
-import com.example.modularization.main_feature.di.MainFeatureDi
+import com.example.modularization.feature.main.impl.di.DaggerMainFeatureDi_DiComponent
+import com.example.modularization.feature.main.impl.di.MainFeatureDi
 import com.example.modularization.root_feature_api.RootRouter
 import dagger.Module
 import dagger.Provides

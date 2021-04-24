@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import com.example.modularization.app.api.aliases.Sku
 import com.example.modularization.feature.catalogue.impl.databinding.FragmentSubCatalogueBinding
 import com.example.modularization.feature.core.impl.mvp.BaseFragment
-import com.example.modularization.main_feature_api.MainRouter
+import com.example.modularization.feature.main.api.MainRouter
 import java.util.*
 import javax.inject.Inject
 

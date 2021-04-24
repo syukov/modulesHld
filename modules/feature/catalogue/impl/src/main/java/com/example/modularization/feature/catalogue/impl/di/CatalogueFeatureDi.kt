@@ -5,7 +5,7 @@ import com.example.modularization.app.api.moduleApi.AppDomainApi
 import com.example.modularization.feature.catalogue.impl.fragmentProvider.CatalogueFeatureFragmentProvider
 import com.example.modularization.feature.catalogue.impl.fragmentProvider.CatalogueFeatureFragmentProviderDiModule
 import com.example.modularization.feature.core.impl.di.PerFeatureScope
-import com.example.modularization.main_feature_api.MainRouter
+import com.example.modularization.feature.main.api.MainRouter
 import com.example.modularization.root_feature_api.RootRouter
 import dagger.Component
 

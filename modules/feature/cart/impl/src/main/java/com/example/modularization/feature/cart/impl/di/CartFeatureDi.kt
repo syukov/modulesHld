@@ -6,7 +6,7 @@ import com.example.modularization.domain.cart.api.moduleApi.CartDomainApi
 import com.example.modularization.feature.cart.impl.fragmentProvider.CartFeatureFragmentProvider
 import com.example.modularization.feature.cart.impl.fragmentProvider.CartFeatureFragmentProviderDiModule
 import com.example.modularization.feature.core.impl.di.PerFeatureScope
-import com.example.modularization.main_feature_api.MainRouter
+import com.example.modularization.feature.main.api.MainRouter
 import com.example.modularization.root_feature_api.RootRouter
 import dagger.Component
 
