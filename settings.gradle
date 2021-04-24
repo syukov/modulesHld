@@ -36,6 +36,8 @@ includeModules("modules/domain/cart")
 
 include ':modules:feature'
 includeModules("modules/feature/core")
+includeModules("modules/feature/cart")
+includeModules("modules/feature/catalogue")
 
 include ':root-feature'
 project(':root-feature').projectDir = new File(rootDir, 'modules/feature/root-feature')
@@ -50,15 +52,5 @@ project(':main-feature').projectDir = new File(rootDir, 'modules/feature/main-fe
 include ':main-feature-api'
 project(':main-feature-api').projectDir = new File(rootDir, 'modules/feature/main-feature-api')
 
-include ':catalogue-feature'
-project(':catalogue-feature').projectDir = new File(rootDir, 'modules/feature/catalogue-feature')
-
 include ':pdp-feature'
 project(':pdp-feature').projectDir = new File(rootDir, 'modules/feature/pdp-feature')
-
-include ':cart-feature'
-project(':cart-feature').projectDir = new File(rootDir, 'modules/feature/cart-feature')
-
-
-// domain:
-

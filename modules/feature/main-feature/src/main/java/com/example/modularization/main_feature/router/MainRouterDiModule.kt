@@ -1,10 +1,10 @@
 package com.example.modularization.main_feature.router
 
 import com.example.modularization.app.api.diDoc.Doc
-import com.example.modularization.cart_feature.screens.cart.CartFragment
-import com.example.modularization.catalogue_feature.screens.catalogue.CatalogueFragment
-import com.example.modularization.catalogue_feature.screens.subCatalogue.SubCatalogueFragment
 import com.example.modularization.core_feature.utils.checkWhenBranches
+import com.example.modularization.feature.cart.impl.screens.cart.CartFragment
+import com.example.modularization.feature.catalogue.impl.screens.catalogue.CatalogueFragment
+import com.example.modularization.feature.catalogue.impl.screens.subCatalogue.SubCatalogueFragment
 import com.example.modularization.feature.core.impl.di.PerFeatureScope
 import com.example.modularization.main_feature.router.tabSwitcher.TabContainerRouter
 import com.example.modularization.main_feature.router.tabSwitcher.TabSwitcherRouter

@@ -1,8 +1,8 @@
 package com.example.modularization.main_feature.router
 
 import androidx.fragment.app.Fragment
-import com.example.modularization.cart_feature.di.CartFeatureDi
-import com.example.modularization.catalogue_feature.di.CatalogueFeatureDi
+import com.example.modularization.feature.cart.impl.di.CartFeatureDi
+import com.example.modularization.feature.catalogue.impl.di.CatalogueFeatureDi
 import com.example.modularization.feature.core.api.navigation.CiceroneScreen
 import com.example.modularization.feature.core.impl.navigation.RouterFragmentCreator
 import com.example.modularization.main_feature_api.MainRouter

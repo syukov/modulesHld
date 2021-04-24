@@ -18,7 +18,7 @@ dependencies {
     implementation project(':root-feature-api')
 
     // nested features:
-    implementation project(':catalogue-feature')
+    implementation project(':modules:feature:catalogue:impl')
     implementation project(':pdp-feature')
-    implementation project(':cart-feature')
+    implementation project(':modules:feature:cart:impl')
 }

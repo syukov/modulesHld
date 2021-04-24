@@ -1,10 +1,10 @@
 package com.example.modularization.main_feature.di
 
 import com.example.modularization.app.api.diDoc.Doc
-import com.example.modularization.cart_feature.di.CartFeatureDi
-import com.example.modularization.cart_feature.di.DaggerCartFeatureDi_DiComponent
-import com.example.modularization.catalogue_feature.di.CatalogueFeatureDi
-import com.example.modularization.catalogue_feature.di.DaggerCatalogueFeatureDi_DiComponent
+import com.example.modularization.feature.cart.impl.di.CartFeatureDi
+import com.example.modularization.feature.cart.impl.di.DaggerCartFeatureDi_DiComponent
+import com.example.modularization.feature.catalogue.impl.di.CatalogueFeatureDi
+import com.example.modularization.feature.catalogue.impl.di.DaggerCatalogueFeatureDi_DiComponent
 import com.example.modularization.feature.core.impl.di.PerFeatureScope
 import com.example.modularization.main_feature_api.MainRouter
 import com.example.modularization.pdp_feature.di.DaggerPdpFeatureDi_DiComponent
