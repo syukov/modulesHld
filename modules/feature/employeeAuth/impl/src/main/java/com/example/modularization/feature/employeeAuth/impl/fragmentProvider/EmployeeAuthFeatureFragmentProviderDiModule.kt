@@ -1,4 +1,4 @@
-package com.example.modularization.employee_auth_feature.fragmentProvider
+package com.example.modularization.feature.employeeAuth.impl.fragmentProvider
 
 import com.example.modularization.app.api.diDoc.Doc
 import com.example.modularization.feature.core.impl.di.PerFeatureScope

@@ -1,9 +1,9 @@
 package com.example.modularization.root_feature.router
 
 import androidx.fragment.app.Fragment
-import com.example.modularization.employee_auth_feature.di.EmployeeAuthFeatureDi
 import com.example.modularization.feature.core.api.navigation.CiceroneScreen
 import com.example.modularization.feature.core.impl.navigation.RouterFragmentCreator
+import com.example.modularization.feature.employeeAuth.impl.di.EmployeeAuthFeatureDi
 import com.example.modularization.main_feature.di.MainFeatureDi
 import com.example.modularization.root_feature_api.RootRouter
 import javax.inject.Inject

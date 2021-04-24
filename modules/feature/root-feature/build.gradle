@@ -19,6 +19,6 @@ dependencies {
     implementation project(':modules:app:api')
 
     // nested features:
-    implementation project(':employee-auth-feature')
+    implementation project(':modules:feature:employeeAuth:impl')
     implementation project(':main-feature')
 }

@@ -1,10 +1,10 @@
-package com.example.modularization.employee_auth_feature.di
+package com.example.modularization.feature.employeeAuth.impl.di
 
 import com.example.modularization.app.api.diDoc.Doc
 import com.example.modularization.domain.security.api.moduleApi.SecurityDomainApi
-import com.example.modularization.employee_auth_feature.fragmentProvider.EmployeeAuthFeatureFragmentProvider
-import com.example.modularization.employee_auth_feature.fragmentProvider.EmployeeAuthFeatureFragmentProviderDiModule
 import com.example.modularization.feature.core.impl.di.PerFeatureScope
+import com.example.modularization.feature.employeeAuth.impl.fragmentProvider.EmployeeAuthFeatureFragmentProvider
+import com.example.modularization.feature.employeeAuth.impl.fragmentProvider.EmployeeAuthFeatureFragmentProviderDiModule
 import com.example.modularization.root_feature_api.RootRouter
 import dagger.Component
 

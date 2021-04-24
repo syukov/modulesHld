@@ -1,9 +1,9 @@
-package com.example.modularization.employee_auth_feature.fragmentProvider
+package com.example.modularization.feature.employeeAuth.impl.fragmentProvider
 
 import androidx.fragment.app.Fragment
 import com.example.modularization.app.api.diDoc.Doc
-import com.example.modularization.employee_auth_feature.screens.deugTools.DebugToolsFragment
-import com.example.modularization.employee_auth_feature.screens.login.LoginFragment
+import com.example.modularization.feature.employeeAuth.impl.screens.deugTools.DebugToolsFragment
+import com.example.modularization.feature.employeeAuth.impl.screens.login.LoginFragment
 import com.example.modularization.root_feature_api.RootRouter
 import javax.inject.Inject
 import javax.inject.Provider

@@ -1,12 +1,12 @@
-package com.example.modularization.employee_auth_feature.screens.deugTools
+package com.example.modularization.feature.employeeAuth.impl.screens.deugTools
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.modularization.domain.security.api.moduleApi.SecurityDomainApi
-import com.example.modularization.employee_auth_feature.databinding.FragmentDebugToolsBinding
 import com.example.modularization.feature.core.impl.mvp.BaseFragment
+import com.example.modularization.feature.employeeAuth.impl.databinding.FragmentDebugToolsBinding
 import com.example.modularization.root_feature_api.RootRouter
 import javax.inject.Inject
 

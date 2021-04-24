@@ -38,14 +38,12 @@ include ':modules:feature'
 includeModules("modules/feature/core")
 includeModules("modules/feature/cart")
 includeModules("modules/feature/catalogue")
+includeModules("modules/feature/employeeAuth")
 
 include ':root-feature'
 project(':root-feature').projectDir = new File(rootDir, 'modules/feature/root-feature')
 include ':root-feature-api'
 project(':root-feature-api').projectDir = new File(rootDir, 'modules/feature/root-feature-api')
-
-include ':employee-auth-feature'
-project(':employee-auth-feature').projectDir = new File(rootDir, 'modules/feature/employee-auth-feature')
 
 include ':main-feature'
 project(':main-feature').projectDir = new File(rootDir, 'modules/feature/main-feature')
