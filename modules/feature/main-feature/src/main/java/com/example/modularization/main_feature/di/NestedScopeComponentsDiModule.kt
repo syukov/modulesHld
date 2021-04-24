@@ -6,9 +6,9 @@ import com.example.modularization.feature.cart.impl.di.DaggerCartFeatureDi_DiCom
 import com.example.modularization.feature.catalogue.impl.di.CatalogueFeatureDi
 import com.example.modularization.feature.catalogue.impl.di.DaggerCatalogueFeatureDi_DiComponent
 import com.example.modularization.feature.core.impl.di.PerFeatureScope
+import com.example.modularization.feature.pdp.impl.di.DaggerPdpFeatureDi_DiComponent
+import com.example.modularization.feature.pdp.impl.di.PdpFeatureDi
 import com.example.modularization.main_feature_api.MainRouter
-import com.example.modularization.pdp_feature.di.DaggerPdpFeatureDi_DiComponent
-import com.example.modularization.pdp_feature.di.PdpFeatureDi
 import com.example.modularization.root_feature_api.RootRouter
 import dagger.Module
 import dagger.Provides

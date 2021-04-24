@@ -39,6 +39,7 @@ includeModules("modules/feature/core")
 includeModules("modules/feature/cart")
 includeModules("modules/feature/catalogue")
 includeModules("modules/feature/employeeAuth")
+includeModules("modules/feature/pdp")
 
 include ':root-feature'
 project(':root-feature').projectDir = new File(rootDir, 'modules/feature/root-feature')
@@ -49,6 +50,3 @@ include ':main-feature'
 project(':main-feature').projectDir = new File(rootDir, 'modules/feature/main-feature')
 include ':main-feature-api'
 project(':main-feature-api').projectDir = new File(rootDir, 'modules/feature/main-feature-api')
-
-include ':pdp-feature'
-project(':pdp-feature').projectDir = new File(rootDir, 'modules/feature/pdp-feature')

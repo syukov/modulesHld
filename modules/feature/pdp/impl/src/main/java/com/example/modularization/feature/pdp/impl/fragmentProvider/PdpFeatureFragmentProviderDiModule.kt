@@ -1,4 +1,4 @@
-package com.example.modularization.pdp_feature.fragmentProvider
+package com.example.modularization.feature.pdp.impl.fragmentProvider
 
 import com.example.modularization.app.api.diDoc.Doc
 import com.example.modularization.feature.core.impl.di.PerFeatureScope

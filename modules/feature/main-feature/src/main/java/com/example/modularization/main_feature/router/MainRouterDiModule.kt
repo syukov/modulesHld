@@ -6,12 +6,12 @@ import com.example.modularization.feature.cart.impl.screens.cart.CartFragment
 import com.example.modularization.feature.catalogue.impl.screens.catalogue.CatalogueFragment
 import com.example.modularization.feature.catalogue.impl.screens.subCatalogue.SubCatalogueFragment
 import com.example.modularization.feature.core.impl.di.PerFeatureScope
+import com.example.modularization.feature.pdp.impl.screens.pdp.PdpFragment
 import com.example.modularization.main_feature.router.tabSwitcher.TabContainerRouter
 import com.example.modularization.main_feature.router.tabSwitcher.TabSwitcherRouter
 import com.example.modularization.main_feature.router.tabSwitcher.TabSwitcherRouterDiModule
 import com.example.modularization.main_feature_api.MainRouter
 import com.example.modularization.main_feature_api.TabNames
-import com.example.modularization.pdp_feature.screens.pdp.PdpFragment
 import dagger.Module
 import dagger.Provides
 import javax.inject.Named

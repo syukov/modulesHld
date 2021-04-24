@@ -5,8 +5,8 @@ import com.example.modularization.feature.cart.impl.di.CartFeatureDi
 import com.example.modularization.feature.catalogue.impl.di.CatalogueFeatureDi
 import com.example.modularization.feature.core.api.navigation.CiceroneScreen
 import com.example.modularization.feature.core.impl.navigation.RouterFragmentCreator
+import com.example.modularization.feature.pdp.impl.di.PdpFeatureDi
 import com.example.modularization.main_feature_api.MainRouter
-import com.example.modularization.pdp_feature.di.PdpFeatureDi
 import javax.inject.Inject
 import javax.inject.Provider
 

@@ -1,11 +1,11 @@
-package com.example.modularization.pdp_feature.di
+package com.example.modularization.feature.pdp.impl.di
 
 import com.example.modularization.app.api.diDoc.Doc
 import com.example.modularization.app.api.moduleApi.AppDomainApi
 import com.example.modularization.feature.core.impl.di.PerFeatureScope
+import com.example.modularization.feature.pdp.impl.fragmentProvider.PdpFeatureFragmentProvider
+import com.example.modularization.feature.pdp.impl.fragmentProvider.PdpFeatureFragmentProviderDiModule
 import com.example.modularization.main_feature_api.MainRouter
-import com.example.modularization.pdp_feature.fragmentProvider.PdpFeatureFragmentProvider
-import com.example.modularization.pdp_feature.fragmentProvider.PdpFeatureFragmentProviderDiModule
 import com.example.modularization.root_feature_api.RootRouter
 import dagger.Component
 

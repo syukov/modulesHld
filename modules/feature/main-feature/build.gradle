@@ -19,6 +19,6 @@ dependencies {
 
     // nested features:
     implementation project(':modules:feature:catalogue:impl')
-    implementation project(':pdp-feature')
+    implementation project(':modules:feature:pdp:impl')
     implementation project(':modules:feature:cart:impl')
 }

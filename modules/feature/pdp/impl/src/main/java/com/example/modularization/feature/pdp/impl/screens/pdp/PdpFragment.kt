@@ -1,4 +1,4 @@
-package com.example.modularization.pdp_feature.screens.pdp
+package com.example.modularization.feature.pdp.impl.screens.pdp
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,8 +10,8 @@ import com.example.modularization.app.api.moduleApi.AppDomainApi
 import com.example.modularization.domain.cart.api.moduleApi.CartDomainApi
 import com.example.modularization.feature.core.api.navigation.BaseArgument
 import com.example.modularization.feature.core.impl.mvp.BaseFragment
+import com.example.modularization.feature.pdp.impl.databinding.FragmentPdpBinding
 import com.example.modularization.main_feature_api.MainRouter
-import com.example.modularization.pdp_feature.databinding.FragmentPdpBinding
 import java.util.*
 import javax.inject.Inject
 

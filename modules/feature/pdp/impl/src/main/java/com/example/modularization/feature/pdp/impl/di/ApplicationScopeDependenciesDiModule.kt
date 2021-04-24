@@ -1,4 +1,4 @@
-package com.example.modularization.pdp_feature.di
+package com.example.modularization.feature.pdp.impl.di
 
 import com.example.modularization.app.api.applicationScope.ApplicationScopeApiHolder
 import com.example.modularization.app.api.diDoc.Doc
