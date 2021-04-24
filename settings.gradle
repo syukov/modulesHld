@@ -10,35 +10,34 @@ pluginManagement {
 }
 
 /**
- * Добавляет в проект модуль лежащий по указанному пути + модули из всех поддиректорий первого уровня указанного пути.
- * Используется для добавления api и impl моделей одной строкой.
+ * Добавляем в проект указанный модуль и его api и impl модули сабмодули, при их наличии.
  */
-def includeModules(String dir) {
+def includeModules(String modulePath) {
+    def dir = modulePath.replaceAll(":", "/").substring(1)
     def dirFile = file(dir)
-    if (!dirFile.exists()) return
-    def modulePath = ":" + dir.replaceAll("/", ":")
     include(modulePath)
     dirFile.eachDir { subDir ->
-        include(modulePath + ":" + subDir.name)
+        def subDirName = subDir.name
+        if (subDirName == "api" || subDirName == "impl") include(modulePath + ":" + subDir.name)
     }
 }
 
 include ':modules'
-includeModules("modules/app")
+includeModules(":modules:app")
+
 
 include ':modules:domain'
-includeModules("modules/domain/core")
-includeModules("modules/domain/network")
-includeModules("modules/domain/security")
-includeModules("modules/domain/cart")
+includeModules(":modules:domain:core")
+includeModules(":modules:domain:network")
+includeModules(":modules:domain:security")
+includeModules(":modules:domain:cart")
 
-// feature:
 
 include ':modules:feature'
-includeModules("modules/feature/core")
-includeModules("modules/feature/root")
-includeModules("modules/feature/employeeAuth")
-includeModules("modules/feature/main")
-includeModules("modules/feature/cart")
-includeModules("modules/feature/catalogue")
-includeModules("modules/feature/pdp")
+includeModules(":modules:feature:core")
+includeModules(":modules:feature:root")
+includeModules(":modules:feature:employeeAuth")
+includeModules(":modules:feature:main")
+includeModules(":modules:feature:cart")
+includeModules(":modules:feature:catalogue")
+includeModules(":modules:feature:pdp")
