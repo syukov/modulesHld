@@ -1,5 +1,4 @@
 pluginManagement {
-    // see plugins version declaration in gradle.properties
     plugins {
         id "com.android.application" version "$androidToolsBuildGradleVer"
         id "com.android.library" version "$androidToolsBuildGradleVer"

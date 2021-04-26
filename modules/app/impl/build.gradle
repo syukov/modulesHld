@@ -1,8 +1,11 @@
 plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
-    id 'kotlin-kapt'
+//    id 'my-gradle-plugin'
+    id 'android-application-gradle-plugin'
+//    id 'com.android.application'
+//    id 'kotlin-android'
+//    id 'kotlin-kapt'
 }
+
 apply from: "$rootDir\\buildConstants.gradle"
 
 android {

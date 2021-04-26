@@ -10,10 +10,7 @@ buildscript {
     }
 }
 
-project.setGroup("noGroup")
-
 apply from: "$rootDir\\buildConstants.gradle"
-
 
 allprojects { project ->
     repositories {
@@ -22,7 +19,7 @@ allprojects { project ->
     }
 }
 
-subprojects { pr ->
+subprojects {
     afterEvaluate { project ->
 
         project.apply plugin: 'kotlin-parcelize'
@@ -120,6 +117,7 @@ subprojects { pr ->
         }
     }
 }
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
