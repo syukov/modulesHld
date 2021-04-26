@@ -22,60 +22,9 @@ allprojects { project ->
 subprojects {
     afterEvaluate { project ->
 
-        project.apply plugin: 'kotlin-parcelize'
 
         // set build properties of each "android.application" or "android.library" module
         if (project.hasProperty('android')) {
-            android {
-                compileSdkVersion androidProjectProperties.compileSdk
-                buildToolsVersion androidProjectProperties.buildTools
-
-                defaultConfig {
-                    minSdkVersion androidProjectProperties.minSdk
-                    targetSdkVersion androidProjectProperties.targetSdk
-                    versionCode androidProjectProperties.versionCode
-                    versionName androidProjectProperties.versionName
-                    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-                    vectorDrawables.useSupportLibrary = true
-                }
-
-                compileOptions {
-                    // Flag to enable support for the new language APIs
-                    coreLibraryDesugaringEnabled true
-                    // Sets Java compatibility to Java 8
-                    sourceCompatibility JavaVersion.VERSION_1_8
-                    targetCompatibility JavaVersion.VERSION_1_8
-
-                }
-                kotlinOptions {
-                    jvmTarget = JavaVersion.VERSION_1_8.toString()
-                    // т.к. модули имеют одинаковые названия "api" и "impl", то говорим компилятору генерировать для
-                    // каждого модуля META-INF на основе группы+названия проекта, т.е. вместо "impl.kotlin_module" будет "modules.app.impl.kotlin_module"
-                    freeCompilerArgs += ['-module-name', "$project.group.$project.name"]
-                    freeCompilerArgs += ["-Xinline-classes"]
-                }
-                buildTypes {
-                    production {
-                        minifyEnabled false
-                    }
-                    release {
-                        minifyEnabled false
-                        proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-                    }
-                }
-                buildFeatures {
-                    viewBinding true
-                }
-//                lintOptions {
-//                    checkAllWarnings true
-//                    warningsAsErrors true
-//                    abortOnError true
-//                }
-
-//                tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
-//                    kotlinOptions.allWarningsAsErrors = true
-//                }
-            }
 
             //set common dependencies
             dependencies {
