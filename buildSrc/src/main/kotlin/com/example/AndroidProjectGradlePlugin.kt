@@ -1,10 +1,11 @@
 package com.example
 
 import com.android.build.gradle.BaseExtension
-import com.android.build.gradle.internal.dsl.VectorDrawablesOptions
 import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.kotlin.dsl.configure
+import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 open class AndroidProjectGradlePlugin : Plugin<Project> {
@@ -23,37 +24,40 @@ open class AndroidProjectGradlePlugin : Plugin<Project> {
     //    @SuppressWarnings("UnstableApiUsage")
     @Suppress("UnstableApiUsage")
     open fun configurePlugins(project: Project) {
-        // аналог блока android {} в градл скрипте
-        project.extensions.getByType(BaseExtension::class.java).apply {
+
+        // Конфигурация Android gradle plugin. Аналог блока android {} в groovy скрипте
+        project.extensions.configure<BaseExtension> {
             compileSdkVersion(Const.AndroidProject.compileSdkVersion)
             buildToolsVersion(Const.AndroidProject.buildToolsVersion)
-            defaultConfig.apply {
+            defaultConfig {
                 minSdkVersion(Const.AndroidProject.minSdkVersion)
                 targetSdkVersion(Const.AndroidProject.targetSdkVersion)
                 versionCode(Const.AndroidProject.versionCode)
                 versionName(Const.AndroidProject.versionName)
                 testInstrumentationRunner(Const.AndroidProject.testInstrumentationRunner)
-                vectorDrawables.also { vectorDrawables: VectorDrawablesOptions ->
-                    vectorDrawables.useSupportLibrary = true
-                }
+                vectorDrawables.useSupportLibrary = true
             }
-            compileOptions.apply {
+
+            compileOptions {
                 isCoreLibraryDesugaringEnabled = true
                 setSourceCompatibility(JavaVersion.VERSION_1_8)
                 setTargetCompatibility(JavaVersion.VERSION_1_8)
             }
+
             buildFeatures.viewBinding = true
 
-            project.tasks.withType(KotlinCompile::class.java).forEach { kotlinCompile ->
-                kotlinCompile.kotlinOptions {
+            project.tasks.withType<KotlinCompile>().configureEach {
+                kotlinOptions {
                     languageVersion = "1.4"
-                    jvmTarget = JavaVersion.VERSION_1_8.toString()
+                    jvmTarget = "1.8"
 
 //                allWarningsAsErrors = true
 
                     freeCompilerArgs = freeCompilerArgs + listOf(
-                        // т.к. модули имеют одинаковые названия "api" и "impl", то говорим компилятору генерировать для
-                        // каждого модуля META-INF на основе группы+названия проекта, т.е. вместо "impl.kotlin_module" будет "modules.app.impl.kotlin_module"
+                        // Т.к. модули имеют одинаковые названия ("api" и "impl"), то говорим компилятору генерировать
+                        // для каждого модуля META-INF на основе группы+названия проекта,
+                        // т.е. вместо "impl.kotlin_module" будет "modules.app.impl.kotlin_module".
+                        // Поскольку мы делаем это в каждой таске модуля, то будем получать такой варнинг "Argument -module-name is passed multiple times. Only the last value will be used"
                         "-module-name", "${project.group}.${project.name}",
 
                         // поддержка inline классов
