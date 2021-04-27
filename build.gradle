@@ -19,54 +19,6 @@ allprojects { project ->
     }
 }
 
-subprojects {
-    afterEvaluate { project ->
-
-
-        // set build properties of each "android.application" or "android.library" module
-        if (project.hasProperty('android')) {
-
-            //set common dependencies
-            dependencies {
-                //desugaring
-                coreLibraryDesugaring deps.android.desugaring
-
-                // kotlin
-                implementation deps.jetbrains.kotlinStdlibJdk7
-                implementation deps.jetbrains.kotlinReflect
-
-                // androidx
-                implementation deps.androidx.legacySupport
-                implementation deps.androidx.appcompat
-                implementation deps.androidx.recyclerview
-                implementation deps.androidx.cardview
-                implementation deps.androidx.constraintlayout
-                implementation deps.androidx.material
-                implementation deps.androidx.viewpager2
-                implementation deps.androidx.coreKtx
-
-                // unit tests
-                testImplementation deps.junit.junit
-                testImplementation deps.mockk.mockk
-
-                // android tests
-                androidTestImplementation deps.junit.junit
-                androidTestImplementation deps.mockk.mockk
-                androidTestImplementation deps.androidx.testRunner
-                androidTestImplementation deps.androidx.testRules
-
-                // dagger
-                compileOnly deps.glassfish.javaxAnnotation
-                kapt deps.dagger.daggerCompiler
-                implementation deps.dagger.dagger
-
-                // cicerone
-                implementation deps.terrakok.cicerone
-            }
-        }
-    }
-}
-
 task clean(type: Delete) {
     delete rootProject.buildDir
 }

@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 /**
  * Каждая версия Gradle уже включает в себя определенную embedded версию котлина.
  * Если мы используем kotlin-dsl для написания плагинов, то эта embedded версия автоматически добавляется в classpath плагина.
@@ -21,6 +23,7 @@ buildscript {
     dependencies {
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$embeddedKotlinVersion")
         classpath("com.android.tools.build:gradle:$androidGradlePluginVersion")
+        classpath("com.android.tools.build:gradle:$androidGradlePluginVersion")
     }
 }
 
@@ -38,7 +41,6 @@ repositories {
 
 dependencies {
     val gradleVersion = "4.1.1"
-    val kotlinVersion = "1.4.21"
 
     // доступ к kotlinOptions внутри плагина
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$embeddedKotlinVersion")
@@ -57,4 +59,9 @@ gradlePlugin {
             implementationClass = "com.example.AndroidLibraryGradlePlugin"
         }
     }
+}
+
+val compileKotlin: KotlinCompile by tasks
+compileKotlin.kotlinOptions {
+    languageVersion = "1.4"
 }

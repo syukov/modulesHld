@@ -1,10 +1,15 @@
 package com.example
 
 import com.android.build.gradle.BaseExtension
+import com.example.settings.AndroidPluginSettings
+import com.example.settings.DependenciesSettings
+import com.example.settings.DependencyHandlerScopeExt
 import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
+import org.gradle.kotlin.dsl.dependencies
+import org.gradle.kotlin.dsl.embeddedKotlinVersion
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
@@ -27,14 +32,14 @@ open class AndroidProjectGradlePlugin : Plugin<Project> {
 
         // Конфигурация Android gradle plugin. Аналог блока android {} в groovy скрипте
         project.extensions.configure<BaseExtension> {
-            compileSdkVersion(Const.AndroidProject.compileSdkVersion)
-            buildToolsVersion(Const.AndroidProject.buildToolsVersion)
+            compileSdkVersion(AndroidPluginSettings.compileSdkVersion)
+            buildToolsVersion(AndroidPluginSettings.buildToolsVersion)
             defaultConfig {
-                minSdkVersion(Const.AndroidProject.minSdkVersion)
-                targetSdkVersion(Const.AndroidProject.targetSdkVersion)
-                versionCode(Const.AndroidProject.versionCode)
-                versionName(Const.AndroidProject.versionName)
-                testInstrumentationRunner(Const.AndroidProject.testInstrumentationRunner)
+                minSdkVersion(AndroidPluginSettings.minSdkVersion)
+                targetSdkVersion(AndroidPluginSettings.targetSdkVersion)
+                versionCode(AndroidPluginSettings.versionCode)
+                versionName(AndroidPluginSettings.versionName)
+                testInstrumentationRunner(AndroidPluginSettings.testInstrumentationRunner)
                 vectorDrawables.useSupportLibrary = true
             }
 
@@ -59,7 +64,6 @@ open class AndroidProjectGradlePlugin : Plugin<Project> {
                         // т.е. вместо "impl.kotlin_module" будет "modules.app.impl.kotlin_module".
                         // Поскольку мы делаем это в каждой таске модуля, то будем получать такой варнинг "Argument -module-name is passed multiple times. Only the last value will be used"
                         "-module-name", "${project.group}.${project.name}",
-
                         // поддержка inline классов
                         "-Xinline-classes"
                     )
@@ -68,5 +72,42 @@ open class AndroidProjectGradlePlugin : Plugin<Project> {
         }
     }
 
-    open fun applyDependencies(project: Project) {}
+    open fun applyDependencies(project: Project) {
+        project.dependencies {
+            // desugaring
+            DependencyHandlerScopeExt(this).coreLibraryDesugaring(DependenciesSettings.Android.desugaring)
+
+            // kotlin
+            DependencyHandlerScopeExt(this).implementation(
+                DependenciesSettings.Jetbrains.kotlinStdlibJdk7(embeddedKotlinVersion),
+                DependenciesSettings.Jetbrains.kotlinReflect(embeddedKotlinVersion)
+            )
+
+            // androidx
+            DependencyHandlerScopeExt(this).implementation(
+                DependenciesSettings.Androidx.legacySupport,
+                DependenciesSettings.Androidx.appcompat,
+                DependenciesSettings.Androidx.recyclerview,
+                DependenciesSettings.Androidx.cardview,
+                DependenciesSettings.Androidx.constraintlayout,
+                DependenciesSettings.Androidx.material,
+                DependenciesSettings.Androidx.viewpager2,
+                DependenciesSettings.Androidx.coreKtx
+            )
+
+            // unit tests
+            DependencyHandlerScopeExt(this).testImplementation(
+                DependenciesSettings.Junit.junit,
+                DependenciesSettings.Mockk.mockk
+            )
+
+            // dagger
+            DependencyHandlerScopeExt(this).compileOnly(DependenciesSettings.Glassfish.javaxAnnotation)
+            DependencyHandlerScopeExt(this).kapt(DependenciesSettings.Dagger.daggerCompiler)
+            DependencyHandlerScopeExt(this).implementation(DependenciesSettings.Dagger.dagger)
+
+            // cicerone
+            DependencyHandlerScopeExt(this).implementation(DependenciesSettings.Terrakok.cicerone)
+        }
+    }
 }

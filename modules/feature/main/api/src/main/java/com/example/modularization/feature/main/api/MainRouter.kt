@@ -4,7 +4,7 @@ import com.example.modularization.app.api.aliases.Sku
 import com.example.modularization.app.api.diDoc.Doc
 import com.example.modularization.feature.core.api.navigation.BaseArgument
 import com.example.modularization.feature.core.api.navigation.CiceroneScreen
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 
 @Doc.Api
