@@ -3,10 +3,10 @@ package com.example
 import com.android.build.gradle.BaseExtension
 import com.example.settings.AndroidPluginSettings
 import com.example.settings.DependenciesSettings
-import com.example.settings.DependencyHandlerScopeExt
 import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.api.artifacts.dsl.DependencyHandler
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.embeddedKotlinVersion
@@ -75,16 +75,16 @@ open class AndroidProjectGradlePlugin : Plugin<Project> {
     open fun applyDependencies(project: Project) {
         project.dependencies {
             // desugaring
-            DependencyHandlerScopeExt(this).coreLibraryDesugaring(DependenciesSettings.Android.desugaring)
+            addCoreLibraryDesugaring(DependenciesSettings.Android.desugaring)
 
             // kotlin
-            DependencyHandlerScopeExt(this).implementation(
+            addImplementation(
                 DependenciesSettings.Jetbrains.kotlinStdlibJdk7(embeddedKotlinVersion),
                 DependenciesSettings.Jetbrains.kotlinReflect(embeddedKotlinVersion)
             )
 
             // androidx
-            DependencyHandlerScopeExt(this).implementation(
+            addImplementation(
                 DependenciesSettings.Androidx.legacySupport,
                 DependenciesSettings.Androidx.appcompat,
                 DependenciesSettings.Androidx.recyclerview,
@@ -96,18 +96,43 @@ open class AndroidProjectGradlePlugin : Plugin<Project> {
             )
 
             // unit tests
-            DependencyHandlerScopeExt(this).testImplementation(
+            addTestImplementation(
                 DependenciesSettings.Junit.junit,
                 DependenciesSettings.Mockk.mockk
             )
 
             // dagger
-            DependencyHandlerScopeExt(this).compileOnly(DependenciesSettings.Glassfish.javaxAnnotation)
-            DependencyHandlerScopeExt(this).kapt(DependenciesSettings.Dagger.daggerCompiler)
-            DependencyHandlerScopeExt(this).implementation(DependenciesSettings.Dagger.dagger)
+            addCompileOnly(DependenciesSettings.Glassfish.javaxAnnotation)
+            addKapt(DependenciesSettings.Dagger.daggerCompiler)
+            addImplementation(DependenciesSettings.Dagger.dagger)
 
             // cicerone
-            DependencyHandlerScopeExt(this).implementation(DependenciesSettings.Terrakok.cicerone)
+            addImplementation(DependenciesSettings.Terrakok.cicerone)
         }
     }
+
+    fun DependencyHandler.addAll(configurationName: String, vararg dependencyNotations: String) =
+        dependencyNotations.forEach { this.add(configurationName, it) }
+
+    fun DependencyHandler.addApi(vararg dependencyNotations: String) =
+        addAll("api", *dependencyNotations)
+
+    fun DependencyHandler.addImplementation(vararg dependencyNotations: String) =
+        addAll("implementation", *dependencyNotations)
+
+    fun DependencyHandler.addCompileOnly(vararg dependencyNotations: String) =
+        addAll("compileOnly", *dependencyNotations)
+
+    fun DependencyHandler.addKapt(vararg dependencyNotations: String) =
+        addAll("kapt", *dependencyNotations)
+
+    fun DependencyHandler.addCoreLibraryDesugaring(vararg dependencyNotations: String) =
+        addAll("coreLibraryDesugaring", *dependencyNotations)
+
+    fun DependencyHandler.addTestImplementation(vararg dependencyNotations: String) =
+        addAll("testImplementation", *dependencyNotations)
+
+    fun DependencyHandler.addAndroidTestImplementation(vararg dependencyNotations: String) =
+        addAll("androidTestImplementation", *dependencyNotations)
+
 }

@@ -4,6 +4,7 @@ object AndroidPluginSettings {
     var year = 21
     var major = 3
     var minor = 0
+    val androidGradlePluginVersion = "4.1.1"
     var minSdkVersion = 23
     var targetSdkVersion = 29
     var compileSdkVersion = 29

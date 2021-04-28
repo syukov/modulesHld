@@ -1,34 +1,6 @@
 package com.example.settings
 
-import org.gradle.kotlin.dsl.DependencyHandlerScope
-
 object DependenciesSettings {
-    fun addAll(scope: DependencyHandlerScope, configurationName: String, vararg deps: String) {
-        deps.forEach { scope.add(configurationName, it) }
-    }
-
-    fun api(scope: DependencyHandlerScope, vararg deps: String) =
-        addAll(scope, "api", *deps)
-
-    fun implementation(scope: DependencyHandlerScope, vararg deps: String) =
-        addAll(scope, "implementation", *deps)
-
-    fun compileOnly(scope: DependencyHandlerScope, vararg deps: String) =
-        addAll(scope, "compileOnly", *deps)
-
-    fun kapt(scope: DependencyHandlerScope, vararg deps: String) =
-        addAll(scope, "kapt", *deps)
-
-    fun coreLibraryDesugaring(scope: DependencyHandlerScope, vararg deps: String) =
-        addAll(scope, "coreLibraryDesugaring", *deps)
-
-    fun testImplementation(scope: DependencyHandlerScope, vararg deps: String) =
-        addAll(scope, "testImplementation", *deps)
-
-    fun androidTestImplementation(scope: DependencyHandlerScope, vararg deps: String) =
-        addAll(scope, "androidTestImplementation", *deps)
-
-
     object Android {
         const val desugaring = "com.android.tools:desugar_jdk_libs:1.0.9"
     }
