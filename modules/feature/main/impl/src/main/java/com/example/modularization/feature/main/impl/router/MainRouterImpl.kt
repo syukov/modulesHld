@@ -1,6 +1,5 @@
 package com.example.modularization.feature.main.impl.router
 
-import com.example.modularization.app.api.diDoc.Doc
 import com.example.modularization.feature.core.api.navigation.BaseArgument
 import com.example.modularization.feature.main.api.MainRouter
 import com.example.modularization.feature.main.impl.router.tabSwitcher.TabContainerRouter
@@ -14,7 +13,6 @@ import com.example.modularization.feature.main.impl.router.tabSwitcher.TabSwitch
  * - TabContainerRouter каждого таба и знает какой таб активен.
  * - TabSwitcherRouter умеющий переключать табы.
  */
-@Doc.Api.Implementation
 class MainRouterImpl(
     private val tabSwitcherRouter: TabSwitcherRouter,
     private val catalogueTabContainerRouter: TabContainerRouter,

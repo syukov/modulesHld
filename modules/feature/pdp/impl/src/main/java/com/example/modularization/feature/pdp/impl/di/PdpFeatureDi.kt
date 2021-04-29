@@ -1,6 +1,5 @@
 package com.example.modularization.feature.pdp.impl.di
 
-import com.example.modularization.app.api.diDoc.Doc
 import com.example.modularization.app.api.moduleApi.AppDomainApi
 import com.example.modularization.feature.core.impl.di.PerFeatureScope
 import com.example.modularization.feature.main.api.MainRouter
@@ -9,8 +8,9 @@ import com.example.modularization.feature.pdp.impl.fragmentProvider.PdpFeatureFr
 import com.example.modularization.feature.root.api.RootRouter
 import dagger.Component
 
-@Doc.Structure
+
 interface PdpFeatureDi {
+
     @Component(
         dependencies = [FactoryDependencies::class],
         modules = [
@@ -19,7 +19,6 @@ interface PdpFeatureDi {
         ]
     )
     @PerFeatureScope
-    @Doc.Structure.DiComponent
     interface DiComponent : ApplicationScopeDependencies, DiComponentInterface {
         fun getFragmentProvider(): PdpFeatureFragmentProvider
 
@@ -29,18 +28,18 @@ interface PdpFeatureDi {
         }
     }
 
-    @Doc.Structure.FactoryDependencies
+
     interface FactoryDependencies {
         val rootRouter: RootRouter
         val mainRouter: MainRouter
     }
 
-    @Doc.Structure.ApplicationScopeDependencies
+
     interface ApplicationScopeDependencies {
         val appDomainApi: AppDomainApi
     }
 
-    @Doc.Structure.DiComponentInterface
+
     interface DiComponentInterface {
         /* no-op */
     }

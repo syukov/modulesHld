@@ -2,15 +2,14 @@ package com.example.modularization.domain.security.impl.di
 
 import com.example.modularization.app.api.applicationScope.ApplicationScope
 import com.example.modularization.app.api.applicationScope.ApplicationScopeApiHolder
-import com.example.modularization.app.api.diDoc.Doc
 import com.example.modularization.domain.core.api.moduleApi.CoreDomainApi
 import com.example.modularization.domain.network.api.moduleApi.NetworkDomainApi
 import dagger.Module
 import dagger.Provides
 
 @Module
-@Doc.ApplicationScopeDependenciesDiModule
 class ApplicationScopeDependenciesDiModule {
+
     @Provides
     @ApplicationScope
     fun coreDomainApi(): CoreDomainApi = ApplicationScopeApiHolder.get(CoreDomainApi::class.java)

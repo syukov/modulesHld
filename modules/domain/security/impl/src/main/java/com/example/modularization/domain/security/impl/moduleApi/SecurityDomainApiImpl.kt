@@ -1,7 +1,6 @@
 package com.example.modularization.domain.security.impl.moduleApi
 
 import com.example.modularization.app.api.applicationScope.ApplicationScope
-import com.example.modularization.app.api.diDoc.Doc
 import com.example.modularization.domain.core.api.UseCase
 import com.example.modularization.domain.security.api.models.EmployeeProfile
 import com.example.modularization.domain.security.api.moduleApi.SecurityDomainApi
@@ -12,7 +11,6 @@ import javax.inject.Inject
 import javax.inject.Provider
 
 @ApplicationScope
-@Doc.Api.Implementation
 class SecurityDomainApiImpl @Inject constructor(
     private val loginEmployeeProvider: Provider<LoginEmployee>,
     private val logoutProvider: Provider<Logout>,

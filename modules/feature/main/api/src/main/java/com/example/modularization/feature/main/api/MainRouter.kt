@@ -1,13 +1,11 @@
 package com.example.modularization.feature.main.api
 
 import com.example.modularization.app.api.aliases.Sku
-import com.example.modularization.app.api.diDoc.Doc
 import com.example.modularization.feature.core.api.navigation.BaseArgument
 import com.example.modularization.feature.core.api.navigation.CiceroneScreen
 import kotlinx.parcelize.Parcelize
 
 
-@Doc.Api
 interface MainRouter {
     /**
      * Перейти назад в рамках текущего таба.

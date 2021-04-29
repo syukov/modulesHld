@@ -1,6 +1,5 @@
 package com.example.modularization.feature.main.impl.di
 
-import com.example.modularization.app.api.diDoc.Doc
 import com.example.modularization.feature.core.impl.di.PerFeatureScope
 import com.example.modularization.feature.main.impl.fragmentProvider.MainFeatureFragmentProvider
 import com.example.modularization.feature.main.impl.fragmentProvider.MainFeatureFragmentProviderDiModule
@@ -8,8 +7,9 @@ import com.example.modularization.feature.main.impl.router.MainRouterDiModule
 import com.example.modularization.feature.root.api.RootRouter
 import dagger.Component
 
-@Doc.Structure
+
 interface MainFeatureDi {
+
     @Component(
         dependencies = [FactoryDependencies::class],
         modules = [
@@ -19,7 +19,6 @@ interface MainFeatureDi {
         ]
     )
     @PerFeatureScope
-    @Doc.Structure.DiComponent
     interface DiComponent : ApplicationScopeDependencies, DiComponentInterface {
 
         @Component.Factory
@@ -29,17 +28,17 @@ interface MainFeatureDi {
 
     }
 
-    @Doc.Structure.FactoryDependencies
+
     interface FactoryDependencies {
         val rootRouter: RootRouter
     }
 
-    @Doc.Structure.ApplicationScopeDependencies
+
     interface ApplicationScopeDependencies {
         /* no-op */
     }
 
-    @Doc.Structure.DiComponentInterface
+
     interface DiComponentInterface {
         val fragmentProvider: MainFeatureFragmentProvider
     }

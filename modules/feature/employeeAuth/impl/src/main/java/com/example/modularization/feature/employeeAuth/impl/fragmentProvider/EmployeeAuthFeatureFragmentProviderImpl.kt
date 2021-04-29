@@ -1,14 +1,13 @@
 package com.example.modularization.feature.employeeAuth.impl.fragmentProvider
 
 import androidx.fragment.app.Fragment
-import com.example.modularization.app.api.diDoc.Doc
 import com.example.modularization.feature.employeeAuth.impl.screens.deugTools.DebugToolsFragment
 import com.example.modularization.feature.employeeAuth.impl.screens.login.LoginFragment
 import com.example.modularization.feature.root.api.RootRouter
 import javax.inject.Inject
 import javax.inject.Provider
 
-@Doc.Api.Implementation
+
 class EmployeeAuthFeatureFragmentProviderImpl @Inject constructor(
     private val loginFragment: Provider<LoginFragment>,
     private val debugToolsFragment: Provider<DebugToolsFragment>,

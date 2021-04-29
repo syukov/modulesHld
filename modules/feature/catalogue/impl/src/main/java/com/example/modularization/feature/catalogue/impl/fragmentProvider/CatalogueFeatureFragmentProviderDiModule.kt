@@ -1,12 +1,10 @@
 package com.example.modularization.feature.catalogue.impl.fragmentProvider
 
-import com.example.modularization.app.api.diDoc.Doc
 import com.example.modularization.feature.core.impl.di.PerFeatureScope
 import dagger.Binds
 import dagger.Module
 
 @Module
-@Doc.Api.DiModule
 interface CatalogueFeatureFragmentProviderDiModule {
     @PerFeatureScope
     @Binds

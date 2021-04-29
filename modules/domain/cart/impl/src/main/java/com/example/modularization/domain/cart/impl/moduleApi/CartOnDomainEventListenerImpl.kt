@@ -1,14 +1,12 @@
 package com.example.modularization.domain.cart.impl.moduleApi
 
 import com.example.modularization.app.api.applicationScope.ApplicationScope
-import com.example.modularization.app.api.diDoc.Doc
 import com.example.modularization.domain.cart.impl.useCase.ClearCart
 import com.example.modularization.domain.core.api.models.domainEvents.DomainEvent
 import com.example.modularization.domain.core.api.models.domainEvents.OnDomainEventListener
 import javax.inject.Inject
 
 @ApplicationScope
-@Doc.Api.Implementation
 class CartOnDomainEventListenerImpl @Inject constructor(
     private val clearCart: ClearCart
 ) : OnDomainEventListener {

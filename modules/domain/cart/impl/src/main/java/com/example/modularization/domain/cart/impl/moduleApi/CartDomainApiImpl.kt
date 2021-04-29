@@ -1,7 +1,6 @@
 package com.example.modularization.domain.cart.impl.moduleApi
 
 import com.example.modularization.app.api.applicationScope.ApplicationScope
-import com.example.modularization.app.api.diDoc.Doc
 import com.example.modularization.domain.cart.api.moduleApi.CartDomainApi
 import com.example.modularization.domain.cart.impl.useCase.AddProduct
 import com.example.modularization.domain.cart.impl.useCase.ClearCart
@@ -10,7 +9,7 @@ import javax.inject.Inject
 import javax.inject.Provider
 
 @ApplicationScope
-@Doc.Api.Implementation
+
 class CartDomainApiImpl @Inject constructor(
     private val getCartProvider: Provider<GetCart>,
     private val addProductProvider: Provider<AddProduct>,

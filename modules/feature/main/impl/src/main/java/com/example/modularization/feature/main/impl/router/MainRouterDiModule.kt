@@ -1,6 +1,5 @@
 package com.example.modularization.feature.main.impl.router
 
-import com.example.modularization.app.api.diDoc.Doc
 import com.example.modularization.core_feature.utils.checkWhenBranches
 import com.example.modularization.feature.cart.impl.screens.cart.CartFragment
 import com.example.modularization.feature.catalogue.impl.screens.catalogue.CatalogueFragment
@@ -22,7 +21,6 @@ import javax.inject.Named
         TabSwitcherRouterDiModule::class,
     ]
 )
-@Doc.Api.DiModule
 class MainRouterDiModule {
     /**
      * Хук с рефлексией для того что бы компилятор нам подсказал если мы создали Screen и забыли указать ему имя фрагмента

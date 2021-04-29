@@ -1,6 +1,5 @@
 package com.example.modularization.feature.main.impl.di
 
-import com.example.modularization.app.api.diDoc.Doc
 import com.example.modularization.feature.cart.impl.di.CartFeatureDi
 import com.example.modularization.feature.cart.impl.di.DaggerCartFeatureDi_DiComponent
 import com.example.modularization.feature.catalogue.impl.di.CatalogueFeatureDi
@@ -14,7 +13,6 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-@Doc.NestedScopeComponentsDiModule
 class NestedScopeComponentsDiModule {
     @Provides
     @PerFeatureScope
