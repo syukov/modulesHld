@@ -1,7 +1,10 @@
 package com.example.settings
 
+import org.gradle.api.artifacts.dsl.DependencyHandler
+import org.gradle.kotlin.dsl.project
 
-abstract class ProjectModule(
+
+sealed class ProjectModule(
     /**
      * Путь подпроекта в нотации градла
      */
@@ -98,3 +101,9 @@ abstract class ProjectModule(
         }
     }
 }
+
+fun DependencyHandler.modulesApi(vararg projectModules: ProjectModule) =
+    projectModules.forEach { projectModule -> add("api", project(projectModule.path)) }
+
+fun DependencyHandler.modulesImplementation(vararg projectModules: ProjectModule) =
+    projectModules.forEach { projectModule -> add("implementation", project(projectModule.path)) }

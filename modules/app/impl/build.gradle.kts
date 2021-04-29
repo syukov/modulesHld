@@ -1,5 +1,4 @@
 import com.example.settings.ProjectModule
-import com.example.settings.initThisModule
 import com.example.settings.modulesImplementation
 
 plugins {
@@ -7,9 +6,7 @@ plugins {
 }
 
 dependencies {
-    initThisModule(ProjectModule.App.Impl)
-
-    // app module should know about all domain modules
+    // app module should know about all domain modules, because they have application scope
     modulesImplementation(
         ProjectModule.Domain.Cart.Impl,
         ProjectModule.Domain.Network.Impl,

@@ -13,14 +13,15 @@ import org.gradle.kotlin.dsl.embeddedKotlinVersion
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-open class AndroidProjectGradlePlugin : Plugin<Project> {
+open class AndroidProjectGradlePlugin : AbstractProjectGradlePlugin() {
     override fun apply(target: Project) {
         applyPlugins(target)
         configurePlugins(target)
         applyDependencies(target)
     }
 
-    open fun applyPlugins(project: Project) {
+    override fun applyPlugins(project: Project) {
+        super.applyPlugins(project)
         project.pluginManager.apply("kotlin-android")
         project.pluginManager.apply("kotlin-kapt")
         project.pluginManager.apply("kotlin-parcelize")
@@ -28,8 +29,8 @@ open class AndroidProjectGradlePlugin : Plugin<Project> {
 
     //    @SuppressWarnings("UnstableApiUsage")
     @Suppress("UnstableApiUsage")
-    open fun configurePlugins(project: Project) {
-
+    override fun configurePlugins(project: Project) {
+        super.configurePlugins(project)
         // Конфигурация Android gradle plugin. Аналог блока android {} в groovy скрипте
         project.extensions.configure<BaseExtension> {
             compileSdkVersion(AndroidPluginSettings.compileSdkVersion)
@@ -72,7 +73,8 @@ open class AndroidProjectGradlePlugin : Plugin<Project> {
         }
     }
 
-    open fun applyDependencies(project: Project) {
+    override fun applyDependencies(project: Project) {
+        super.applyDependencies(project)
         project.dependencies {
             // desugaring
             addCoreLibraryDesugaring(DependenciesSettings.Android.desugaring)
@@ -110,29 +112,4 @@ open class AndroidProjectGradlePlugin : Plugin<Project> {
             addImplementation(DependenciesSettings.Terrakok.cicerone)
         }
     }
-
-    fun DependencyHandler.addAll(configurationName: String, vararg dependencyNotations: String) =
-        dependencyNotations.forEach { this.add(configurationName, it) }
-
-    fun DependencyHandler.addApi(vararg dependencyNotations: String) =
-        addAll("api", *dependencyNotations)
-
-    fun DependencyHandler.addImplementation(vararg dependencyNotations: String) =
-        addAll("implementation", *dependencyNotations)
-
-    fun DependencyHandler.addCompileOnly(vararg dependencyNotations: String) =
-        addAll("compileOnly", *dependencyNotations)
-
-    fun DependencyHandler.addKapt(vararg dependencyNotations: String) =
-        addAll("kapt", *dependencyNotations)
-
-    fun DependencyHandler.addCoreLibraryDesugaring(vararg dependencyNotations: String) =
-        addAll("coreLibraryDesugaring", *dependencyNotations)
-
-    fun DependencyHandler.addTestImplementation(vararg dependencyNotations: String) =
-        addAll("testImplementation", *dependencyNotations)
-
-    fun DependencyHandler.addAndroidTestImplementation(vararg dependencyNotations: String) =
-        addAll("androidTestImplementation", *dependencyNotations)
-
 }

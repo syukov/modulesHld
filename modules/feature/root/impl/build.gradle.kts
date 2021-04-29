@@ -1,5 +1,4 @@
 import com.example.settings.ProjectModule
-import com.example.settings.initThisModule
 import com.example.settings.modulesImplementation
 
 plugins {
@@ -7,8 +6,6 @@ plugins {
 }
 
 dependencies {
-    initThisModule(ProjectModule.Feature.Root.Impl)
-
     // nested features:
     modulesImplementation(
         ProjectModule.Feature.EmployeeAuth.Impl,
