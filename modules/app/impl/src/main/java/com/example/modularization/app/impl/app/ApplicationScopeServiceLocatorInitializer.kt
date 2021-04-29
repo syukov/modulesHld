@@ -1,6 +1,6 @@
 package com.example.modularization.app.impl.app
 
-import com.example.modularization.app.api.applicationScope.ApplicationScopeApiHolder
+import com.example.modularization.app.api.applicationScope.ApplicationScopeServiceLocator
 import com.example.modularization.app.api.moduleApi.AppDomainApi
 import com.example.modularization.app.impl.di.AppDi
 import com.example.modularization.domain.cart.api.moduleApi.CartDomainApi
@@ -25,7 +25,7 @@ import javax.inject.Inject
  *
  * Это ограничение распространяется только на DomainApi (кроме AppDomainApi) из-за особенностей их инициализации (при старте приложения)
  */
-class ApplicationScopeApiInitializer @Inject constructor(
+class ApplicationScopeServiceLocatorInitializer @Inject constructor(
     private val appComponent: AppDi.DiComponent,
     private val coreDomainComponent: CoreDomainDi.DiComponent,
 
@@ -38,10 +38,10 @@ class ApplicationScopeApiInitializer @Inject constructor(
     }
 
     fun init() {
-        // инициализируем только один раз, метод вызывается из activity, а она может быть пересоздана
+        // инициализируем только один раз, метод вызывается из activity, а она может быть пересоздана, поэтому
         if (isInitialized.getAndSet(true)) return
 
-        ApplicationScopeApiHolder.apply {
+        ApplicationScopeServiceLocator.apply {
             put(appComponent.appDomainApi, AppDomainApi::class.java)
             put(coreDomainComponent.coreDomainApi, CoreDomainApi::class.java)
             put(securityDomainComponent.securityDomainApi, SecurityDomainApi::class.java)

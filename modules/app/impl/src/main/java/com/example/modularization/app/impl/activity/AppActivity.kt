@@ -3,7 +3,7 @@ package com.example.modularization.app.impl.activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.modularization.app.impl.R
-import com.example.modularization.app.impl.app.ApplicationScopeApiInitializer
+import com.example.modularization.app.impl.app.ApplicationScopeServiceLocatorInitializer
 import com.example.modularization.app.impl.app.TheApp
 import javax.inject.Inject
 
@@ -13,7 +13,7 @@ class AppActivity : AppCompatActivity() {
     lateinit var fragmentFactory: AppActivityFragmentFactory
 
     @Inject
-    lateinit var applicationScopeApiInitializer: ApplicationScopeApiInitializer
+    lateinit var applicationScopeApiInitializer: ApplicationScopeServiceLocatorInitializer
 
     companion object {
         private const val ROOT_FRAGMENT_TAG = "ROOT"

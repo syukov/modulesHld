@@ -17,33 +17,25 @@ pluginManagement {
     }
 }
 
-/**
- * Добавляем в проект указанный модуль и его api и impl модули сабмодули, при их наличии.
- */
-fun includeModules(projectPaths: String) {
-    include(projectPaths)
-    val dir = projectPaths.replace(":", "/").substring(1)
-    file(dir).list { file, _ -> file.isDirectory }
-        ?.forEach { subDir ->
-            if (subDir == "api" || subDir == "impl") include("$projectPaths:$subDir")
-        }
+
+fun includeAllModules(dir: String) {
+    val modulePath = dir.replace("/", ":")
+    include(modulePath)
+    println("included $modulePath")
+
+    val listFiles = file(dir).listFiles().orEmpty()
+
+    val needToLookForSubModules = listFiles.none { file -> file.isDirectory && file.name == "src" }
+
+    if (needToLookForSubModules) {
+        listFiles
+            .filter { file -> file.isDirectory }
+            .forEach { file -> includeAllModules("$dir/${file.name}") }
+    }
 }
 
-include(":modules")
-includeModules(":modules:app")
-
-include(":modules:domain")
-includeModules(":modules:domain:core")
-includeModules(":modules:domain:network")
-includeModules(":modules:domain:security")
-includeModules(":modules:domain:cart")
-
-
-include(":modules:feature")
-includeModules(":modules:feature:core")
-includeModules(":modules:feature:root")
-includeModules(":modules:feature:employeeAuth")
-includeModules(":modules:feature:main")
-includeModules(":modules:feature:cart")
-includeModules(":modules:feature:catalogue")
-includeModules(":modules:feature:pdp")
+/**
+ * Пробегаемся рекурсивно по подкаталогам "/modules" и добавляем в проект все дерево модулей.
+ * Поиск вгубь прерывается на каталогах содержащих "/src".
+ */
+includeAllModules("/modules")

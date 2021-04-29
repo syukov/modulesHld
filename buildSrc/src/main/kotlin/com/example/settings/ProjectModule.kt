@@ -26,16 +26,10 @@ sealed class ProjectModule(
      * - при доступе к :modules:feature:some:impl нужно предоставлять доступ к :modules:feature:core:impl
      * - при доступе к :modules:feature:some:api нужно предоставлять доступ к :modules:feature:core:api
      */
-    val core: ProjectModule?,
-
-    val custom: List<ProjectModule> = emptyList()
+    val core: ProjectModule?
 ) {
 
-    val transitiveDependencies: List<ProjectModule> = listOf(
-        api,
-        core,
-        App.Api // все модули видят App.Api
-    ).mapNotNull { it } + custom
+    val transitiveDependencies: List<ProjectModule> = listOf(api, core).mapNotNull { it }
 
     object App {
         object Api : ProjectModule(path = ":modules:app:api", api = null, core = null)
@@ -66,11 +60,7 @@ sealed class ProjectModule(
 
     object Feature {
         object Core {
-            object Api : ProjectModule(
-                path = ":modules:feature:core:api", api = null, core = null,
-                custom = listOf(Domain.Core.Api) // все фиче модули должны знать о Domain.Core.Api что бы пользоваться юзкейсами
-            )
-
+            object Api : ProjectModule(path = ":modules:feature:core:api", api = null, core = null)
             object Impl : ProjectModule(path = ":modules:feature:core:impl", api = Api, core = null)
         }
 

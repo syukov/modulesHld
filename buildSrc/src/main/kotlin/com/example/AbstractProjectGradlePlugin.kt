@@ -23,6 +23,7 @@ abstract class AbstractProjectGradlePlugin : Plugin<Project> {
 
     open fun applyDependencies(project: Project) {
         addTransitiveDependenciesOnAnotherModules(project)
+        addDependencyOnAppApiModule(project)
     }
 
     /**
@@ -43,6 +44,13 @@ abstract class AbstractProjectGradlePlugin : Plugin<Project> {
         }
     }
 
+    private fun addDependencyOnAppApiModule(currentProject: Project) {
+        if (currentProject.path != ProjectModule.App.Api.path) {
+            currentProject.dependencies {
+                add("implementation", project(ProjectModule.App.Api.path))
+            }
+        }
+    }
 
     // helper extension functions:
 

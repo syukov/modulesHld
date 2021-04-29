@@ -38,12 +38,12 @@ repositories {
 }
 
 dependencies {
-    val gradleVersion = "4.1.1"
+    val androidGradlePluginVersion = "4.1.1"
 
     // доступ к kotlinOptions внутри плагина
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$embeddedKotlinVersion")
     // доступ к блоку android{} внутри плагина
-    implementation("com.android.tools.build:gradle:$gradleVersion")
+    implementation("com.android.tools.build:gradle:$androidGradlePluginVersion")
 }
 
 gradlePlugin {

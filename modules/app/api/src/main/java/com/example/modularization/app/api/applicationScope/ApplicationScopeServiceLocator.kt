@@ -3,7 +3,7 @@ package com.example.modularization.app.api.applicationScope
 /**
  * Здесь храняться все DomainApi - они инициализируются при старте приложения и имеют глобальный скоуп.
  */
-object ApplicationScopeApiHolder {
+object ApplicationScopeServiceLocator {
     private val map: MutableMap<Class<out Any>, Any> = mutableMapOf()
 
     fun <T : Any> put(impl: T, classOfApi: Class<T>) {

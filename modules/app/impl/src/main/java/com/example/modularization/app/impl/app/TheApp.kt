@@ -2,7 +2,7 @@ package com.example.modularization.app.impl.app
 
 import android.app.Application
 import android.content.Context
-import com.example.modularization.app.api.applicationScope.ApplicationScopeApiHolder
+import com.example.modularization.app.api.applicationScope.ApplicationScopeServiceLocator
 import com.example.modularization.app.api.moduleApi.AppDomainApi
 import com.example.modularization.app.impl.di.AppDi
 import com.example.modularization.app.impl.di.DaggerAppDi_DiComponent
@@ -20,6 +20,6 @@ class TheApp : Application() {
             }
         )
 
-        ApplicationScopeApiHolder.put(appComponent.appDomainApi, AppDomainApi::class.java)
+        ApplicationScopeServiceLocator.put(appComponent.appDomainApi, AppDomainApi::class.java)
     }
 }

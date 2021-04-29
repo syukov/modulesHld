@@ -63,7 +63,6 @@ open class AndroidProjectGradlePlugin : AbstractProjectGradlePlugin() {
                         // Т.к. модули имеют одинаковые названия ("api" и "impl"), то говорим компилятору генерировать
                         // для каждого модуля META-INF на основе группы+названия проекта,
                         // т.е. вместо "impl.kotlin_module" будет "modules.app.impl.kotlin_module".
-                        // Поскольку мы делаем это в каждой таске модуля, то будем получать такой варнинг "Argument -module-name is passed multiple times. Only the last value will be used"
                         "-module-name", "${project.group}.${project.name}",
                         // поддержка inline классов
                         "-Xinline-classes"
@@ -73,6 +72,9 @@ open class AndroidProjectGradlePlugin : AbstractProjectGradlePlugin() {
         }
     }
 
+    /**
+     * Описываем зависимости используемые во всех модулях.
+     */
     override fun applyDependencies(project: Project) {
         super.applyDependencies(project)
         project.dependencies {
